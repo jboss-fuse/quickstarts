@@ -36,7 +36,9 @@
 
 
     <modules>
+        <module>bom</module>
         <module>errors</module>
+        <module>rest</module>
     </modules>
 
 
