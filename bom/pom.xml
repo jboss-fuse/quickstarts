@@ -33,6 +33,7 @@
         <version.servicemix.bundles.commons-httpclient>3.1_5</version.servicemix.bundles.commons-httpclient>
         <version.slf4j>1.6.1</version.slf4j>
         <version.junit>4.10</version.junit>
+        <version.commons-httpclient>3.1</version.commons-httpclient>
     </properties>
 
     <licenses>
@@ -70,6 +71,13 @@
                 <groupId>org.apache.servicemix.bundles</groupId>
                 <artifactId>org.apache.servicemix.bundles.commons-httpclient</artifactId>
                 <version>${version.servicemix.bundles.commons-httpclient}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-httpclient</groupId>
+                <artifactId>commons-httpclient</artifactId>
+                <version>${version.commons-httpclient}</version>
                 <scope>test</scope>
             </dependency>
 

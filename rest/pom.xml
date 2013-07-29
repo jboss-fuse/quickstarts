@@ -75,13 +75,13 @@
             For performing the HTTP requests, we are using Apache Commons HttpClient.
         -->
         <dependency>
-            <groupId>org.apache.servicemix.bundles</groupId>
-            <artifactId>org.apache.servicemix.bundles.commons-httpclient</artifactId>
+            <groupId>commons-httpclient</groupId>
+            <artifactId>commons-httpclient</artifactId>
         </dependency>
 
         <!--
-                  For logging, we will use SLF4J, which is also available in the container by default.
-                -->
+            For logging, we will use SLF4J, which is also available in the container by default.
+          -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
