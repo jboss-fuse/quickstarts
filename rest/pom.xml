@@ -104,6 +104,7 @@
     </dependencies>
 
     <build>
+        <finalName>${project.artifactId}</finalName>
         <plugins>
             <!-- Skip Test by default and enable them only in Client profile -->
             <plugin>
