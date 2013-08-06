@@ -1,38 +1,52 @@
-# Content-Based Router
+Content-Based Router: Demonstrates how to use the content-based router (CBR) pattern in Camel to send a message
+======================================================
+Author: Fuse Team
+Level: Beginner
+Technologies: Camel, Blueprint, Spring, Jetty, ActiveMQ
+Summary: Demonstrates how to use the content-based router (CBR)
+Target Product: Fuse
+Source: <https://github.com/jboss-fuse/quickstarts/cbr>
 
-## Overview
-This example demonstrates how to use the content-based router (CBR) pattern in Camel to send a message
-to a different destination based on the contents of the message.
 
-In this example, orders from zoos all over the world will be copied from the input directory into a specific
-output directory per country.
 
-## What You Will Learn
+What is it?
+-----------
+
+This example shows how to use Apache Camel, and its OSGi integration to dynamically route messages to new or updated OSGi bundles. This allows you to route to newly deployed services at runtime without impacting running services.
+
+This example combines use of the Camel Recipient List, which allows you to at runtime specify the Camel Endpoint to route to, and use of the Camel VM Component, which provides a SEDA queue that can be accessed from different OSGi bundles running in the same Java virtual machine.
+
 In studying this example you will learn:
 
 * how to define a Camel route using the Blueprint XML syntax
 * how to build and deploy a Fuse Application Bundle (FAB) in JBoss Fuse
 * how to use the CBR enterprise integration pattern
 
-## Prerequisites
+Note: Extra steps, like use of Camel VM Component, need to be taken when accessing Camel Routes in different Camel Contexts, and in different OSGi bundles, as you are dealing with classes in different ClassLoaders.
+
+
+System requirements
+-------------------
+
 Before building and running this example you need:
 
 * Maven 3.0.3 or higher
 * JDK 1.6 or 1.7
 * JBoss Fuse 6
 
-## Files in the Example
-* `pom.xml` - the Maven POM file for building the example
-* `src/main/resources/OSGI-INF/blueprint/cbr.xml` - the OSGI Blueprint file that defines the route
-* `test/data/*.xml` - data files that can be used to test the route
 
-## Building the Example
+Build and Deploy the Quickstart
+-------------------------
+
 To build the example:
 
 1. Change your working directory to the `examples/cbr` directory.
 2. Run `mvn clean install` to build the example.
 
-## Running the Example
+
+Running the Example
+---------------------
+
 To run the example:
 
 1. Start JBoss Fuse 6 by running `bin/fuse` (on Linux) or `bin\fuse.bat` (on Windows).
@@ -49,7 +63,21 @@ To run the example:
         Sending order order1.xml to another country
         Done processing order1.xml
 
-## More information
+
+Undeploy the Archive
+--------------------
+
+To stop and undeploy the bundle in Fuse:
+
+1. Enter `osgi:list` command to retrieve your bundle id
+2. To stop and uninstall the bundle enter
+
+        osgi:uninstall <id>
+ 
+
+
+Extras
+-------------------------
 For more information see:
 
 * http://www.enterpriseintegrationpatterns.com/ContentBasedRouter.html for more information about the CBR EIP
