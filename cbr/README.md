@@ -1,4 +1,4 @@
-CBR: Demonstrates how to use the content-based router pattern in Camel to send a message
+cbr: Demonstrates how to use the content-based router pattern in Camel to send a message
 ======================================================
 Author: Fuse Team
 Level: Beginner
