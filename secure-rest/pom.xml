@@ -19,25 +19,22 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
+
     <modelVersion>4.0.0</modelVersion>
 
-    <!--
-        The parent POM does not contain any information required to build this example, it's only here
-        for organisational purposes so feel free to remove/replace this.
-    -->
     <groupId>org.jboss.quickstarts.fuse</groupId>
-    <artifactId>rest</artifactId>
+    <artifactId>secure-rest</artifactId>
     <version>6.1.0.redhat-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>JBoss Fuse :: Examples :: RESTful WebService</name>
-    <description>RESTful WebService Example using JAX-RS with JBoss Fuse</description>
-
+    <name>JBoss Fuse :: Examples :: Secure Restful Web Services</name>
+    <description>Secure Restful Web Services Example using JAX-RS Basic Authentication with JBoss Fuse</description>
     <properties>
         <version.compiler.plugin>2.3.1</version.compiler.plugin>
         <skipTests>true</skipTests>
         <!-- maven-compiler-plugin -->
         <maven.compiler.target>1.6</maven.compiler.target>
         <maven.compiler.source>1.6</maven.compiler.source>
+        <version.maven-jar-plugin>2.4</version.maven-jar-plugin>
     </properties>
 
     <licenses>
@@ -69,9 +66,8 @@
             <groupId>org.apache.servicemix.specs</groupId>
             <artifactId>org.apache.servicemix.specs.jsr311-api-1.1.1</artifactId>
         </dependency>
-
         <!--
-            We are also building a small Java client application that we can use to test our web web services.
+            We are also building a small Java client application that we can use to test our web services.
             For performing the HTTP requests, we are using Apache Commons HttpClient.
         -->
         <dependency>
@@ -81,7 +77,7 @@
 
         <!--
             For logging, we will use SLF4J, which is also available in the container by default.
-          -->
+         -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -100,8 +96,8 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
         </dependency>
-
     </dependencies>
+
 
     <build>
         <plugins>
@@ -121,6 +117,22 @@
                 <configuration>
                     <source>${maven.compiler.source}</source>
                     <target>${maven.compiler.target}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>${version.maven-jar-plugin}</version>
+                <configuration>
+                    <archive>
+                        <index>true</index>
+                        <manifestEntries>
+                            <Import-Package>
+                                org.eclipse.jetty.plus.jaas,
+                                org.apache.karaf.jaas.boot.principal,*
+                            </Import-Package>
+                        </manifestEntries>
+                    </archive>
                 </configuration>
             </plugin>
 
@@ -191,5 +203,4 @@
         </profile>
 
     </profiles>
-
 </project>
