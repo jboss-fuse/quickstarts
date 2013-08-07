@@ -1,4 +1,4 @@
-Content-Based Router: Demonstrates how to use the content-based router (CBR) pattern in Camel to send a message
+CBR: Demonstrates how to use the content-based router pattern in Camel to send a message
 ======================================================
 Author: Fuse Team
 Level: Beginner
@@ -22,6 +22,11 @@ In studying this example you will learn:
 * how to build and deploy a Fuse Application Bundle (FAB) in JBoss Fuse
 * how to use the CBR enterprise integration pattern
 
+For more information see:
+
+* http://www.enterpriseintegrationpatterns.com/ContentBasedRouter.html for more information about the CBR EIP
+* https://access.redhat.com/knowledge/docs/JBoss_Fuse/ for more information about using JBoss Fuse
+
 Note: Extra steps, like use of Camel VM Component, need to be taken when accessing Camel Routes in different Camel Contexts, and in different OSGi bundles, as you are dealing with classes in different ClassLoaders.
 
 
@@ -38,27 +43,33 @@ Before building and running this example you need:
 Build and Deploy the Quickstart
 -------------------------
 
-To build the example:
+1. Make sure you have once launched the build from `quickstarts` root by running `mvn clean install` in `quickstarts` folder
+*. Change your working directory to `quckstarts/cbr` directory.
+*. Run `mvn clean install` to build the quickstart.
+*. Start JBoss Fuse 6 by running bin/fuse (on Linux) or bin\fuse.bat (on Windows).
+*. In the JBoss Fuse console, enter the following command:
 
-1. Change your working directory to the `examples/cbr` directory.
-2. Run `mvn clean install` to build the example.
+        osgi:install -s fab:mvn:org.jboss.quickstarts.fuse/cbr/<project version>
+
+*. Fuse should give you on id when the bundle is deployed
+*. You can check that everything is ok by issue the command:
+
+        osgi:list
+   your bundle should be present at the end of the list
 
 
-Running the Example
+Use the bundle
 ---------------------
 
-To run the example:
+To use the application be sure to have deployed the quickstart in Fuse as described above. 
 
-1. Start JBoss Fuse 6 by running `bin/fuse` (on Linux) or `bin\fuse.bat` (on Windows).
-2. In the JBoss Fuse console, enter the following command:
-        osgi:install -s fab:mvn:org.jboss.fuse.examples/cbr/6.0.0.redhat-024
-3. As soon as the Camel route has been started, you will see a directory `work/cbr/input` in your JBoss Fuse installation.
-4. Copy the files you find in this example's `src/test/data` directory to the newly created `work/cbr/input` directory.
-5. Wait a few moment and you will find the same files organized by country under the `work/cbr/output` directory.
+1. As soon as the Camel route has been started, you will see a directory `work/cbr/input` in your JBoss Fuse installation.
+2. Copy the files you find in this example's `src/test/data` directory to the newly created `work/cbr/input` directory.
+3. Wait a few moment and you will find the same files organized by country under the `work/cbr/output` directory.
 ** `order1.xml` in `work/cbr/output/others`
 ** `order2.xml` and `order4.xml` in `work/cbr/output/uk`
 ** `order3.xml` and `order5.xml` in `work/cbr/output/us`
-6. Use `log:display` to check out the business logging.
+4. Use `log:display` to check out the business logging.
         Receiving order order1.xml
         Sending order order1.xml to another country
         Done processing order1.xml
@@ -74,11 +85,3 @@ To stop and undeploy the bundle in Fuse:
 
         osgi:uninstall <id>
  
-
-
-Extras
--------------------------
-For more information see:
-
-* http://www.enterpriseintegrationpatterns.com/ContentBasedRouter.html for more information about the CBR EIP
-* https://access.redhat.com/knowledge/docs/JBoss_Fuse/ for more information about using JBoss Fuse
