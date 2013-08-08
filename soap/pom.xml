@@ -18,23 +18,20 @@
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
-
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>org.jboss.quickstarts.fuse</groupId>
-    <artifactId>secure-rest</artifactId>
+    <artifactId>soap</artifactId>
     <version>6.1.0.redhat-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>JBoss Fuse :: Examples :: Secure Restful Web Services</name>
-    <description>Secure Restful Web Services Example using JAX-RS Basic Authentication with JBoss Fuse</description>
+    <name>JBoss Fuse :: Examples :: SOAP</name>
+    <description>SOAP example using JAXWS</description>
+
     <properties>
         <version.compiler.plugin>2.3.1</version.compiler.plugin>
         <skipTests>true</skipTests>
         <!-- maven-compiler-plugin -->
         <maven.compiler.target>1.6</maven.compiler.target>
         <maven.compiler.source>1.6</maven.compiler.source>
-        <version.maven-jar-plugin>2.4</version.maven-jar-plugin>
         <version.maven-surefire-plugin>2.15</version.maven-surefire-plugin>
     </properties>
 
@@ -57,28 +54,19 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
     <dependencies>
         <!--
-            For coding the example, we don't actually depend on any CXF classes - we only use the JAX-RS (JSR-311)
-            standard annotations and API
+            For coding the example, we don't actually depend on any CXF classes - we only use the JAX-WS
+            standard annotations
         -->
         <dependency>
-            <groupId>org.apache.servicemix.specs</groupId>
-            <artifactId>org.apache.servicemix.specs.jsr311-api-1.1.1</artifactId>
-        </dependency>
-        <!--
-            We are also building a small Java client application that we can use to test our web services.
-            For performing the HTTP requests, we are using Apache Commons HttpClient.
-        -->
-        <dependency>
-            <groupId>commons-httpclient</groupId>
-            <artifactId>commons-httpclient</artifactId>
+            <groupId>org.apache.geronimo.specs</groupId>
+            <artifactId>geronimo-ws-metadata_2.0_spec</artifactId>
         </dependency>
 
         <!--
             For logging, we will use SLF4J, which is also available in the container by default.
-         -->
+          -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -99,11 +87,10 @@
         </dependency>
     </dependencies>
 
-
     <build>
         <finalName>${project.artifactId}</finalName>
         <plugins>
-            <!-- Skip Test by default and enable them only in Client profile -->
+            <!-- Skip Test by default and enable them only in Test profile -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -121,23 +108,6 @@
                     <target>${maven.compiler.target}</target>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>${version.maven-jar-plugin}</version>
-                <configuration>
-                    <archive>
-                        <index>true</index>
-                        <manifestEntries>
-                            <Import-Package>
-                                org.eclipse.jetty.plus.jaas,
-                                org.apache.karaf.jaas.boot.principal,*
-                            </Import-Package>
-                        </manifestEntries>
-                    </archive>
-                </configuration>
-            </plugin>
-
         </plugins>
     </build>
 
@@ -197,12 +167,11 @@
             <properties>
                 <skipTests>false</skipTests>
             </properties>
-
             <build>
                 <defaultGoal>verify</defaultGoal>
             </build>
-
         </profile>
-
     </profiles>
+
+
 </project>
