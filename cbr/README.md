@@ -44,15 +44,17 @@ Build and Deploy the Quickstart
 -------------------------
 
 1. Make sure you have once launched the build from `quickstarts` root by running `mvn clean install` in `quickstarts` folder
-*. Change your working directory to `quckstarts/cbr` directory.
-*. Run `mvn clean install` to build the quickstart.
-*. Start JBoss Fuse 6 by running bin/fuse (on Linux) or bin\fuse.bat (on Windows).
-*. In the JBoss Fuse console, enter the following command:
+
+* Change your working directory to `quickstarts/cbr` directory.
+* Run `mvn clean install` to build the quickstart.
+* Start JBoss Fuse 6 by running bin/fuse (on Linux) or bin\fuse.bat (on Windows).
+* In the JBoss Fuse console, enter the following command:
 
         osgi:install -s fab:mvn:org.jboss.quickstarts.fuse/cbr/<project version>
 
-*. Fuse should give you on id when the bundle is deployed
-*. You can check that everything is ok by issue the command:
+* Fuse should give you on id when the bundle is deployed
+
+* You can check that everything is ok by issue the command:
 
         osgi:list
    your bundle should be present at the end of the list
@@ -66,9 +68,9 @@ To use the application be sure to have deployed the quickstart in Fuse as descri
 1. As soon as the Camel route has been started, you will see a directory `work/cbr/input` in your JBoss Fuse installation.
 2. Copy the files you find in this example's `src/test/data` directory to the newly created `work/cbr/input` directory.
 3. Wait a few moment and you will find the same files organized by country under the `work/cbr/output` directory.
-** `order1.xml` in `work/cbr/output/others`
-** `order2.xml` and `order4.xml` in `work/cbr/output/uk`
-** `order3.xml` and `order5.xml` in `work/cbr/output/us`
+  * `order1.xml` in `work/cbr/output/others`
+  * `order2.xml` and `order4.xml` in `work/cbr/output/uk`
+  * `order3.xml` and `order5.xml` in `work/cbr/output/us`
 4. Use `log:display` to check out the business logging.
         Receiving order order1.xml
         Sending order order1.xml to another country
