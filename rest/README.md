@@ -2,16 +2,16 @@ rest: demonstrates RESTful web services with CXF
 ===============================================
 Author: Fuse Team
 Level: Beginner
-Technologies: Fuse, OSGi, Camel
+Technologies: Fuse, OSGi, CXF
 Summary: Demonstrates RESTful web services with CXF
 Target Product: Fuse
 Source: <https://github.com/jboss-fuse/quickstarts/rest>
 
 What is it?
 -----------
-This example demonstrates how to create a RESTful (JAX-RS) web service using CXF and expose it with the OSGi HTTP Service.
+This quick start demonstrates how to create a RESTful (JAX-RS) web service using CXF and expose it with the OSGi HTTP Service.
 
-In studying this example you will learn:
+In studying this quick start you will learn:
 
 * how to configure the JAX-RS web services by using the blueprint configuration file.
 * how to use JAX-RS annotations to map methods and classes to URIs
@@ -24,7 +24,7 @@ For more information see:
 
 System requirements
 -------------------
-Before building and running this example you need:
+Before building and running this quick start you need:
 
 * Maven 3.0.3 or higher
 * JDK 1.6 or 1.7
@@ -57,7 +57,7 @@ A full listing of all CXF web services is available at
 
     http://localhost:8181/cxf
 
-After you deployed this example, you will see the following endpoint address appear in the 'Available RESTful services' section:
+After you deployed this quick start, you will see the following endpoint address appear in the 'Available RESTful services' section:
 
     http://localhost:8181/cxf/crm
 **Note:**: Don't try to access this endpoint address from browser, as it's inaccessible by design
@@ -90,7 +90,7 @@ You can also access the XML representation for order 223 ...
 
 ### To run the tests:
 
-In this example project, we also provide integration tests which perform a few HTTP requests to test our Web services. We
+In this quick start project, we also provide integration tests which perform a few HTTP requests to test our Web services. We
 created a Maven `test` profile to allow us to run tests code with a simple Maven command after having deployed the bundle to Fuse:
 
 1. Change to the `quickstarts/rest` directory.

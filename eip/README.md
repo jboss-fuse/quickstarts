@@ -2,7 +2,7 @@ eip: demonstrates how to combine multiple EIPs to solve integration problems
 ===================================
 Author: Fuse Team
 Level: Beginner
-Technologies: Camel
+Technologies: Camel,Blueprint
 Summary: Demonstrates how to combine multiple EIPs to solve integration problems
 Target Product: Fuse
 Source: <https://github.com/jboss-fuse/quickstarts/eip>
@@ -78,7 +78,8 @@ Use the bundle
 To use the application be sure to have deployed the quickstart in Fuse as described above. Successful deployment will create and start a Camel route in Fuse.
 
 1. As soon as the Camel route has been started, you will see a directory `work/eip/input` in your JBoss Fuse installation.
-2. Copy the file you find in this example's `src/test/data` directory to the newly created `work/eip/input` directory.
+2. Copy the file you find in this example's `src/main/resources/data` directory to the newly created `work/eip/input`
+directory.
 3. Wait a few moment and you will find multiple files organized by geographical region under `work/eip/output':
 ** `2012_0003.xml` and `2012_0005.xml` in `work/eip/output/AMER`
 ** `2012_0020.xml` in `work/eip/output/APAC`
