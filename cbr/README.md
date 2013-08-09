@@ -2,7 +2,7 @@ cbr: Demonstrates how to use the content-based router pattern in Camel to send a
 ======================================================
 Author: Fuse Team
 Level: Beginner
-Technologies: Camel, Blueprint, Spring, Jetty, ActiveMQ
+Technologies: Camel, Blueprint, ActiveMQ
 Summary: Demonstrates how to use the content-based router (CBR)
 Target Product: Fuse
 Source: <https://github.com/jboss-fuse/quickstarts/cbr>
@@ -12,11 +12,11 @@ Source: <https://github.com/jboss-fuse/quickstarts/cbr>
 What is it?
 -----------
 
-This example shows how to use Apache Camel, and its OSGi integration to dynamically route messages to new or updated OSGi bundles. This allows you to route to newly deployed services at runtime without impacting running services.
+This quick start shows how to use Apache Camel, and its OSGi integration to dynamically route messages to new or updated OSGi bundles. This allows you to route to newly deployed services at runtime without impacting running services.
 
-This example combines use of the Camel Recipient List, which allows you to at runtime specify the Camel Endpoint to route to, and use of the Camel VM Component, which provides a SEDA queue that can be accessed from different OSGi bundles running in the same Java virtual machine.
+This quick start combines use of the Camel Recipient List, which allows you to at runtime specify the Camel Endpoint to route to, and use of the Camel VM Component, which provides a SEDA queue that can be accessed from different OSGi bundles running in the same Java virtual machine.
 
-In studying this example you will learn:
+In studying this quick start you will learn:
 
 * how to define a Camel route using the Blueprint XML syntax
 * how to build and deploy a Fuse Application Bundle (FAB) in JBoss Fuse
@@ -33,7 +33,7 @@ Note: Extra steps, like use of Camel VM Component, need to be taken when accessi
 System requirements
 -------------------
 
-Before building and running this example you need:
+Before building and running this quick start you need:
 
 * Maven 3.0.3 or higher
 * JDK 1.6 or 1.7
@@ -44,15 +44,17 @@ Build and Deploy the Quickstart
 -------------------------
 
 1. Make sure you have once launched the build from `quickstarts` root by running `mvn clean install` in `quickstarts` folder
-*. Change your working directory to `quckstarts/cbr` directory.
-*. Run `mvn clean install` to build the quickstart.
-*. Start JBoss Fuse 6 by running bin/fuse (on Linux) or bin\fuse.bat (on Windows).
-*. In the JBoss Fuse console, enter the following command:
+
+* Change your working directory to `quickstarts/cbr` directory.
+* Run `mvn clean install` to build the quickstart.
+* Start JBoss Fuse 6 by running bin/fuse (on Linux) or bin\fuse.bat (on Windows).
+* In the JBoss Fuse console, enter the following command:
 
         osgi:install -s fab:mvn:org.jboss.quickstarts.fuse/cbr/<project version>
 
-*. Fuse should give you on id when the bundle is deployed
-*. You can check that everything is ok by issue the command:
+* Fuse should give you on id when the bundle is deployed
+
+* You can check that everything is ok by issue the command:
 
         osgi:list
    your bundle should be present at the end of the list
@@ -64,11 +66,12 @@ Use the bundle
 To use the application be sure to have deployed the quickstart in Fuse as described above. 
 
 1. As soon as the Camel route has been started, you will see a directory `work/cbr/input` in your JBoss Fuse installation.
-2. Copy the files you find in this example's `src/test/data` directory to the newly created `work/cbr/input` directory.
+2. Copy the files you find in this quick start's `src/main/resources/data` directory to the newly created `work/cbr/input`
+directory.
 3. Wait a few moment and you will find the same files organized by country under the `work/cbr/output` directory.
-** `order1.xml` in `work/cbr/output/others`
-** `order2.xml` and `order4.xml` in `work/cbr/output/uk`
-** `order3.xml` and `order5.xml` in `work/cbr/output/us`
+  * `order1.xml` in `work/cbr/output/others`
+  * `order2.xml` and `order4.xml` in `work/cbr/output/uk`
+  * `order3.xml` and `order5.xml` in `work/cbr/output/us`
 4. Use `log:display` to check out the business logging.
         Receiving order order1.xml
         Sending order order1.xml to another country
