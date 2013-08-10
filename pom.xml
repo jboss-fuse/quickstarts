@@ -38,6 +38,7 @@
     <modules>
         <module>cbr</module>
         <module>eip</module>
+        <module>jms</module>
         <module>bom</module>
         <module>errors</module>
         <module>rest</module>
