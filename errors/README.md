@@ -15,7 +15,7 @@ This quickstart demonstrates how to handle exceptions that occur while routing m
 This quickstart show you how to add a default error handler to your Camel context for all uncaught exceptions.
  Additionally, it will show you how to add exception handling routines for dealing with specific exception types.
 
-In studying this example you will learn:
+In studying this quick start you will learn:
 
 * how to define a Camel route using the Blueprint XML syntax
 * how to build and deploy a Fuse Application Bundle (FAB) in JBoss Fuse
@@ -31,7 +31,7 @@ For more information see:
 System requirements
 -------------------
 
-Before building and running this example you need:
+Before building and running this quick start you need:
 
 * Maven 3.0.3 or higher
 * JDK 1.6 or 1.7
@@ -62,7 +62,8 @@ Use the bundle
 To use the application be sure to have deployed the quickstart in Fuse as described above. Successful deployment will create and start a Camel route in Fuse.
 
 1. As soon as the Camel route has been started, you will see a directory `work/errors/input` in your JBoss Fuse installation.
-2. Copy the file you find in this example's `src/test/data` directory to the newly created `work/errors/input` directory.
+2. Copy the file you find in this quick start's `src/main/resources/data` directory to the newly created
+`work/errors/input` directory.
 4. Wait a few moment and you will find the files in directories under `work/errors`:
 
   * `order4.xml` will always end up in the `work/errors/validation` directory
