@@ -95,12 +95,13 @@ You can also use "cxf:list-endpoints" in Fuse to check the state of all CXF web 
           </soap:Body>
         </soap:Envelope>
 
-Note: If you use Safari, right click the window and select 'Show Source'.
-Note: If you get Status: 0 in the right-hand panel instead, your browser no longer supports a cross-domain HTTP request from JavaScript
+  **Note**: If you use Safari, right click the window and select 'Show Source'.
+  
+  **Note**: If you get Status: 0 in the right-hand panel instead, your browser no longer supports a cross-domain HTTP request from JavaScript
       You can use the Java client instead to test your web service (see below).
 
 
-### To run a Java client:
+### To run the test:
 
 In this cxf-jaxws quistart, we also provide an integration test which can perform a few HTTP requests to test our web services. We
 created a Maven `test` profile to allow us to run tests code with a simple Maven command after having deployed the bundle to Fuse:
@@ -110,7 +111,7 @@ created a Maven `test` profile to allow us to run tests code with a simple Maven
 
         mvn -Ptest
 
-The client sends the contents of the request.xml sample SOAP request file to the server and afterwards display the response message:
+    The client sends the contents of the request.xml sample SOAP request file to the server and afterwards display the response message:
 
         <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
           <soap:Body>

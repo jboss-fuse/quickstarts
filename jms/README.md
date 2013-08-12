@@ -41,25 +41,22 @@ Before building and running this quick start you need:
 Build and Deploy the Quickstart
 -------------------------
 
-1. Verify etc/users.properties from the JBoss Fuse installation contains the following 'admin' user configured:
+1. Make sure you have once launched the build from `quickstarts` root by running `mvn clean install` in `quickstarts` folder to install quickstart bom in your local repository
+2. Verify etc/users.properties from the JBoss Fuse installation contains the following 'admin' user configured:
 
-admin=admin,admin
+        admin=admin,admin
 
-If some other user is configured you will need to modify the 'activemq' bean in src/main/resources/OSGI-INF/blueprint/camel-context.xml
-to use the user defined in etc/users.properties.
+    If some other user is configured you will need to modify the 'activemq' bean in src/main/resources/OSGI-INF/blueprint/camel-context.xml to use the user defined in etc/users.properties.
 
-2. Change your working directory to the `/jms` directory.
-3. Run `mvn clean install` to build the quickstart.
-4. Make sure you have once launched the build from `quickstarts` root by running `mvn clean install` in `quickstarts` folder
-*. Change your working directory to `quckstarts/jms` directory.
-*. Run `mvn clean install` to build the quickstart.
-*. Start JBoss Fuse 6 by running bin/fuse (on Linux) or bin\fuse.bat (on Windows).
-*. In the JBoss Fuse console, enter the following command:
+3. Change your working directory to `quckstarts/jms` directory.
+* Run `mvn clean install` to build the quickstart.
+* Start JBoss Fuse 6 by running bin/fuse (on Linux) or bin\fuse.bat (on Windows).
+* In the JBoss Fuse console, enter the following command:
 
-        osgi:install -s fab:mvn:org.jboss.quickstarts.fuse/errors/<project version>
+        osgi:install -s fab:mvn:org.jboss.quickstarts.fuse/jms/<project version>
 
-*. Fuse should give you on id when the bundle is deployed
-*. You can check that everything is ok by issue the command:
+* Fuse should give you on id when the bundle is deployed
+* You can check that everything is ok by issue the command:
 
         osgi:list
    your bundle should be present at the end of the list
@@ -73,9 +70,11 @@ To use the application be sure to have deployed the quickstart in Fuse as descri
 1. As soon as the Camel route has been started, you will see a directory `work/jms/input` in your JBoss Fuse installation.
 2. Copy the files you find in this quickstart's `src/main/resources/data` directory to the newly created `work/jms/input` directory.
 3. Wait a few moments and you will find the same files organized by country under the `work/jms/output` directory.
-** `order1.xml` in `work/jms/output/others`
-** `order2.xml` and `order4.xml` in `work/jms/output/uk`
-** `order3.xml` and `order5.xml` in `work/jms/output/us`
+  * `order1.xml` in `work/jms/output/others`
+  * `order2.xml` and `order4.xml` in `work/jms/output/uk`
+  * `order3.xml` and `order5.xml` in `work/jms/output/us`
+
+
 4. Use `log:display` to check out the business logging.
         Receiving order order1.xml
         Sending order order1.xml to another country
