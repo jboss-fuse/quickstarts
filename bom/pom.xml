@@ -35,6 +35,8 @@
         <version.junit>4.10</version.junit>
         <version.commons-httpclient>3.1</version.commons-httpclient>
         <version.geronimo-ws-metadata>1.1.3</version.geronimo-ws-metadata>
+        <version.activemq-osgi>5.8.0.redhat-60024</version.activemq-osgi>
+        <version.cxf-bundle>2.6.0.redhat-60024</version.cxf-bundle>
     </properties>
 
     <licenses>
@@ -51,6 +53,20 @@
                 <groupId>org.apache.camel</groupId>
                 <artifactId>camel-blueprint</artifactId>
                 <version>${version.camel-blueprint}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.activemq</groupId>
+                <artifactId>activemq-osgi</artifactId>
+                <version>${version.activemq-osgi}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-bundle</artifactId>
+                <version>${version.cxf-bundle}</version>
                 <scope>provided</scope>
             </dependency>
 
