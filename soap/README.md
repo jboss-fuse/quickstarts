@@ -106,12 +106,13 @@ You can also use "cxf:list-endpoints" in Fuse to check the state of all CXF web 
 In this cxf-jaxws quistart, we also provide an integration test which can perform a few HTTP requests to test our web services. We
 created a Maven `test` profile to allow us to run tests code with a simple Maven command after having deployed the bundle to Fuse:
 
-1. Change to the quickstarts/soap directory.
+1. Change to the `quickstarts/soap` directory.
 2. Run the following command:
 
         mvn -Ptest
 
-    The client sends the contents of the request.xml sample SOAP request file to the server and afterwards display the response message:
+    The test sends the contents of the request.xml sample SOAP request file to the server and afterwards display the response
+    message:
 
         <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
           <soap:Body>
