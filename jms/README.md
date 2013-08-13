@@ -1,10 +1,10 @@
 jms: demonstrates how to connect to the local ActiveMQ broker and use JMS messaging between two Camel routes
 ===================================
-Author: Fuse Team
-Level: Beginner
-Technologies: Fuse, ActiveMQ, Blueprint, Camel
-Summary: Demonstrates how to connect to the local ActiveMQ broker and use JMS messaging between two Camel routes
-Target Product: Fuse
+Author: Fuse Team  
+Level: Beginner  
+Technologies: Fuse, ActiveMQ, Blueprint, Camel  
+Summary: Demonstrates how to connect to the local ActiveMQ broker and use JMS messaging between two Camel routes  
+Target Product: Fuse  
 Source: <https://github.com/jboss-fuse/quickstarts/jms>
 
 What is it?

@@ -1,10 +1,10 @@
 cbr: Demonstrates how to use the content-based router pattern in Camel to send a message
 ======================================================
-Author: Fuse Team
-Level: Beginner
-Technologies: Camel, Blueprint, ActiveMQ
-Summary: Demonstrates how to use the content-based router (CBR)
-Target Product: Fuse
+Author: Fuse Team  
+Level: Beginner  
+Technologies: Camel, Blueprint, ActiveMQ  
+Summary: Demonstrates how to use the content-based router (CBR)  
+Target Product: Fuse  
 Source: <https://github.com/jboss-fuse/quickstarts/cbr>
 
 

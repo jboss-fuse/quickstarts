@@ -1,10 +1,10 @@
 errors: demonstrates exception handling in Camel
 ===================================
-Author: Fuse Team
-Level: Beginner
-Technologies: Fuse, OSGi, Camel
-Summary: Demonstrates Exception handling in Camel
-Target Product: Fuse
+Author: Fuse Team  
+Level: Beginner  
+Technologies: Fuse, OSGi, Camel  
+Summary: Demonstrates Exception handling in Camel  
+Target Product: Fuse  
 Source: <https://github.com/jboss-fuse/quickstarts/errors>
 
 What is it?

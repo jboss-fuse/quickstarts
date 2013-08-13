@@ -1,10 +1,10 @@
 secure-rest: demonstrates secure RESTful web services with CXF
 ===============================================
-Author: Fuse Team
-Level: Beginner
-Technologies: Fuse, OSGi, CXF
-Summary: Demonstrates RESTful web services with CXF
-Target Product: Fuse
+Author: Fuse Team  
+Level: Beginner  
+Technologies: Fuse, OSGi, CXF  
+Summary: Demonstrates RESTful web services with CXF  
+Target Product: Fuse  
 Source: <https://github.com/jboss-fuse/quickstarts/secure-rest>
 
 What is it?
