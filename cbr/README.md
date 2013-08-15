@@ -5,7 +5,7 @@ Level: Beginner
 Technologies: Camel, Blueprint, ActiveMQ  
 Summary: Demonstrates how to use the content-based router (CBR)  
 Target Product: Fuse  
-Source: <https://github.com/jboss-fuse/quickstarts/cbr>
+Source: <https://github.com/jboss-fuse/quickstarts>
 
 
 

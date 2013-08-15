@@ -5,7 +5,7 @@ Level: Beginner
 Technologies: Fuse, OSGi, CXF  
 Summary: Demonstrates a SOAP web service with Apache CXF  
 Target Product: Fuse  
-Source: <https://github.com/jboss-fuse/quickstarts/soap>
+Source: <https://github.com/jboss-fuse/quickstarts>
 
 
 What is it?

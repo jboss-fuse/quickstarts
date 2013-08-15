@@ -5,7 +5,7 @@ Level: Beginner
 Technologies: Fuse, ActiveMQ, Blueprint, Camel  
 Summary: Demonstrates how to connect to the local ActiveMQ broker and use JMS messaging between two Camel routes  
 Target Product: Fuse  
-Source: <https://github.com/jboss-fuse/quickstarts/jms>
+Source: <https://github.com/jboss-fuse/quickstarts>
 
 What is it?
 -----------

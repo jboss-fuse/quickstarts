@@ -5,7 +5,7 @@ Level: Beginner
 Technologies: Fuse, OSGi, CXF  
 Summary: Demonstrates RESTful web services with CXF  
 Target Product: Fuse  
-Source: <https://github.com/jboss-fuse/quickstarts/secure-rest>
+Source: <https://github.com/jboss-fuse/quickstarts>
 
 What is it?
 -----------

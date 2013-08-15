@@ -5,7 +5,7 @@ Level: Beginner
 Technologies: Fuse, OSGi, CXF, WS-Security  
 Summary: Demonstrates a SOAP web service with Apache CXF  
 Target Product: Fuse  
-Source: <https://github.com/jboss-fuse/quickstarts/secure-soap>
+Source: <https://github.com/jboss-fuse/quickstarts>
 
 What is it?
 -----------

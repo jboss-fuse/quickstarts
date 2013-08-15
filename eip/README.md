@@ -1,11 +1,11 @@
-eip: demonstrates how to combine multiple EIPs to solve integration problems
+eip: demonstrates how to combine multiple Enterprise Integration Patterns to solve integration problems
 ===================================
 Author: Fuse Team  
 Level: Beginner  
 Technologies: Camel,Blueprint  
 Summary: Demonstrates how to combine multiple EIPs to solve integration problems  
 Target Product: Fuse  
-Source: <https://github.com/jboss-fuse/quickstarts/eip>
+Source: <https://github.com/jboss-fuse/quickstarts>
 
 What is it?
 -----------
