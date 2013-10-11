@@ -44,7 +44,7 @@ To build the quick start:
 * Start JBoss Fuse 6 by running bin/fuse (on Linux) or bin\fuse.bat (on Windows).
 * In the JBoss Fuse console, enter the following command:
 
-        osgi:install -s fab:mvn:org.jboss.quickstarts.fuse/soap/<project version>
+        osgi:install -s mvn:org.jboss.quickstarts.fuse/soap/${project.version}
 
 * Fuse should give you on id when the bundle is deployed
 * You can check that everything is ok by issue the command:
@@ -90,7 +90,7 @@ You can also use "cxf:list-endpoints" in Fuse to check the state of all CXF web 
          STATUS: 200
 
          <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-           <soap:Body><ns2:sayHiResponse xmlns:ns2="http://jaxws.cxf.examples.fuse.jboss.org/"><return>Hello John Doe</return>
+           <soap:Body><ns2:sayHiResponse xmlns:ns2="http://soap.fuse.quickstarts.jboss.org/"><return>Hello John Doe</return>
            </ns2:sayHiResponse>
           </soap:Body>
         </soap:Envelope>
@@ -116,7 +116,7 @@ created a Maven `test` profile to allow us to run tests code with a simple Maven
 
         <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
           <soap:Body>
-            <ns2:sayHiResponse xmlns:ns2="http://jaxws.cxf.examples.fuse.jboss.org/">
+            <ns2:sayHiResponse xmlns:ns2="http://soap.fuse.quickstarts.jboss.org/">
               <return>Hello John Doe</return>
             </ns2:sayHiResponse>
           </soap:Body>
@@ -150,4 +150,3 @@ To stop and undeploy the bundle in Fuse:
 2. To stop and uninstall the bundle enter
 
         osgi:uninstall <id>
-

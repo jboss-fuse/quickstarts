@@ -45,7 +45,7 @@ To build the quick start:
    admin=admin,admin
 * In the JBoss Fuse console, enter the following command:
 
-        osgi:install -s fab:mvn:org.jboss.quickstarts.fuse/secure-soap/<project version>
+        osgi:install -s mvn:org.jboss.quickstarts.fuse/secure-soap/${project.version}
 
 * Fuse should give you on id when the bundle is deployed
 * You can check that everything is ok by issue the command:
@@ -81,8 +81,8 @@ After you deployed this quick start, you will see the `HelloWorldSecurity` servi
          STATUS: 200
 
          <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-           <soap:Body><ns2:sayHiResponse xmlns:ns2="http://security.jaxws.cxf.examples.
-            fuses.jboss.org/"><return>Hello John Doe</return>
+           <soap:Body><ns2:sayHiResponse xmlns:ns2="http://secure.soap.fuse.quickstarts.jboss.org/">
+             <return>Hello John Doe</return>
            </ns2:sayHiResponse>
           </soap:Body>
         </soap:Envelope>
@@ -106,7 +106,7 @@ The test uses a client proxy for the Web service to invoke the remote method - i
 a SOAP message will be sent to the server and the response SOAP message will be received and handled.  You will see this output from the remote method:
 
         Apr 4, 2012 7:48:13 AM org.apache.cxf.service.factory.ReflectionServiceFactoryBean buildServiceFromClass
-        INFO: Creating Service {http://security.jaxws.cxf.examples.fuse.jboss.org/}HelloWorldService from class org.jboss.fuse.examples.cxf.jaxws.security.HelloWorld
+        INFO: Creating Service {http://secure.soap.fuse.quickstarts.jboss.org}HelloWorldService from class org.jboss.fuse.examples.cxf.jaxws.security.HelloWorld
         Hello World
 
 
