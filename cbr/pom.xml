@@ -37,6 +37,9 @@
         <!-- maven-compiler-plugin -->
         <maven.compiler.target>1.6</maven.compiler.target>
         <maven.compiler.source>1.6</maven.compiler.source>
+
+        <!-- the version of the JBoss Fuse BOM, defining all the dependency versions -->
+        <jboss.fuse.bom.version>7.3.0.redhat-SNAPSHOT</jboss.fuse.bom.version>
     </properties>
 
     <licenses>
@@ -50,9 +53,9 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>org.jboss.quickstarts.fuse</groupId>
-                <artifactId>bom</artifactId>
-                <version>6.1.0.redhat-SNAPSHOT</version>
+                <groupId>org.jboss.fuse.bom</groupId>
+                <artifactId>jboss-fuse</artifactId>
+                <version>${jboss.fuse.bom.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -92,6 +95,17 @@
             </snapshots>
             <releases>
                 <enabled>true</enabled>
+            </releases>
+        </repository>
+        <repository>
+            <id>fusesource.snapshots</id>
+            <name>FuseSource Community Snapshots Repository</name>
+            <url>http://repo.fusesource.com/nexus/content/repositories/snapshots</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <releases>
+                <enabled>false</enabled>
             </releases>
         </repository>
     </repositories>
