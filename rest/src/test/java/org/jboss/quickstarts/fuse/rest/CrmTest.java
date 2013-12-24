@@ -126,8 +126,8 @@ public final class CrmTest {
         String inputFile = this.getClass().getResource("/add_customer.xml").getFile();
         File input = new File(inputFile);
         PostMethod post = new PostMethod(CUSTOMER_SERVICE_URL);
-        post.addRequestHeader("Accept", "text/xml");
-        RequestEntity entity = new FileRequestEntity(input, "text/xml; charset=ISO-8859-1");
+        post.addRequestHeader("Accept", "application/xml");
+        RequestEntity entity = new FileRequestEntity(input, "application/xml; charset=ISO-8859-1");
         post.setRequestEntity(entity);
         HttpClient httpclient = new HttpClient();
         String res = "";
@@ -169,7 +169,7 @@ public final class CrmTest {
         String inputFile = this.getClass().getResource("/update_customer.xml").getFile();
         File input = new File(inputFile);
         PutMethod put = new PutMethod(CUSTOMER_SERVICE_URL);
-        RequestEntity entity = new FileRequestEntity(input, "text/xml; charset=ISO-8859-1");
+        RequestEntity entity = new FileRequestEntity(input, "application/xml; charset=ISO-8859-1");
         put.setRequestEntity(entity);
         HttpClient httpclient = new HttpClient();
         int result = 0;

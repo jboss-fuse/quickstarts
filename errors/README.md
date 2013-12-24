@@ -13,7 +13,7 @@ What is it?
 This quickstart demonstrates how to handle exceptions that occur while routing messages with Camel.
 
 This quickstart show you how to add a default error handler to your Camel context for all uncaught exceptions.
- Additionally, it will show you how to add exception handling routines for dealing with specific exception types.
+Additionally, it will show you how to add exception handling routines for dealing with specific exception types.
 
 In studying this quick start you will learn:
 
@@ -25,7 +25,7 @@ In studying this quick start you will learn:
 For more information see:
 
 * http://www.enterpriseintegrationpatterns.com/DeadLetterChannel.html for the Dead Letter Channel EIP
-* https://access.redhat.com/knowledge/docs/JBoss_Fuse/ for more information about using JBoss Fuse
+* https://access.redhat.com/site/documentation/JBoss_Fuse/ for more information about using JBoss Fuse
 
 
 System requirements
@@ -33,38 +33,37 @@ System requirements
 
 Before building and running this quick start you need:
 
-* Maven 3.0.3 or higher
+* Maven 3.0.4 or higher
 * JDK 1.6 or 1.7
 * JBoss Fuse 6
 
 
 Build and Deploy the Quickstart
--------------------------
+-------------------------------
 
-1. Make sure you have once launched the build from `quickstarts` root by running `mvn clean install` in `quickstarts` folder
-*. Change your working directory to `quckstarts/errors` directory.
+1. Change your working directory to `errors` directory.
 *. Run `mvn clean install` to build the quickstart.
 *. Start JBoss Fuse 6 by running bin/fuse (on Linux) or bin\fuse.bat (on Windows).
 *. In the JBoss Fuse console, enter the following command:
 
-        osgi:install -s mvn:org.jboss.quickstarts.fuse/errors/<project version>
+        osgi:install -s mvn:org.jboss.quickstarts.fuse/errors/${project.version}
 
-*. Fuse should give you on id when the bundle is deployed
-*. You can check that everything is ok by issue the command:
+*. Fuse should give you an id when the bundle is deployed
+*. You can check that everything is ok by issuing  the command:
 
         osgi:list
    your bundle should be present at the end of the list
 
 
 Use the bundle
--------------------
+--------------
 
 To use the application be sure to have deployed the quickstart in Fuse as described above. Successful deployment will create and start a Camel route in Fuse.
 
 1. As soon as the Camel route has been started, you will see a directory `work/errors/input` in your JBoss Fuse installation.
 2. Copy the file you find in this quick start's `src/main/resources/data` directory to the newly created
 `work/errors/input` directory.
-4. Wait a few moment and you will find the files in directories under `work/errors`:
+4. Wait a few moments and you will find the files in directories under `work/errors`:
 
   * `order4.xml` will always end up in the `work/errors/validation` directory
   * other files will end up in `work/errors/done` or `work/errors/deadletter` depending on the runtime exceptions that occur
@@ -79,7 +78,7 @@ To use the application be sure to have deployed the quickstart in Fuse as descri
         ...
 
 Undeploy the Bundle
---------------------
+-------------------
 
 To stop and undeploy the bundle in Fuse:
 

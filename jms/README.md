@@ -20,12 +20,12 @@ In studying this quick start you will learn:
 * how to connect to the local ActiveMQ broker
 * how to define a Camel route using the Blueprint XML syntax
 * how to build and deploy an OSGi bundle in JBoss Fuse
-* how to use the CBR enterprise integration pattern
+* how to use the Content Based Router (CBR) enterprise integration pattern
 
 For more information see:
 
 * http://www.enterpriseintegrationpatterns.com/ContentBasedRouter.html for more information about the CBR EIP
-* https://access.redhat.com/knowledge/docs/JBoss_Fuse/ for more information about using JBoss Fuse
+* https://access.redhat.com/site/documentation/JBoss_Fuse/ for more information about using JBoss Fuse
 
 
 System requirements
@@ -33,37 +33,39 @@ System requirements
 
 Before building and running this quick start you need:
 
-* Maven 3.0.3 or higher
+* Maven 3.0.4 or higher
 * JDK 1.6 or 1.7
 * JBoss Fuse 6 (medium or full distribution)
 
 
 Build and Deploy the Quickstart
--------------------------
+-------------------------------
 
-1. Make sure you have once launched the build from `quickstarts` root by running `mvn clean install` in `quickstarts` folder to install quickstart bom in your local repository
-2. Verify etc/users.properties from the JBoss Fuse installation contains the following 'admin' user configured:
+* Verify etc/users.properties from the JBoss Fuse installation contains the following 'admin' user configured:
 
         admin=admin,admin
 
-    If some other user is configured you will need to modify the 'activemq' bean in src/main/resources/OSGI-INF/blueprint/camel-context.xml to use the user defined in etc/users.properties.
+* As demo uses AMQ Camel component, we need to provide the connection factory configuration as well. For that copy `src/main/resources/etc/org.fusesource.mq.fabric.cf-default.cfg` to the `etc/` directory of the distribution.
+    Also, if you don't use default admin/admin credentials, change the configuration file appropriately.
 
-3. Change your working directory to `quckstarts/jms` directory.
+* Change your working directory to `jms` directory.
 * Run `mvn clean install` to build the quickstart.
 * Start JBoss Fuse 6 by running bin/fuse (on Linux) or bin\fuse.bat (on Windows).
-* In the JBoss Fuse console, enter the following command:
 
-        osgi:install -s mvn:org.jboss.quickstarts.fuse/jms/<project version>
 
-* Fuse should give you on id when the bundle is deployed
-* You can check that everything is ok by issue the command:
+* In the JBoss Fuse console, enter the following commands:
+
+        features:addurl mvn:org.jboss.quickstarts.fuse/jms/${project.version}/xml/features
+        features:install quickstart-jms
+
+* You can check that everything is ok by issuing  the command:
 
         osgi:list
-   your bundle should be present at the end of the list
 
+   your bundle (with all other dependencies) should be present at the end of the list
 
-Use the bundle
--------------------
+Use the demo
+--------------
 
 To use the application be sure to have deployed the quickstart in Fuse as described above. Successful deployment will create and start a Camel route in Fuse.
 
@@ -81,7 +83,7 @@ To use the application be sure to have deployed the quickstart in Fuse as descri
         Done processing order1.xml
 
 Undeploy the Bundle
---------------------
+-------------------
 
 To stop and undeploy the bundle in Fuse:
 
@@ -89,4 +91,19 @@ To stop and undeploy the bundle in Fuse:
 2. To stop and uninstall the bundle enter
 
         osgi:uninstall <id>
- 
+
+
+Use the demo in fabric
+----------------------
+
+We have a convenient profile that makes it easy to run the demo in fabric environment. First thing you need to do is create a broker (if you don't have any running)
+
+    mq-create --create-container node --minimumInstances 1 broker
+
+Next create a container with the `example-quickstarts-jms` profile
+
+    container-create-child --profile example-quickstarts-jms --profile mq-client-default root example
+
+Note that demo uses AMQ Camel component that can obtain broker location from Fabric registry. So we need to add appropriate `mq-client-xxx` profile as well.
+In this case, as the broker is in a default group, we used `mq-client-base`.
+Also, the work directory is located in the container that hosts the demo profile, `instances/example/work` in this particular case.

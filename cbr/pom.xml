@@ -28,6 +28,23 @@
     <name>JBoss Fuse :: Examples :: Content-Based Router</name>
     <description>Content-Based Router Example</description>
 
+    <url>https://github.com/jboss-fuse/fuse/tree/master/quickstarts/cbr</url>
+
+    <scm>
+      <connection>scm:git:git@github.com:jboss-fuse/fuse.git</connection>
+      <developerConnection>scm:git:git@github.com:jboss-fuse/fuse.git</developerConnection>
+      <url>https://github.com/jboss-fuse/fuse/tree/master/quickstarts/cbr</url>
+    </scm>
+
+    <developers>
+      <developer>
+        <id>fuseteam</id>
+        <name>JBoss Fuse Development Team</name>
+        <organization>JBoss</organization>
+        <organizationUrl>http://jboss.org/</organizationUrl>
+      </developer>
+    </developers>
+
     <properties>
         <!-- Explicitly declaring the source encoding eliminates the following message: -->
         <!-- [WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent! -->
@@ -55,7 +72,7 @@
         <dependencies>
             <dependency>
                 <groupId>org.jboss.fuse.bom</groupId>
-                <artifactId>jboss-fuse</artifactId>
+                <artifactId>jboss-fuse-parent</artifactId>
                 <version>${jboss.fuse.bom.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
@@ -79,7 +96,7 @@
         <repository>
             <id>fusesource.m2</id>
             <name>FuseSource Community Release Repository</name>
-            <url>http://repo.fusesource.com/nexus/content/repositories/releases</url>
+            <url>https://repo.fusesource.com/nexus/content/groups/public</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
@@ -90,23 +107,12 @@
         <repository>
             <id>fusesource.ea</id>
             <name>FuseSource Community Early Access Release Repository</name>
-            <url>http://repo.fusesource.com/nexus/content/groups/ea</url>
+            <url>https://repo.fusesource.com/nexus/content/groups/ea</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
             <releases>
                 <enabled>true</enabled>
-            </releases>
-        </repository>
-        <repository>
-            <id>fusesource.snapshots</id>
-            <name>FuseSource Community Snapshots Repository</name>
-            <url>http://repo.fusesource.com/nexus/content/repositories/snapshots</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-            <releases>
-                <enabled>false</enabled>
             </releases>
         </repository>
     </repositories>
@@ -115,7 +121,7 @@
         <pluginRepository>
             <id>fusesource.m2</id>
             <name>FuseSource Community Release Repository</name>
-            <url>http://repo.fusesource.com/nexus/content/repositories/releases</url>
+            <url>https://repo.fusesource.com/nexus/content/groups/public</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
@@ -126,7 +132,7 @@
         <pluginRepository>
             <id>fusesource.ea</id>
             <name>FuseSource Community Early Access Release Repository</name>
-            <url>http://repo.fusesource.com/nexus/content/groups/ea</url>
+            <url>https://repo.fusesource.com/nexus/content/groups/ea</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>

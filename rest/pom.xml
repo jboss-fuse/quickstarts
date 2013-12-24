@@ -21,6 +21,11 @@
 
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>org.jboss.quickstarts.fuse</groupId>
+        <artifactId>jboss-quickstarts-fuse-parent</artifactId>
+        <version>6.1.0.redhat-SNAPSHOT</version>
+    </parent>
     <!--
         The parent POM does not contain any information required to build this example, it's only here
         for organisational purposes so feel free to remove/replace this.
@@ -31,6 +36,23 @@
     <packaging>bundle</packaging>
     <name>JBoss Fuse :: Examples :: RESTful WebService</name>
     <description>RESTful WebService Example using JAX-RS with JBoss Fuse</description>
+
+    <url>https://github.com/jboss-fuse/fuse/tree/master/quickstarts/rest</url>
+
+    <scm>
+      <connection>scm:git:git@github.com:jboss-fuse/fuse.git</connection>
+      <developerConnection>scm:git:git@github.com:jboss-fuse/fuse.git</developerConnection>
+      <url>https://github.com/jboss-fuse/fuse/tree/master/quickstarts/rest</url>
+    </scm>
+
+    <developers>
+      <developer>
+        <id>fuseteam</id>
+        <name>JBoss Fuse Development Team</name>
+        <organization>JBoss</organization>
+        <organizationUrl>http://jboss.org/</organizationUrl>
+      </developer>
+    </developers>
 
     <properties>
         <!-- 
@@ -46,7 +68,6 @@
         <maven.compiler.source>1.6</maven.compiler.source>
         <version.maven-surefire-plugin>2.15</version.maven-surefire-plugin>
         <version.maven-bundle-plugin>2.3.4</version.maven-bundle-plugin>
-
         <!-- the version of the JBoss Fuse BOM, defining all the dependency versions -->
         <jboss.fuse.bom.version>7.3.0.redhat-SNAPSHOT</jboss.fuse.bom.version>
     </properties>
@@ -63,7 +84,7 @@
         <dependencies>
             <dependency>
                 <groupId>org.jboss.fuse.bom</groupId>
-                <artifactId>jboss-fuse</artifactId>
+                <artifactId>jboss-fuse-parent</artifactId>
                 <version>${jboss.fuse.bom.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
@@ -112,6 +133,13 @@
             <artifactId>slf4j-log4j12</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.wordnik</groupId>
+            <artifactId>swagger-jaxrs_2.10</artifactId>
+            <version>1.3.0</version>
+            <optional>true</optional>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -149,13 +177,37 @@
                             javax.ws.rs,
                             javax.ws.rs.core,
                             javax.xml.bind.annotation,
-                            org.osgi.service.blueprint
+                            org.osgi.service.blueprint,
+                            com.wordnik.swagger.jaxrs.config, 
+                            com.wordnik.swagger.jaxrs.listing,
+                            com.wordnik.swagger.annotations,
+                            com.fasterxml.jackson.annotation, com.fasterxml.jackson.core, com.fasterxml.jackson.databind, com.fasterxml.jackson.jaxrs.json, javax.ws.rs.ext,*
                         </Import-Package>
                         <Export-Package>
+                            com.wordnik.swagger.sample.resource,
                             org.jboss.quickstarts.fuse.rest
                         </Export-Package>
+                        
                     </instructions>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-java2wadl-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>process-classes</id>
+                        <phase>process-classes</phase>
+                        <goals>
+                            <goal>java2wadl</goal>
+                        </goals>
+                        <configuration>
+                            <classResourceNames>
+                                <classResourceName>org.jboss.quickstarts.fuse.rest.CustomerService</classResourceName>
+                            </classResourceNames>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
@@ -164,7 +216,7 @@
         <repository>
             <id>fusesource.m2</id>
             <name>FuseSource Community Release Repository</name>
-            <url>http://repo.fusesource.com/nexus/content/repositories/releases</url>
+            <url>https://repo.fusesource.com/nexus/content/groups/public</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
@@ -175,23 +227,12 @@
         <repository>
             <id>fusesource.ea</id>
             <name>FuseSource Community Early Access Release Repository</name>
-            <url>http://repo.fusesource.com/nexus/content/groups/ea</url>
+            <url>https://repo.fusesource.com/nexus/content/groups/ea</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
             <releases>
                 <enabled>true</enabled>
-            </releases>
-        </repository>
-        <repository>
-            <id>fusesource.snapshots</id>
-            <name>FuseSource Community Snapshots Repository</name>
-            <url>http://repo.fusesource.com/nexus/content/repositories/snapshots</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-            <releases>
-                <enabled>false</enabled>
             </releases>
         </repository>
     </repositories>
@@ -200,7 +241,7 @@
         <pluginRepository>
             <id>fusesource.m2</id>
             <name>FuseSource Community Release Repository</name>
-            <url>http://repo.fusesource.com/nexus/content/repositories/releases</url>
+            <url>https://repo.fusesource.com/nexus/content/groups/public</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
@@ -211,7 +252,7 @@
         <pluginRepository>
             <id>fusesource.ea</id>
             <name>FuseSource Community Early Access Release Repository</name>
-            <url>http://repo.fusesource.com/nexus/content/groups/ea</url>
+            <url>https://repo.fusesource.com/nexus/content/groups/ea</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>

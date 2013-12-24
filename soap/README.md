@@ -22,24 +22,23 @@ In studying this quick start you will learn:
 
 For more information see:
 
-* https://access.redhat.com/knowledge/docs/JBoss_Fuse/ for more information about using JBoss Fuse
+* https://access.redhat.com/site/documentation/JBoss_Fuse/ for more information about using JBoss Fuse
 
 System requirements
 -------------------
 Before building and running this quick start you need:
 
-* Maven 3.0.3 or higher
+* Maven 3.0.4 or higher
 * JDK 1.6 or 1.7
 * JBoss Fuse 6
 
 
 Build and Deploy the Quickstart
--------------------------
+-------------------------------
 
 To build the quick start:
 
-1. Make sure you have once launched the build from `quickstarts` root by running `mvn clean install` in `quickstarts` folder to install quickstart bom in your local repository
-* Change your working directory to `quickstarts/soap` directory.
+1.Change your working directory to `soap` directory.
 * Run `mvn clean install` to build the quickstart.
 * Start JBoss Fuse 6 by running bin/fuse (on Linux) or bin\fuse.bat (on Windows).
 * In the JBoss Fuse console, enter the following command:
@@ -54,7 +53,7 @@ To build the quick start:
 
 
 Use the bundle
-----------------
+--------------
 
 There are several ways you can interact with the running web services: you can browse the web service metadata,
 but you can also invoke the web services in a few different ways.
@@ -82,23 +81,7 @@ You can also use "cxf:list-endpoints" in Fuse to check the state of all CXF web 
 
 ### To run a Web client:
 
-1. Open the client.html, which is located in the same directory as this README file, in your favorite browser.
-2. Click the Send button to send a request.
-
-   Once the request has been successfully sent, a response similar to the following should appear in the right-hand panel of the web page:
-
-         STATUS: 200
-
-         <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-           <soap:Body><ns2:sayHiResponse xmlns:ns2="http://soap.fuse.quickstarts.jboss.org/"><return>Hello John Doe</return>
-           </ns2:sayHiResponse>
-          </soap:Body>
-        </soap:Envelope>
-
-  **Note**: If you use Safari, right click the window and select 'Show Source'.
-  
-  **Note**: If you get Status: 0 in the right-hand panel instead, your browser no longer supports a cross-domain HTTP request from JavaScript
-      You can use the Java client instead to test your web service (see below).
+You can use an external tool such as SoapUI to test web services.
 
 
 ### To run the test:
@@ -106,7 +89,7 @@ You can also use "cxf:list-endpoints" in Fuse to check the state of all CXF web 
 In this cxf-jaxws quistart, we also provide an integration test which can perform a few HTTP requests to test our web services. We
 created a Maven `test` profile to allow us to run tests code with a simple Maven command after having deployed the bundle to Fuse:
 
-1. Change to the `quickstarts/soap` directory.
+1. Change to the `soap` directory.
 2. Run the following command:
 
         mvn -Ptest
@@ -142,7 +125,7 @@ By default CXF Servlet is assigned a '/cxf' alias. You can change it in a couple
     JBoss Fuse will create org.apache.cxf.osgi.cfg file in the /etc directory and and set the entry as we did in the first way after the commands are run, you need to restart the CXF bundle to load the change.
     
 Undeploy the Bundle
---------------------
+-------------------
 
 To stop and undeploy the bundle in Fuse:
 
@@ -150,3 +133,4 @@ To stop and undeploy the bundle in Fuse:
 2. To stop and uninstall the bundle enter
 
         osgi:uninstall <id>
+
