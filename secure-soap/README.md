@@ -22,23 +22,22 @@ In studying this quick start you will learn:
 
 For more information see:
 
-* https://access.redhat.com/knowledge/docs/JBoss_Fuse/ for more information about using JBoss Fuse
+* https://access.redhat.com/site/documentation/JBoss_Fuse/ for more information about using JBoss Fuse
 
 System requirements
 -------------------
 Before building and running this quick start you need:
 
-* Maven 3.0.3 or higher
+* Maven 3.0.4 or higher
 * JDK 1.6 or 1.7
 * JBoss Fuse 6
 
 
 Build and Deploy the Quickstart
--------------------------
+-------------------------------
 To build the quick start:
 
-1. Make sure you have once launched the build from `quickstarts` root by running `mvn clean install` in `quickstarts` folder to install quickstart bom in your local repository
-* Change your working directory to `quickstarts/secure-soap` directory.
+1. Change your working directory to `secure-soap` directory.
 * Run `mvn clean install` to build the quick start.
 * Start JBoss Fuse 6 by running `bin/fuse` (on Linux) or `bin\fuse.bat` (on Windows).
 * Verify etc/users.properties from the JBoss Fuse installation contains the following 'admin' user configured:
@@ -47,14 +46,14 @@ To build the quick start:
 
         osgi:install -s mvn:org.jboss.quickstarts.fuse/secure-soap/${project.version}
 
-* Fuse should give you on id when the bundle is deployed
-* You can check that everything is ok by issue the command:
+* Fuse should give you an id when the bundle is deployed
+* You can check that everything is ok by issuing  the command:
 
         osgi:list
    your bundle should be present at the end of the list
 
 Use the bundle
-----------------
+--------------
 There are several ways you can interact with the running Web services:
 * browse the Web service metadata
 * access the service in a Web browser
@@ -71,33 +70,12 @@ After you deployed this quick start, you will see the `HelloWorldSecurity` servi
     http://localhost:8181/cxf/HelloWorldSecurity?wsdl
 
 
-### To run a Web client:
-
-1. Open the `client.html`, which is located in the same directory as this README file, in your favorite browser.
-2. Click the **Send** button to send a request.
-
-   Once the request has been successfully sent, a response similar to the following should appear in the right-hand panel of the web page:
-
-         STATUS: 200
-
-         <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-           <soap:Body><ns2:sayHiResponse xmlns:ns2="http://secure.soap.fuse.quickstarts.jboss.org/">
-             <return>Hello John Doe</return>
-           </ns2:sayHiResponse>
-          </soap:Body>
-        </soap:Envelope>
-
-**Note:** If you use Safari, right click the window and select **Show Source**.
-**Note:** The EnableCORSInterceptor specified for the jaxws:endpoint is only for the CORS http header check of modern browser when use client.html to do the test.
-      You can use the Java client instead to test your web service (see below).
-
-
 ### To run the test:
 
 In this cxf-jaxws quistart, we also provide an integration test which can perform a few HTTP requests to test our web services. We
 created a Maven `test` profile to allow us to run tests code with a simple Maven command after having deployed the bundle to Fuse:
 
-1. Change to the `quickstarts/secure-soap` directory.
+1. Change to the `secure-soap` directory.
 2. Run the following command:
 
         mvn -Ptest
@@ -105,9 +83,21 @@ created a Maven `test` profile to allow us to run tests code with a simple Maven
 The test uses a client proxy for the Web service to invoke the remote method - in reality,
 a SOAP message will be sent to the server and the response SOAP message will be received and handled.  You will see this output from the remote method:
 
-        Apr 4, 2012 7:48:13 AM org.apache.cxf.service.factory.ReflectionServiceFactoryBean buildServiceFromClass
+        Apr 4, 2013 7:48:13 AM org.apache.cxf.service.factory.ReflectionServiceFactoryBean buildServiceFromClass
         INFO: Creating Service {http://secure.soap.fuse.quickstarts.jboss.org}HelloWorldService from class org.jboss.fuse.examples.cxf.jaxws.security.HelloWorld
         Hello World
+
+
+### To run a Web client:
+
+You can use an external tool such as SoapUI to test web services. 
+
+When using SoapUI with WS Security, then configure the request properties as follows:
+
+* Username = admin
+* Password = admin
+* Authentication Type = Global HTTP Settings
+* WSS-Password Type = PasswordText
 
 
 ### Managing the user credentials
@@ -120,7 +110,7 @@ You can define additional users in the JAAS realm in two ways:
 
 2. Using the jaas: commands in the JBoss Fuse console:
 
-            jaas:manage --realm karaf
+            jaas:manage --realm karaf --index 1
             jaas:useradd myuser mysecretpassword
             jaas:update
 
@@ -140,7 +130,7 @@ By default CXF Servlet is assigned a `/cxf` alias. You can change it in a couple
         config:update
 
 Undeploy the Bundle
---------------------
+-------------------
 
 To stop and undeploy the bundle in Fuse:
 
@@ -148,3 +138,4 @@ To stop and undeploy the bundle in Fuse:
 2. To stop and uninstall the bundle enter
 
         osgi:uninstall <id>
+

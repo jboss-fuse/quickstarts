@@ -20,12 +20,35 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>org.jboss.quickstarts.fuse</groupId>
+        <artifactId>jboss-quickstarts-fuse-parent</artifactId>
+        <version>6.1.0.redhat-SNAPSHOT</version>
+    </parent>
+
     <groupId>org.jboss.quickstarts.fuse</groupId>
     <artifactId>secure-soap</artifactId>
     <version>6.1.0.redhat-SNAPSHOT</version>
     <packaging>bundle</packaging>
     <name>JBoss Fuse :: Examples :: Secure SOAP</name>
     <description>Secure SOAP example using JAXWS with WS-Security</description>
+
+    <url>https://github.com/jboss-fuse/fuse/tree/master/quickstarts/secure-soap</url>
+
+    <scm>
+      <connection>scm:git:git@github.com:jboss-fuse/fuse.git</connection>
+      <developerConnection>scm:git:git@github.com:jboss-fuse/fuse.git</developerConnection>
+      <url>https://github.com/jboss-fuse/fuse/tree/master/quickstarts/secure-soap</url>
+    </scm>
+
+    <developers>
+      <developer>
+        <id>fuseteam</id>
+        <name>JBoss Fuse Development Team</name>
+        <organization>JBoss</organization>
+        <organizationUrl>http://jboss.org/</organizationUrl>
+      </developer>
+    </developers>
 
     <properties>
         <!-- 
@@ -57,7 +80,7 @@
         <dependencies>
             <dependency>
                 <groupId>org.jboss.fuse.bom</groupId>
-                <artifactId>jboss-fuse</artifactId>
+                <artifactId>jboss-fuse-parent</artifactId>
                 <version>${jboss.fuse.bom.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
@@ -141,13 +164,32 @@
                     </instructions>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-java2ws-plugin</artifactId>
+
+                <executions>
+                    <execution>
+                        <id>process-classes</id>
+                        <phase>process-classes</phase>
+                        <goals>
+                            <goal>java2ws</goal>
+                        </goals>
+                        <configuration>
+                            <className>org.jboss.quickstarts.fuse.soap.secure.HelloWorld</className>
+                            <genWsdl>true</genWsdl>
+                            <verbose>true</verbose>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
     <repositories>
         <repository>
             <id>fusesource.m2</id>
             <name>FuseSource Community Release Repository</name>
-            <url>http://repo.fusesource.com/nexus/content/repositories/releases</url>
+            <url>https://repo.fusesource.com/nexus/content/groups/public</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
@@ -158,23 +200,12 @@
         <repository>
             <id>fusesource.ea</id>
             <name>FuseSource Community Early Access Release Repository</name>
-            <url>http://repo.fusesource.com/nexus/content/groups/ea</url>
+            <url>https://repo.fusesource.com/nexus/content/groups/ea</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
             <releases>
                 <enabled>true</enabled>
-            </releases>
-        </repository>
-        <repository>
-            <id>fusesource.snapshots</id>
-            <name>FuseSource Community Snapshots Repository</name>
-            <url>http://repo.fusesource.com/nexus/content/repositories/snapshots</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-            <releases>
-                <enabled>false</enabled>
             </releases>
         </repository>
     </repositories>
@@ -183,7 +214,7 @@
         <pluginRepository>
             <id>fusesource.m2</id>
             <name>FuseSource Community Release Repository</name>
-            <url>http://repo.fusesource.com/nexus/content/repositories/releases</url>
+            <url>https://repo.fusesource.com/nexus/content/groups/public</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
@@ -194,7 +225,7 @@
         <pluginRepository>
             <id>fusesource.ea</id>
             <name>FuseSource Community Early Access Release Repository</name>
-            <url>http://repo.fusesource.com/nexus/content/groups/ea</url>
+            <url>https://repo.fusesource.com/nexus/content/groups/ea</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
