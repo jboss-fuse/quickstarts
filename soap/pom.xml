@@ -175,6 +175,7 @@
                         <configuration>
                             <className>org.jboss.quickstarts.fuse.soap.HelloWorld</className>
                             <genWsdl>true</genWsdl>
+                            <attachWsdl>false</attachWsdl>
                             <verbose>true</verbose>
                         </configuration>
                     </execution>
