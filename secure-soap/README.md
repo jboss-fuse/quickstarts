@@ -42,8 +42,9 @@ To build the quick start:
 * Start JBoss Fuse 6 by running `bin/fuse` (on Linux) or `bin\fuse.bat` (on Windows).
 * Verify etc/users.properties from the JBoss Fuse installation contains the following 'admin' user configured:
    admin=admin,admin
-* In the JBoss Fuse console, enter the following command:
+* In the JBoss Fuse console, enter the following commands:
 
+        features:install cxf
         osgi:install -s mvn:org.jboss.quickstarts.fuse/secure-soap/${project.version}
 
 * Fuse should give you an id when the bundle is deployed

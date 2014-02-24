@@ -38,8 +38,9 @@ Build and Deploy the Quickstart
 * Run `mvn clean install` to build the quickstart.
 * Verify `etc/users.properties` from the JBoss Fuse installation contains the following 'admin' user configured: `admin=admin,admin` (it is commented by default)
 * Start JBoss Fuse 6 by running bin/fuse (on Linux) or bin\fuse.bat (on Windows).
-* In the JBoss Fuse console, enter the following command:
+* In the JBoss Fuse console, enter the following commands:
 
+        features:install swagger cxf-jaxrs
         osgi:install -s mvn:org.jboss.quickstarts.fuse/secure-rest/${project.version}
 
 * Fuse should give you an id when the bundle is deployed

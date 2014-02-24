@@ -41,8 +41,9 @@ To build the quick start:
 1.Change your working directory to `soap` directory.
 * Run `mvn clean install` to build the quickstart.
 * Start JBoss Fuse 6 by running bin/fuse (on Linux) or bin\fuse.bat (on Windows).
-* In the JBoss Fuse console, enter the following command:
+* In the JBoss Fuse console, enter the following commands:
 
+        features:install cxf
         osgi:install -s mvn:org.jboss.quickstarts.fuse/soap/${project.version}
 
 * Fuse should give you on id when the bundle is deployed
