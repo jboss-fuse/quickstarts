@@ -46,5 +46,10 @@
         <module>secure-soap</module>
     </modules>
 
-
+    <repositories>
+        <repository>
+            <id>FuseRepository</id>
+            <url>https://repository.jboss.org/nexus/content/groups/ea/</url>
+        </repository>
+    </repositories>
 </project>
