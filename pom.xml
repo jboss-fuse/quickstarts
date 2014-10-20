@@ -15,17 +15,21 @@
   See the License for the specific language governing permissions and
   limitations under the License.
   -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <parent>
+      <groupId>org.fusesource</groupId>
+      <artifactId>fuse-project</artifactId>
+      <version>1.0.0.redhat-379</version>
+      <relativePath>../parent</relativePath>
+    </parent>
     <groupId>org.jboss.quickstarts.fuse</groupId>
     <artifactId>jboss-quickstarts-fuse-parent</artifactId>
-    <version>6.1.0.redhat-SNAPSHOT</version>
+    <version>6.1.0.redhat-379</version>
     <packaging>pom</packaging>
     <name>JBoss Fuse Quickstarts Parent</name>
     <description>JBoss Fuse Quickstarts Parent</description>
     <url>http://www.jboss.org/products/fuse</url>
-
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
@@ -33,8 +37,47 @@
             <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
         </license>
     </licenses>
-
-
+    <developers>
+      <developer>
+        <id>fuseteam</id>
+        <name>JBoss Fuse Development Team</name>
+        <organization>JBoss</organization>
+        <organizationUrl>http://jboss.org/</organizationUrl>
+      </developer>
+    </developers>
+    <scm>
+      <connection>scm:git:git@github.com:jboss-fuse/fuse.git</connection>
+      <developerConnection>scm:git:git@github.com:jboss-fuse/fuse.git</developerConnection>
+      <url>https://github.com/jboss-fuse/fuse/tree/master/quickstarts</url>
+    </scm>
+    <properties>
+        <maven.compiler.target>1.6</maven.compiler.target>
+        <maven.compiler.source>1.6</maven.compiler.source>
+    </properties>
+    <repositories>
+        <repository>
+            <id>fusesource.m2</id>
+            <name>FuseSource Community Release Repository</name>
+            <url>https://repo.fusesource.com/nexus/content/groups/public</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+        <repository>
+            <id>fusesource.ea</id>
+            <name>FuseSource Community Early Access Release Repository</name>
+            <url>https://repo.fusesource.com/nexus/content/groups/ea</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+    </repositories>
     <modules>
         <module>cbr</module>
         <module>eip</module>
@@ -45,6 +88,4 @@
         <module>soap</module>
         <module>secure-soap</module>
     </modules>
-
-
 </project>

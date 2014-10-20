@@ -23,7 +23,7 @@
 
     <groupId>org.jboss.quickstarts.fuse</groupId>
     <artifactId>cbr</artifactId>
-    <version>6.1.0.redhat-SNAPSHOT</version>
+    <version>6.1.0.redhat-379</version>
     <packaging>bundle</packaging>
     <name>JBoss Fuse :: Examples :: Content-Based Router</name>
     <description>Content-Based Router Example</description>
@@ -57,7 +57,13 @@
         <maven.compiler.source>1.6</maven.compiler.source>
 
         <!-- the version of the JBoss Fuse BOM, defining all the dependency versions -->
-        <jboss.fuse.bom.version>1.0.0-SNAPSHOT</jboss.fuse.bom.version>
+        <jboss.fuse.bom.version>6.1.0.redhat-379</jboss.fuse.bom.version>
+        <fabric.version>1.0.0.redhat-379</fabric.version>
+
+        <!-- fabric8 deploy profile configuration -->
+        <fabric8.profile>my-cbr</fabric8.profile>
+        <fabric8.features>camel-jms camel-blueprint fabric-camel</fabric8.features>
+        <fabric8.featureRepos>mvn:org.apache.camel.karaf/apache-camel/${version:camel}/xml/features</fabric8.featureRepos>
     </properties>
 
     <licenses>
@@ -102,6 +108,7 @@
             </snapshots>
             <releases>
                 <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
             </releases>
         </repository>
         <repository>
@@ -113,6 +120,7 @@
             </snapshots>
             <releases>
                 <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
             </releases>
         </repository>
     </repositories>
@@ -127,6 +135,7 @@
             </snapshots>
             <releases>
                 <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
             </releases>
         </pluginRepository>
         <pluginRepository>
@@ -138,6 +147,7 @@
             </snapshots>
             <releases>
                 <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
             </releases>
         </pluginRepository>
     </pluginRepositories>
@@ -160,6 +170,15 @@
                 <version>${version.maven-bundle-plugin}</version>
                 <extensions>true</extensions>
             </plugin>
+                <!--
+                  this plugin will use the fabric.* properties to configure its behaviour
+                  see the Properties section here: http://fabric8.io/#/site/book/doc/index.md?chapter=mavenPlugin_md
+            <plugin>
+                <groupId>io.fabric8</groupId>
+                <artifactId>fabric8-maven-plugin</artifactId>
+                <version>${fabric.version}</version>
+            </plugin>
+                -->
         </plugins>
     </build>
 </project>
