@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ASCII"?>
+<!-- Replace here ========================================================================================================================vvv with the three character SID of your SAP instance -->
+<idoc:Document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:FLCUSTOMER_CREATEFROMDATA01---="http://sap.fusesource.org/idoc/XXX/FLCUSTOMER_CREATEFROMDATA01///" xmlns:idoc="http://sap.fusesource.org/idoc" creationDate="2015-01-28T12:39:13.980-0500" creationTime="2015-01-28T12:39:13.980-0500" iDocType="FLCUSTOMER_CREATEFROMDATA01" iDocTypeExtension="" messageType="FLCUSTOMER_CREATEFROMDATA" recipientPartnerNumber="NPLCLNT002" recipientPartnerType="LS" senderPartnerNumber="JCOCLIENT" senderPartnerType="LS">
+  <rootSegment xsi:type="FLCUSTOMER_CREATEFROMDATA01---:ROOT" document="/">
+    <segmentChildren parent="//@rootSegment">
+      <E1SCU_CRE parent="//@rootSegment" document="/">
+        <segmentChildren parent="//@rootSegment/@segmentChildren/@E1SCU_CRE.0">
+          <E1BPSCUNEW parent="//@rootSegment/@segmentChildren/@E1SCU_CRE.0" document="/" CUSTNAME="Wilma Flintstone" FORM="Mrs." STREET="123 Rubble Lane" POSTCODE="01234" CITY="Bedrock" COUNTR="US" PHONE="800-555-1212" EMAIL="wilma@bedrock.com" CUSTTYPE="P" DISCOUNT="005" LANGU="E"/>
+        </segmentChildren>
+      </E1SCU_CRE>
+    </segmentChildren>
+  </rootSegment>
+</idoc:Document>
