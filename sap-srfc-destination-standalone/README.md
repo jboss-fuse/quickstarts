@@ -3,26 +3,26 @@ sap-idoc-destination-standalone: Demonstrates the sap-idoc-destination component
 Author: William Collins - Fuse Team  
 Level: Beginner  
 Technologies: SAP, Camel, Spring  
-Summary: This quickstart demonstrates how to configure and use the sap-idoc-destination component to send IDoc documents to SAP  
+Summary: This quickstart demonstrates how to configure and use the sap-srfc-destination component to invoke remote function modules and BAPI methods within SAP  
 Target Product: Fuse  
 Source: <http://github.com/punkhorn/sap-quickstarts/>  
 
 What is it?  
 -----------  
 
-This quick start shows how to integrate Apache Camel with SAP using the JBoss Fuse SAP IDoc Destination Camel component.   
+This quick start shows how to integrate Apache Camel with SAP using the JBoss Fuse SAP Synchronous Remote Function Call Destination Camel component.   
 
-This quick start uses XML files containing serialized IDoc documents to create Customer records in the Flight Data Application within SAP. These files are consumed by the quickstart's route and their contents are then converted to string message bodies. These messages are then routed to an `sap-idoc-destination` endpoint which converts and sends them to SAP as `FLCUSTOMER_CREATEFROMDATA01` type IDoc documents to create Customer records.  
+This quick start uses XML files containing serialized SAP requests to query Customer records in the Flight Data Application within SAP. These files are consumed by the quickstart's route and their contents are then converted to string message bodies. These messages are then routed to an `sap-srfc-destination` endpoint which converts and sends them to SAP as `BAPI_FLCUST_GETLIST` requests to query Customer records.  
 
 In studying this quick start you will learn:
 
-* How to define a Camel route containing the JBoss Fuse SAP IDoc Destination Camel component using the Spring XML syntax.
-* How to use the JBoss Fuse SAP IDoc Destination Camel component. 
+* How to define a Camel route containing the JBoss Fuse SAP Synchronous Remote Function Call Destination Camel component using the Spring XML syntax.
+* How to use the JBoss Fuse SAP Synchronous Remote Function Call Destination Camel component. 
 * How to configure connections used by the component.
 
 For more information see:
 
-* <https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Fuse/6.2/html/Apache_Camel_Component_Reference/SAP.html> for more information about the JBoss Fuse SAP IDoc Camel components 
+* <https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Fuse/6.2/html/Apache_Camel_Component_Reference/SAP.html> for more information about the JBoss Fuse SAP Synchronous Remote Function Call Camel components 
 * <https://access.redhat.com/site/documentation/JBoss_Fuse/> for more information about using JBoss Fuse
 
 System requirements
@@ -50,12 +50,10 @@ Build and Run the Quickstart
 
 To build and run the quick start:
 
-1. Change your working directory to the `sap-idoc-destination-standalone` directory.
+1. Change your working directory to the `sap-srfc-destination-standalone` directory.
 * Run `mvn clean install` to build the quick start.
 * Run `mvn camel:run` to start the Camel runtime.
-* In the console observe the contents of the IDoc processed by the route.
-* Using the SAP GUI, run transaction `SE16`, Data Browser, and display the contents of the table `SCUSTOM`.
-* Search the table (Edit > Find..) for the newly created Customer records: `Fred Flintstone`, `Wilma Flintstone`, `Barney Rubble`, and `Betty Rubble`. 
+* In the console observe the response returned by the endpoint.
 
 Stopping the Quickstart
 -----------------------

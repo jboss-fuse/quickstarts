@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ASCII"?>
+<!-- Replace here ============================================================================================================================vvv with the three character SID of your SAP instance -->
+<idoc:DocumentList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:FLCUSTOMER_CREATEFROMDATA01---="http://sap.fusesource.org/idoc/XXX/FLCUSTOMER_CREATEFROMDATA01///" xmlns:idoc="http://sap.fusesource.org/idoc">
+  <document creationDate="2015-02-02T08:39:34.782-0500" creationTime="2015-02-02T08:39:34.782-0500" iDocType="FLCUSTOMER_CREATEFROMDATA01" iDocTypeExtension="" messageType="FLCUSTOMER_CREATEFROMDATA" recipientPartnerNumber="NPLCLNT002" recipientPartnerType="LS" senderPartnerNumber="JCOCLIENT" senderPartnerType="LS">
+    <rootSegment xsi:type="FLCUSTOMER_CREATEFROMDATA01---:ROOT" document="//@document.0">
+      <segmentChildren parent="//@document.0/@rootSegment">
+        <E1SCU_CRE parent="//@document.0/@rootSegment" document="//@document.0">
+          <segmentChildren parent="//@document.0/@rootSegment/@segmentChildren/@E1SCU_CRE.0">
+            <E1BPSCUNEW parent="//@document.0/@rootSegment/@segmentChildren/@E1SCU_CRE.0" document="//@document.0" CUSTNAME="Fred Flintstone" FORM="Mr." STREET="123 Rubble Lane" POSTCODE="01234" CITY="Bedrock" COUNTR="US" PHONE="800-555-1212" EMAIL="fred@bedrock.com" CUSTTYPE="P" DISCOUNT="005" LANGU="E"/>
+          </segmentChildren>
+        </E1SCU_CRE>
+      </segmentChildren>
+    </rootSegment>
+  </document>
+  <document creationDate="2015-02-02T08:39:34.805-0500" creationTime="2015-02-02T08:39:34.805-0500" iDocType="FLCUSTOMER_CREATEFROMDATA01" iDocTypeExtension="" messageType="FLCUSTOMER_CREATEFROMDATA" recipientPartnerNumber="NPLCLNT002" recipientPartnerType="LS" senderPartnerNumber="JCOCLIENT" senderPartnerType="LS">
+    <rootSegment xsi:type="FLCUSTOMER_CREATEFROMDATA01---:ROOT" document="//@document.1">
+      <segmentChildren parent="//@document.1/@rootSegment">
+        <E1SCU_CRE parent="//@document.1/@rootSegment" document="//@document.1">
+          <segmentChildren parent="//@document.1/@rootSegment/@segmentChildren/@E1SCU_CRE.0">
+            <E1BPSCUNEW parent="//@document.1/@rootSegment/@segmentChildren/@E1SCU_CRE.0" document="//@document.1" CUSTNAME="Wilma Flintstone" FORM="Mrs." STREET="123 Rubble Lane" POSTCODE="01234" CITY="Bedrock" COUNTR="US" PHONE="800-555-1212" EMAIL="wilma@bedrock.com" CUSTTYPE="P" DISCOUNT="005" LANGU="E"/>
+          </segmentChildren>
+        </E1SCU_CRE>
+      </segmentChildren>
+    </rootSegment>
+  </document>
+</idoc:DocumentList>

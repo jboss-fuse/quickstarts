@@ -4,10 +4,10 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>sap-idoc-destination-standalone</artifactId>
+	<artifactId>sap-srfc-destination-standalone</artifactId>
 	<packaging>jar</packaging>
 
-	<name>Standalone Send IDoc Example</name>
+	<name>Standalone Synchronous RFC Example</name>
 	<url>http://http://www.jboss.org/products/fuse/overview/</url>
 
 	<parent>
@@ -34,5 +34,5 @@
 	
 	</dependencies>
 	  
-	<description>This Quick Start demonstrates how to use the JBoss Fuse SAP IDoc Destination endpoint.</description>
+	<description>This Quick Start demonstrates how to use the JBoss Fuse SAP Synchronous RFC Destination endpoint.</description>
 </project>
