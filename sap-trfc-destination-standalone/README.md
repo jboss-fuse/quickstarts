@@ -1,10 +1,10 @@
-sap-idoc-destination-standalone: Demonstrates the sap-idoc-destination component running in a standalone camel runtime.
+sap-trfc-destination-standalone: Demonstrates the sap-trfc-destination component running in a standalone camel runtime.
 =======================================================================================================================
-* * * 
+* * *
 Author: William Collins - Fuse Team  
 Level: Beginner  
 Technologies: SAP, Camel, Spring  
-Summary: This quickstart demonstrates how to configure and use the sap-idoc-destination component. This component sends IDoc documents to SAP using the *Transactional RFC* (tRFC) wire protocol.  
+Summary: This quickstart demonstrates how to configure and use the sap-trfc-destination component. This component invokes remote function modules and BAPI methods within SAP using the *Transactional RFC* (tRFC) wire protocol.   
 Target Product: Fuse  
 Source: <http://github.com/punkhorn/sap-quickstarts/>  
 
@@ -13,19 +13,19 @@ Source: <http://github.com/punkhorn/sap-quickstarts/>
 What is it?  
 -----------  
 
-This quick start shows how to integrate Apache Camel with SAP using the JBoss Fuse SAP IDoc Destination Camel component.   
+This quick start shows how to integrate Apache Camel with SAP using the JBoss Fuse SAP Transactional Remote Function Call Destination Camel component.   
 
-This quick start uses XML files containing serialized IDoc documents to create Customer records in the Flight Data Application within SAP. These files are consumed by the quickstart's route and their contents are then converted to string message bodies. These messages are then routed to an `sap-idoc-destination` endpoint which converts and sends them to SAP as `FLCUSTOMER_CREATEFROMDATA01` type IDoc documents to create Customer records.  
+This quick start uses XML files containing serialized SAP requests to create Customer records in the Flight Data Application within SAP. These files are consumed by the quickstart's route and their contents are then converted to string message bodies. These messages are then routed to an `sap-srfc-destination` endpoint which converts and sends them to SAP as `BAPI_FLCUST_CREATEFROMDATA` requests to create Customer records.  
 
 In studying this quick start you will learn:
 
-* How to define a Camel route containing the JBoss Fuse SAP IDoc Destination Camel component using the Spring XML syntax.
-* How to use the JBoss Fuse SAP IDoc Destination Camel component. 
+* How to define a Camel route containing the JBoss Fuse SAP Transactional Remote Function Call Destination Camel component using the Spring XML syntax.
+* How to use the JBoss Fuse SAP Transactional Remote Function Call Destination Camel component to reliably update data in SAP. 
 * How to configure connections used by the component.
 
 For more information see:
 
-* <https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Fuse/6.2/html/Apache_Camel_Component_Reference/SAP.html> for more information about the JBoss Fuse SAP IDoc Camel components 
+* <https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Fuse/6.2/html/Apache_Camel_Component_Reference/SAP.html> for more information about the JBoss Fuse SAP Synchronous Remote Function Call Camel components 
 * <https://access.redhat.com/site/documentation/JBoss_Fuse/> for more information about using JBoss Fuse
 
 System requirements
@@ -53,7 +53,7 @@ Build and Run the Quickstart
 
 To build and run the quick start:
 
-1. Change your working directory to the `sap-idoc-destination-standalone` directory.
+1. Change your working directory to the `sap-trfc-destination-standalone` directory.
 * Run `mvn clean install` to build the quick start.
 * Run `mvn camel:run` to start the Camel runtime.
 * In the console observe the contents of the IDoc processed by the route.
