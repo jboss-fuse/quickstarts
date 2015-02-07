@@ -3,14 +3,16 @@ sap-idoc-destination-standalone: Demonstrates the sap-idoc-destination component
 Author: William Collins - Fuse Team  
 Level: Beginner  
 Technologies: SAP, Camel, Spring  
-Summary: This quickstart demonstrates how to configure and use the sap-srfc-destination component to invoke remote function modules and BAPI methods within SAP  
+Summary: This quickstart demonstrates how to configure and use the sap-srfc-destination component to invoke remote function modules and BAPI methods within SAP. This component invokes remote function modules and BAPI methods within SAP using the *Synchronous RFC* (sRFC) protocol.       
 Target Product: Fuse  
 Source: <http://github.com/punkhorn/sap-quickstarts/>  
 
 What is it?  
 -----------  
 
-This quick start shows how to integrate Apache Camel with SAP using the JBoss Fuse SAP Synchronous Remote Function Call Destination Camel component.   
+This quick start shows how to integrate Apache Camel with SAP using the JBoss Fuse SAP Synchronous Remote Function Call Destination Camel component. This component and its endpoints should be used in cases where the synchronous delivery of requests to and responses from an SAP system are required.  
+
+**NOTE** The sRFC protocol used by this component delivers requests and responses to and from an SAP system **BEST-EFFORT**. In the case of a communication error when sending a request whether a remote function call is executed in a receiving SAP system is *in doubt*.     
 
 This quick start uses XML files containing serialized SAP requests to query Customer records in the Flight Data Application within SAP. These files are consumed by the quickstart's route and their contents are then converted to string message bodies. These messages are then routed to an `sap-srfc-destination` endpoint which converts and sends them to SAP as `BAPI_FLCUST_GETLIST` requests to query Customer records.  
 

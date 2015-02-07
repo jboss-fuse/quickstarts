@@ -15,6 +15,7 @@
     <route>
         <from uri="file:src/data?noop=true"/>
         <convertBodyTo type="java.lang.String"/>
+        <log message="${body}" loggingLevel="INFO"/>
         <to uri="sap-trfc-destination:quickstartDest:BAPI_FLCUST_CREATEFROMDATA"/>
         <log message="${body}" loggingLevel="INFO"/>
     </route>

@@ -15,9 +15,9 @@
     <route>
         <from uri="file:src/data?noop=true"/>
         <convertBodyTo type="java.lang.String"/>
-        <log message="${body}" loggingLevel="INFO"/>
-        <to uri="sap-srfc-destination:quickstartDest:BAPI_FLCUST_GETLIST"/>
-        <log message="${body}" loggingLevel="INFO"/>
+        <log message="${body}"/>
+        <to uri="sap-qrfc-destination:quickstartDest:quickstartQueue:BAPI_FLCUST_CREATEFROMDATA"/>
+        <log message="${body}"/>
     </route>
 </camelContext>
 
