@@ -24,7 +24,7 @@ In studying this quick start you will learn:
 
 For more information see:
 
-* <https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Fuse/6.2/html/Apache_Camel_Component_Reference/SAP.html> for more information about the JBoss Fuse SAP Synchronous Remote Function Call Camel components 
+* <https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Fuse/6.2/html/Apache_Camel_Component_Reference/SAP.html> for more information about the JBoss Fuse SAP Camel components 
 * <https://access.redhat.com/site/documentation/JBoss_Fuse/> for more information about using JBoss Fuse
 
 System requirements
@@ -44,7 +44,7 @@ Configuring the Quickstart for your environment
 To configure the quick start for your environment: 
 
 1. Deploy the JCo3 library jar and native library (for your platform) and IDoc3 library jar to the `lib` folder of the project.
-* Edit the project's Spring file (`src/main/resources/spring/camel-context.xml`) and modify the `quickstartDestinationData` bean to match the connection configuration for your SAP instance. 
+* Edit the project's Spring file (`src/main/resources/spring/camel-context.xml`) and modify the `quickstartDestinationData` bean and the `quickstartServerData` bean to match the connection configuration for your SAP instance. 
 * Edit the project's IDoc files (`src/data/idoc?.xml`) and enter the SID of your SAP in the location indicated.
 * Ensure that an RFC Destination has been [setup for registration of the SAP Camel Component](http://help.sap.com/saphelp_nw73ehp1/helpdata/en/48/c7b790da5e31ebe10000000a42189b/content.htm?frameset=/en/48/a98f837e28674be10000000a421937/frameset.htm) with the instance's [SAP Gateway](http://help.sap.com/saphelp_nw70ehp3/helpdata/en/31/42f34a7cab4cb586177f85a0cf6780/frameset.htm). The destination should have the name `QUICKSTART_SERVER`, a Connection Type `T` and the following `Technical Settings`:   
     a. **Activation Type** : `Registered Server Program`  

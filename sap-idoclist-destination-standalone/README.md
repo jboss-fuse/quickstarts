@@ -4,7 +4,7 @@ sap-idoclist-destination-standalone: Demonstrates the sap-idoclist-destination c
 Author: William Collins - Fuse Team  
 Level: Beginner  
 Technologies: SAP, Camel, Spring  
-Summary: This quickstart demonstrates how to configure and use the sap-idoclist-destination component. This component sends IDoc document lists to SAP using the *Transactional RFC* (tRFC) wire protocol.  
+Summary: This quickstart demonstrates how to configure and use the sap-idoclist-destination component. This component sends IDoc document lists to SAP using the *Transactional RFC* (tRFC) protocol.  
 Target Product: Fuse  
 Source: <http://github.com/punkhorn/sap-quickstarts/>  
 
@@ -25,7 +25,7 @@ In studying this quick start you will learn:
 
 For more information see:
 
-* <https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Fuse/6.2/html/Apache_Camel_Component_Reference/SAP.html> for more information about the JBoss Fuse SAP IDoc Camel components 
+* <https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Fuse/6.2/html/Apache_Camel_Component_Reference/SAP.html> for more information about the JBoss Fuse SAP Camel components 
 * <https://access.redhat.com/site/documentation/JBoss_Fuse/> for more information about using JBoss Fuse
 
 System requirements

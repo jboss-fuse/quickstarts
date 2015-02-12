@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Configures the Camel Context-->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:camel="http://camel.apache.org/schema/spring"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+  <!-- here is a sample which processes the input files
+         (leaving them in place - see the 'noop' flag)
+         then performs content based routing on the message using XPath -->
+<!-- 
+        <pollEnrich uri="file:src/data?noop=true" timeout="1000"/>
+         -->
+<camelContext xmlns="http://camel.apache.org/schema/spring">
+    <route>
+        <from uri="sap-trfc-server:quickstartServer:BAPI_FLCUST_CREATEFROMDATA"/>
+        <convertBodyTo type="java.lang.String"/>
+        <log message="${body}" loggingLevel="INFO"/>
+    </route>
+</camelContext>
+
+	<!-- Configures the Inbound and Outbound SAP Connections -->
+	<bean id="sap-configuration"
+		class="org.fusesource.camel.component.sap.SapConnectionConfiguration">
+		<property name="destinationDataStore">
+			<map>
+				<entry key="quickstartDest" value-ref="quickstartDestinationData" />
+			</map>
+		</property>
+        <property name="serverDataStore">
+            <map>
+                <entry key="quickstartServer" value-ref="quickstartServerData" />
+            </map>
+        </property>
+	</bean>
+
+    <!-- Configures an Outbound SAP Connection -->
+    <!-- *** Please enter the connection property values for your environment *** -->
+    <bean id="quickstartDestinationData"
+        class="org.fusesource.camel.component.sap.model.rfc.impl.DestinationDataImpl">
+        <property name="ashost" value="example.com" />
+        <property name="sysnr" value="00" />
+        <property name="client" value="000" />
+        <property name="user" value="username" />
+        <property name="passwd" value="password" />
+        <property name="lang" value="en" />
+    </bean>
+
+    <!-- Configures an Inbound SAP Configuration -->
+    <!-- *** Please enter the connection property values for your environment *** -->
+    <bean id="quickstartServerData"
+        class="org.fusesource.camel.component.sap.model.rfc.impl.ServerDataImpl">
+        <property name="gwhost" value="example.com" />
+        <property name="gwserv" value="3300" />
+        <!-- The following property values should not be changed -->
+        <property name="progid" value="QUICKSTART_SERVER" />
+        <property name="repositoryDestination" value="quickstartDest" />
+        <property name="connectionCount" value="2" />
+    </bean>
+</beans>
