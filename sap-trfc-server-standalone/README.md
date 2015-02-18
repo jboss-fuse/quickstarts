@@ -52,10 +52,17 @@ To configure the quick start for your environment:
 1. Deploy the JCo3 library jar and native library (for your platform) and IDoc3 library jar to the `lib` folder of the project.
 * Edit the project's Spring file (`src/main/resources/spring/camel-context.xml`) and modify the `quickstartDestinationData` bean and the `quickstartServerData` bean to match the connection configuration for your SAP instance. 
 * Edit the project's IDoc files (`src/data/idoc?.xml`) and enter the SID of your SAP in the location indicated.
-* Ensure that an RFC Destination has been [setup for registration of the SAP Camel Component](http://help.sap.com/saphelp_nw73ehp1/helpdata/en/48/c7b790da5e31ebe10000000a42189b/content.htm?frameset=/en/48/a98f837e28674be10000000a421937/frameset.htm) with the instance's [SAP Gateway](http://help.sap.com/saphelp_nw70ehp3/helpdata/en/31/42f34a7cab4cb586177f85a0cf6780/frameset.htm). The destination should have the name `QUICKSTART_SERVER`, a Connection Type `T` and the following `Technical Settings`:   
-    a. **Activation Type** : `Registered Server Program`  
-    b. **Program ID** : `QUICKSTART_SERVER`  
-* Ensure the following `ZBAPI_FLCUST_CREATEFROMDATA` ABAP program is installed and activated:  
+4. Ensure the destination `QUICKSTART` has been defined in your SAP instance:   
+	a. Using the SAP GUI, run transaction `SM59` (RFC Destinations).    
+    b. Create a new destination (Edit > Create):  
+		1. **RFC Destination** : `QUICKSTART`.    
+        2. **Connection Type** : `T`.    
+        3. **Technical Settings** :    
+            i. **Activation Type** : `Registered Server Program`.    
+            ii.**Program ID** : `QUICKSTART`.   
+        4. **Unicode**:   
+        	i. **Communication Type with Target System** : `Unicode`   
+* Ensure the following `ZBAPI_FLCUST_CREATEFROMDATA` ABAP program is installed and activated in your SAP client:  
 
 		*&---------------------------------------------------------------------*
 		*& Report  ZBAPI_FLCUST_CREATEFROMDATA
@@ -76,7 +83,7 @@ To configure the quick start for your environment:
 		
 		DATA: CUSTOMER_DATA LIKE BAPISCUNEW.
 		
-		RFCDEST = 'QUICKSTART_SERVER'.
+		RFCDEST = 'QUICKSTART'.
 		
 		CUSTOMER_DATA-CUSTNAME = 'Fred Flintstone'.
 		CUSTOMER_DATA-FORM = 'Mr.'.

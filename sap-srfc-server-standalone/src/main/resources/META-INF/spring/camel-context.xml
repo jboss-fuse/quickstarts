@@ -8,12 +8,6 @@
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
-  <!-- here is a sample which processes the input files
-         (leaving them in place - see the 'noop' flag)
-         then performs content based routing on the message using XPath -->
-<!-- 
-        <pollEnrich uri="file:src/data?noop=true" timeout="1000"/>
-         -->
 <camelContext xmlns="http://camel.apache.org/schema/spring">
     <route>
         <from uri="sap-srfc-server:quickstartServer:BAPI_FLCUST_GETLIST"/>
@@ -61,7 +55,7 @@
         <property name="gwhost" value="example.com" />
         <property name="gwserv" value="3300" />
         <!-- The following property values should not be changed -->
-        <property name="progid" value="QUICKSTART_SERVER" />
+        <property name="progid" value="QUICKSTART" />
         <property name="repositoryDestination" value="quickstartDest" />
         <property name="connectionCount" value="2" />
     </bean>

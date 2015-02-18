@@ -10,7 +10,7 @@ Source: <http://github.com/punkhorn/sap-quickstarts/>
 What is it?  
 -----------  
 
-This quick start shows how to integrate Apache Camel with SAP using the JBoss Fuse SAP Synchronous Remote Function Call Server Camel component. This component and its endpoints should be used in cases where the synchronous handling of requests from and responses to an SAP system are required.  
+This quick start shows how to integrate Apache Camel with SAP using the JBoss Fuse SAP Synchronous Remote Function Call Server Camel component. This component and its endpoints should be used in cases where a Camel route is required to synchronously handle requests from and responses to an SAP system.  
 
 This quick start handles requests from SAP for the `BAPI_FLCUST_GETLIST` BAPI method to query for Customer records in the Flight Data Application. The route of this quick start simply mocks the behavior of this method by returning a fixed response of Customer records. The `sap-srfc-server` endpoint at the beginning of the route consumes requests from SAP and their contents are then converted to string message bodies and logged to the console. The message body of the exchange's message is then replaced with the contents of an XML file that contains a serialized SAP response for the BAPI method. This new message body content is then converted to a string, logged to the console and then sent back by the endpoint to SAP as the response to the call.
 
@@ -46,10 +46,17 @@ To configure the quick start for your environment:
 1. Deploy the JCo3 library jar and native library (for your platform) and IDoc3 library jar to the `lib` folder of the project.
 * Edit the project's Spring file (`src/main/resources/spring/camel-context.xml`) and modify the `quickstartDestinationData` bean and the `quickstartServerData` bean to match the connection configuration for your SAP instance. 
 * Edit the project's IDoc files (`src/data/idoc?.xml`) and enter the SID of your SAP in the location indicated.
-* Ensure that an RFC Destination has been [setup for registration of the SAP Camel Component](http://help.sap.com/saphelp_nw73ehp1/helpdata/en/48/c7b790da5e31ebe10000000a42189b/content.htm?frameset=/en/48/a98f837e28674be10000000a421937/frameset.htm) with the instance's [SAP Gateway](http://help.sap.com/saphelp_nw70ehp3/helpdata/en/31/42f34a7cab4cb586177f85a0cf6780/frameset.htm). The destination should have the name `QUICKSTART_SERVER`, a Connection Type `T` and the following `Technical Settings`:   
-    a. **Activation Type** : `Registered Server Program`  
-    b. **Program ID** : `QUICKSTART_SERVER`  
-* Ensure the following `ZBAPI_FLCUST_GETLIST` ABAP program is installed and activated:  
+4. Ensure the destination `QUICKSTART` has been defined in your SAP instance:   
+	a. Using the SAP GUI, run transaction `SM59` (RFC Destinations).    
+    b. Create a new destination (Edit > Create):  
+		1. **RFC Destination** : `QUICKSTART`.    
+        2. **Connection Type** : `T`.    
+        3. **Technical Settings** :    
+            i. **Activation Type** : `Registered Server Program`.    
+            ii.**Program ID** : `QUICKSTART`.   
+        4. **Unicode**:   
+        	i. **Communication Type with Target System** : `Unicode`   
+* Ensure the following `ZBAPI_FLCUST_GETLIST` ABAP program is installed and activated in your SAP client:  
 
 			*&---------------------------------------------------------------------*
 			*& Report  ZBAPI_FLCUST_GETLIST
@@ -74,7 +81,7 @@ To configure the quick start for your environment:
 			DATA: IT_RETURN TYPE STANDARD TABLE OF BAPIRET2,
 			      RETURN TYPE BAPIRET2.
 			
-			RFCDEST = 'QUICKSTART_SERVER'.
+			RFCDEST = 'QUICKSTART'.
 			
 			CALL FUNCTION 'BAPI_FLCUST_GETLIST'
 			  DESTINATION RFCDEST

@@ -13,7 +13,7 @@ Source: <http://github.com/punkhorn/sap-quickstarts/>
 What is it?  
 -----------  
 
-This quick start shows how to integrate Apache Camel with SAP using the JBoss Fuse SAP IDoc Destination Camel component.   
+This quick start shows how to integrate Apache Camel with SAP using the JBoss Fuse SAP IDoc Destination Camel component. This component and its endpoints should be used in cases where a camel route is required to send a list of Intermediate documents (IDocs) to an SAP system.  
 
 This quick start uses XML files containing serialized IDoc documents to create Customer records in the Flight Data Application within SAP. These files are consumed by the quickstart's route and their contents are then converted to string message bodies. These messages are then routed to an `sap-idoc-destination` endpoint which converts and sends them to SAP as `FLCUSTOMER_CREATEFROMDATA01` type IDoc documents to create Customer records.  
 
@@ -39,6 +39,47 @@ Before building and running this quick start you will need:
 * SAP JCo3 and IDoc3 libraries (sapjco3.jar, sapidoc3.jar and JCo native library for your OS platform)
 * SAP instance with [Flight Data Application](http://help.sap.com/saphelp_erp60_sp/helpdata/en/db/7c623cf568896be10000000a11405a/content.htm) setup.
 
+Configuring the ALE Subsystem
+-----------------------------
+
+To send IDocs from your SAP system to the quick start's route, you must first configure the Application Linking Enabling (ALE) subsystem in your SAP system:
+
+1. Using the SAP GUI, run transaction `SALE`, the ALE Implementation Guide.
+2. Ensure that Logical Systems for the quick start and your SAP client have been defined:  
+    a. Run the `Define Logical System` step (Basic Systems > Logical Systems > Define Logical System).  
+    b. Click `New Entries` and create and save the following logical systems:    
+    
+        | Log.System | System     |   
+        | ---------- | ---------- |     
+        | QUICKSTART | QUICKSTART |      
+        | QUICKCLNT  | QUICKCLNT  |
+
+	c. Return to the `SALE`  transaction main screen (Goto > Back).
+3. Ensure the `QUICKCLNT` logical system has been assigned to you SAP client:  
+    a. Run the `Assign Logical System to Client` step (Basic Settings > Logical Systems > Assign Logical System to Client).   
+    b. Select the `QUICKCLNT` for your client's `Logical system` and save your changes.     
+    c. Return to the `SALE`  transaction main screen (Goto > Back).  
+4.  Ensure the destination `QUICKSTART` has been defined:   
+    a. Run the `Create RFC Connections` step (Communication > Create RFC Connections).    
+    b. Create a new destination (Edit > Create):  
+		1. **RFC Destination** : `QUICKSTART`.    
+        2. **Connection Type** : `T`.    
+        3. **Technical Settings** :    
+            i. **Activation Type** : `Registered Server Program`.    
+            ii.**Program ID** : `QUICKSTART`.   
+        4. **Unicode**:   
+        	i. **Communication Type with Target System** : `Unicode`   
+	c. Return to the `SALE` transaction main screen (Goto > Back).   
+5. Ensure that a Model View for the message flow from the quick start to your SAP system has been defined:  
+   a. Run the `Maintain Distribution Model and Distribute Views` step (Modelling and Implementing Business Processes > Maintain Distribution Model and Distribute Views).   
+   b. Ensure a `QUICKSTART` model view has been created with the technical name `QUICKSTART` (Edit > Model view > Create).   
+   c. Ensure the `QUICKSTART` model view has a BAPI call configured (Edit > Add BAPI):   
+      1. **Sender/client** : `QUICKSTART`.  
+      2. **Reciever/server** : `QUICKCLNT`.  
+      3. **Obj.name/interface** : `FlightCustomer`.  
+      4. **Method** : `CreateFromData`.   
+   d. Ensure `Partner Profiles` have been generated for the quick start and your SAP client (Environment > Generate Partner Profiles).   
+ 
 Configuring the Quickstart for your environment
 -----------------------------------------------
 

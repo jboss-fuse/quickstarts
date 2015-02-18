@@ -10,9 +10,8 @@
 
 <camelContext xmlns="http://camel.apache.org/schema/spring">
     <route>
-        <from uri="file:src/data?noop=true"/>
+        <from uri="sap-idoclist-server:quickstartServer:FLCUSTOMER_CREATEFROMDATA01"/>
         <convertBodyTo type="java.lang.String"/>
-        <to uri="sap-idoc-destination:quickstartDest:FLCUSTOMER_CREATEFROMDATA01"/>
         <log message="${body}" loggingLevel="INFO"/>
     </route>
 </camelContext>
@@ -25,6 +24,11 @@
 				<entry key="quickstartDest" value-ref="quickstartDestinationData" />
 			</map>
 		</property>
+        <property name="serverDataStore">
+            <map>
+                <entry key="quickstartServer" value-ref="quickstartServerData" />
+            </map>
+        </property>
 	</bean>
 
     <!-- Configures an Outbound SAP Connection -->
@@ -37,5 +41,17 @@
         <property name="user" value="username" />
         <property name="passwd" value="password" />
         <property name="lang" value="en" />
+    </bean>
+
+    <!-- Configures an Inbound SAP Configuration -->
+    <!-- *** Please enter the connection property values for your environment *** -->
+    <bean id="quickstartServerData"
+        class="org.fusesource.camel.component.sap.model.rfc.impl.ServerDataImpl">
+        <property name="gwhost" value="example.com" />
+        <property name="gwserv" value="3300" />
+        <!-- The following property values should not be changed -->
+        <property name="progid" value="QUICKSTART" />
+        <property name="repositoryDestination" value="quickstartDest" />
+        <property name="connectionCount" value="2" />
     </bean>
 </beans>

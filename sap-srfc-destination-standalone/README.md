@@ -10,7 +10,7 @@ Source: <http://github.com/punkhorn/sap-quickstarts/>
 What is it?  
 -----------  
 
-This quick start shows how to integrate Apache Camel with SAP using the JBoss Fuse SAP Synchronous Remote Function Call Destination Camel component. This component and its endpoints should be used in cases where the synchronous delivery of requests to and responses from an SAP system are required.  
+This quick start shows how to integrate Apache Camel with SAP using the JBoss Fuse SAP Synchronous Remote Function Call Destination Camel component. This component and its endpoints should be used in cases where Camel routes require synchronous delivery of requests to and responses from an SAP system.  
 
 **NOTE** The sRFC protocol used by this component delivers requests and responses to and from an SAP system **BEST-EFFORT**. In the case of a communication error when sending a request whether a remote function call is executed in a receiving SAP system is *in doubt*.     
 

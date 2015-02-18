@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ASCII"?>
+<!-- Replace here ===================================================================================vvv with the three character SID of your SAP instance -->
+<BAPI_FLCUST_CREATEFROMDATA:Response xmlns:BAPI_FLCUST_CREATEFROMDATA="http://sap.fusesource.org/rfc/NPL/BAPI_FLCUST_CREATEFROMDATA" CUSTOMERNUMBER="01234567">
+  <RETURN>
+    <row TYPE="S" ID="BAPI" MESSAGE="FlightCustomer 01234567 has been created. External reference: FRED FLINTSTONEBEDROCK" LOG_MSG_NO="000000" MESSAGE_V1="FlightCustomer" MESSAGE_V2="01234567" MESSAGE_V4="FRED FLINTSTONEBEDROCK"/>
+  </RETURN>
+</BAPI_FLCUST_CREATEFROMDATA:Response>

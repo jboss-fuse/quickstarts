@@ -40,6 +40,10 @@ Demonstrates how to send an Intermediate Document (IDoc) to SAP from Apache Came
 
 Demonstrates how to send a list of Intermediate Document (IDoc) to SAP from Apache Camel.   
 
+###sap-idoclist-server-standalone   
+
+Demonstrates how to handle a list of Intermediate Document (IDoc) from SAP within Apache Camel.   
+
 -----
 For more information see:
 
