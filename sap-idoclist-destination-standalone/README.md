@@ -42,7 +42,7 @@ Before building and running this quick start you will need:
 Configuring the ALE Subsystem
 -----------------------------
 
-To send IDocs from your SAP system to the quick start's route, you must first configure the Application Linking Enabling (ALE) subsystem in your SAP system:
+To send IDocs from the quick start's route to your SAP system you must first configure the Application Linking Enabling (ALE) subsystem in your SAP system:
 
 1. Using the SAP GUI, run transaction `SALE`, the ALE Implementation Guide.
 2. Ensure that Logical Systems for the quick start and your SAP client have been defined:   

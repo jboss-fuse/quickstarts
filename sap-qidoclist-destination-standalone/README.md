@@ -1,10 +1,10 @@
-sap-qidoc-destination-standalone: Demonstrates the sap-qidoc-destination component running in a standalone camel runtime.
+sap-qidoclist-destination-standalone: Demonstrates the sap-qidoclist-destination component running in a standalone camel runtime.
 =======================================================================================================================
-* * * 
+* * *
 Author: William Collins - Fuse Team  
 Level: Beginner  
 Technologies: SAP, Camel, Spring  
-Summary: This quickstart demonstrates how to configure and use the sap-qidoc-destination component. This component sends IDoc documents to SAP using the *Queued RFC* (qRFC) protocol.  
+Summary: This quickstart demonstrates how to configure and use the sap-qidoclist-destination component. This component sends IDoc document lists to SAP using the *Queued RFC* (tRFC) protocol.  
 Target Product: Fuse  
 Source: <http://github.com/punkhorn/sap-quickstarts/>  
 
@@ -13,14 +13,14 @@ Source: <http://github.com/punkhorn/sap-quickstarts/>
 What is it?  
 -----------  
 
-This quick start shows how to integrate Apache Camel with SAP using the JBoss Fuse SAP Queued IDoc Destination Camel component. This component and its endpoints should be used in cases where a camel route is required to send Intermediate documents (IDocs) to an SAP system in order.  
+This quick start shows how to integrate Apache Camel with SAP using the JBoss Fuse SAP Queued IDoc List Destination Camel component. This component and its endpoints should be used in cases where a camel route is required to send lists of Intermediate document (IDoc) to an SAP system in order.  
 
-This quick start uses XML files containing serialized IDoc documents to create Customer records in the Flight Data Application within SAP. These files are consumed by the quickstart's route and their contents are then converted to string message bodies. These messages are then routed to an `sap-qidoc-destination` endpoint which converts and sends them to SAP as `FLCUSTOMER_CREATEFROMDATA01` type IDoc documents to create Customer records.  These iDocs are serializes within SAP on the inbound queue `QUICKSTARTQUEUE`. 
+This quick start uses XML files containing serialized IDoc document lists to create Customer records in the Flight Data Application within SAP. These files are consumed by the quickstart's route and their contents are then converted to string message bodies. These messages are then routed to an `sap-qidoclist-destination` endpoint which converts and sends them to SAP as a list of `FLCUSTOMER_CREATEFROMDATA01` type IDoc documents to create Customer records. These iDoc lists are serializes within SAP on the inbound queue `QUICKSTARTQUEUE`.   
 
 In studying this quick start you will learn:
 
-* How to define a Camel route containing the JBoss Fuse SAP Queued IDoc Destination Camel component using the Spring XML syntax.
-* How to use the JBoss Fuse SAP Queued IDoc Destination Camel component. 
+* How to define a Camel route containing the JBoss Fuse SAP Queued IDoc List Destination Camel component using the Spring XML syntax.
+* How to use the JBoss Fuse SAP Queued IDoc List Destination Camel component. 
 * How to configure connections used by the component.
 
 For more information see:
@@ -45,7 +45,7 @@ Configuring the ALE Subsystem
 To send IDocs from the quick start's route to your SAP system, you must first configure the Application Linking Enabling (ALE) subsystem in your SAP system:
 
 1. Using the SAP GUI, run transaction `SALE`, the ALE Implementation Guide.
-2. Ensure that Logical Systems for the quick start and your SAP client have been defined:  
+2. Ensure that Logical Systems for the quick start and your SAP client have been defined:   
     a. Run the `Define Logical System` step (Basic Systems > Logical Systems > Define Logical System).  
     b. Click `New Entries` and create and save the following logical systems:    
     
@@ -55,7 +55,7 @@ To send IDocs from the quick start's route to your SAP system, you must first co
         | QUICKCLNT  | QUICKCLNT  |
 
 	c. Return to the `SALE`  transaction main screen (Goto > Back).
-3. Ensure the `QUICKCLNT` logical system has been assigned to you SAP client:  
+3. Ensure the `QUICKCLNT` logical system has been assigned to you SAP client:   
     a. Run the `Assign Logical System to Client` step (Basic Settings > Logical Systems > Assign Logical System to Client).   
     b. Select the `QUICKCLNT` for your client's `Logical system` and save your changes.     
     c. Return to the `SALE`  transaction main screen (Goto > Back).  
@@ -65,8 +65,8 @@ To send IDocs from the quick start's route to your SAP system, you must first co
 		1. **RFC Destination** : `QUICKSTART`.    
         2. **Connection Type** : `T`.    
         3. **Technical Settings** :    
-            i. **Activation Type** : `Registered Server Program`.    
-            ii.**Program ID** : `QUICKSTART`.   
+        	i. **Activation Type** : `Registered Server Program`.    
+        	ii.**Program ID** : `QUICKSTART`.   
         4. **Unicode**:   
         	i. **Communication Type with Target System** : `Unicode`   
 	c. Return to the `SALE` transaction main screen (Goto > Back).   
@@ -94,11 +94,11 @@ Build and Run the Quickstart
 
 To build and run the quick start:
 
-1. Change your working directory to the `sap-qidoc-destination-standalone` directory.
+1. Change your working directory to the `sap-qidoclist-destination-standalone` directory.
 * Run `mvn clean install` to build the quick start.
 * Run `mvn camel:run` to start the Camel runtime.
 * In the console observe the contents of the IDoc processed by the route.
-* Execute the queued IDocs waiting in the inbound queue `QUICKSTARTQUEUE`. Using the SAP GUI, run transaction `SMQ2`, the Inbound Queue qRFC Monitor:  
+* Execute the queued IDoc lists waiting in the inbound queue `QUICKSTARTQUEUE`. Using the SAP GUI, run transaction `SMQ2`, the Inbound Queue qRFC Monitor:  
     a. Select the `QUICKSTARTQUEUE` queue.  
     b. Display the queue contents (Edit > Display Selection).  
     c. Select the entry for your Client connection and activate the queue (Edit > Activate).  

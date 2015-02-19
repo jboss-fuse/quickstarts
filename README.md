@@ -12,39 +12,43 @@ Overview
 
 It is recommended that you study and run the quick starts in the following order:  
 
-###sap-srfc-destination-standalone  
+###[sap-srfc-destination-standalone](sap-srfc-destination-standalone/README.md)  
 
 Demonstrates how to perform *Synchronous Remote Function Calls* (sRFC) to SAP from Apache Camel.   
 
-###sap-trfc-destination-standalone  
+###[sap-trfc-destination-standalone](sap-trfc-destination-standalone/README.md)    
 
 Demonstrates how to perform *Transactional Remote Function Calls* (tRFC) to SAP from Apache Camel.   
 
-###sap-qrfc-destination-standalone  
+###[sap-qrfc-destination-standalone](sap-qrfc-destination-standalone/README.md)    
 
 Demonstrates how to perform *Queued Remote Function Calls* (qRFC) to SAP from Apache Camel.   
 
-###sap-srfc-server-standalone  
+###[sap-srfc-server-standalone](sap-srfc-server-standalone/README.md)  
 
 Demonstrates how to handle *Synchronous Remote Function Calls* (sRFC) from SAP within Apache Camel.   
   
-###sap-qrfc-server-standalone  
+###[sap-trfc-server-standalone](sap-trfc-server-standalone/README.md)  
 
 Demonstrates how to handle *Transactional Remote Function Calls* (tRFC) from SAP within Apache Camel.   
 
-###sap-idoc-destination-standalone   
+###[sap-idoc-destination-standalone](sap-idoc-destination-standalone/README.md)   
 
 Demonstrates how to send an Intermediate Document (IDoc) to SAP from Apache Camel.   
 
-###sap-idoclist-destination-standalone   
+###[sap-idoclist-destination-standalone](sap-idoclist-destination-standalone/README.md)   
 
 Demonstrates how to send a list of Intermediate Document (IDoc) to SAP from Apache Camel.   
 
-###sap-qidoc-destination-standalone   
+###[sap-qidoc-destination-standalone](sap-qidoc-destination-standalone/README.md)   
 
 Demonstrates how to send an Intermediate Document (IDoc) using the qRFC protocol to SAP from Apache Camel.   
 
-###sap-idoclist-server-standalone   
+###[sap-qidoclist-destination-standalone](sap-qidoclist-destination-standalone/README.md)   
+
+Demonstrates how to send a list of Intermediate Document (IDoc) using the qRFC protocol to SAP from Apache Camel.   
+
+###[sap-idoclist-server-standalone](sap-idoclist-server-standalone/README.md)   
 
 Demonstrates how to handle a list of Intermediate Document (IDoc) from SAP within Apache Camel.   
 
