@@ -1,5 +1,8 @@
-sap-qidoclist-destination-standalone: Demonstrates the sap-qidoclist-destination component running in a standalone camel runtime.
-=======================================================================================================================
+Standalone SAP Queued IDoc List Destination Endpoint Quick Start
+================================================================
+**Demonstrates the sap-qidoclist-destination component running in a standalone camel runtime.**  
+![Waldo](../waldo.png "Waldo")   
+
 * * *
 Author: William Collins - Fuse Team  
 Level: Beginner  

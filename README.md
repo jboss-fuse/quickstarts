@@ -1,11 +1,17 @@
-sap-quickstarts: This directory contains a set of quick start projects to get you started with the suite of JBoss Fuse SAP Camel components.
-=======================================================================================================================
+SAP Quick Starts  
+================  
+ **This directory contains a set of quick start projects to get you started with the suite of JBoss Fuse SAP Camel components.**  
+![Waldo](waldo.png "Waldo")
+
+***  
 Author: William Collins - Fuse Team  
 Level: Beginner to Advanced  
 Technologies: SAP, Camel, Spring  
 Summary: These quick starts demonstrates how to configure and use the suite of JBoss Fuse SAP Camel components to integrate Apache Camel with SAP.       
 Target Product: Fuse  
 Source: <http://github.com/punkhorn/sap-quickstarts/>  
+
+***  
 
 Overview  
 --------  

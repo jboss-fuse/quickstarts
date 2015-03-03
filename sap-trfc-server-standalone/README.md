@@ -1,11 +1,17 @@
-sap-trfc-server-standalone: Demonstrates the sap-trfc-server component running in a standalone camel runtime.
+Standalone SAP Transactional RFC Server Endpoint Quick Start
 =======================================================================================================================
+**Demonstrates the sap-trfc-server component running in a standalone camel runtime.**  
+![Waldo](../waldo.png "Waldo")
+
+***  
 Author: William Collins - Fuse Team  
 Level: Beginner  
 Technologies: SAP, Camel, Spring  
 Summary: This quickstart demonstrates how to configure and use the sap-trfc-server component to handle a remote function call from SAP. This component handles a remote function call from SAP using the *Transactional RFC* (tRFC) protocol.       
 Target Product: Fuse  
 Source: <http://github.com/punkhorn/sap-quickstarts/>  
+
+***  
 
 What is it?  
 -----------  

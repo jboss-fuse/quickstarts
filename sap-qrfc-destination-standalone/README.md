@@ -1,5 +1,8 @@
-sap-qrfc-destination-standalone: Demonstrates the sap-qrfc-destination component running in a standalone camel runtime.
-=======================================================================================================================
+Standalone SAP Queued RFC Destination Endpoint Quick Start
+==========================================================
+**Demonstrates the sap-qrfc-destination component running in a standalone camel runtime.**   
+![Waldo](../waldo.png "Waldo")
+   
 * * *
 Author: William Collins - Fuse Team  
 Level: Beginner  

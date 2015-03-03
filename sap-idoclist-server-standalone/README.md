@@ -1,11 +1,17 @@
-sap-idoclist-server-standalone: Demonstrates the sap-idoclist-server component running in a standalone camel runtime.
-=======================================================================================================================
+Standalone SAP IDoc List Server Endpoint Quick Start   
+====================================================   
+**Demonstrates the sap-idoclist-server component running in a standalone camel runtime.**   
+![Waldo](../waldo.png "Waldo")
+
+* * *
 Author: William Collins - Fuse Team  
 Level: Beginner  
 Technologies: SAP, Camel, Spring  
 Summary: This quickstart demonstrates how to configure and use the sap-idoclist-server component to handle IDoc document lists sent from SAP. This component handles IDoc document lists from SAP using the *Transactional RFC* (tRFC) protocol.       
 Target Product: Fuse  
 Source: <http://github.com/punkhorn/sap-quickstarts/>  
+
+* * *  
 
 What is it?  
 -----------  

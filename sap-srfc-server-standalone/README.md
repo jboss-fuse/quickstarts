@@ -1,11 +1,17 @@
-sap-srfc-server-standalone: Demonstrates the sap-srfc-server component running in a standalone camel runtime.
+Standalone SAP Synchronous RFC Server Endpoint Quick Start
 =======================================================================================================================
+**Demonstrates the sap-srfc-server component running in a standalone camel runtime.**   
+![Waldo](../waldo.png "Waldo")
+
+***
 Author: William Collins - Fuse Team  
 Level: Beginner  
 Technologies: SAP, Camel, Spring  
 Summary: This quickstart demonstrates how to configure and use the sap-srfc-server component to handle a remote function call from SAP. This component handles a remote function call from SAP using the *Synchronous RFC* (sRFC) protocol.       
 Target Product: Fuse  
 Source: <http://github.com/punkhorn/sap-quickstarts/>  
+
+***
 
 What is it?  
 -----------  

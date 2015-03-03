@@ -1,11 +1,17 @@
-sap-srfc-destination-standalone: Demonstrates the sap-srfc-destination component running in a standalone camel runtime.
+Standalone Synchronouse RFC Destination Endpoint Quick Start  
 =======================================================================================================================
+**Demonstrates the sap-srfc-destination component running in a standalone camel runtime.**  
+![Waldo](../waldo.png "Waldo")
+
+* * *
 Author: William Collins - Fuse Team  
 Level: Beginner  
 Technologies: SAP, Camel, Spring  
 Summary: This quickstart demonstrates how to configure and use the sap-srfc-destination component to invoke remote function modules and BAPI methods within SAP. This component invokes remote function modules and BAPI methods within SAP using the *Synchronous RFC* (sRFC) protocol.       
 Target Product: Fuse  
 Source: <http://github.com/punkhorn/sap-quickstarts/>  
+
+* * *
 
 What is it?  
 -----------  

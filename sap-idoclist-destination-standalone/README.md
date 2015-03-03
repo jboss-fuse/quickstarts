@@ -1,5 +1,8 @@
-sap-idoclist-destination-standalone: Demonstrates the sap-idoclist-destination component running in a standalone camel runtime.
-=======================================================================================================================
+Standalone SAP IDoc List Destination Endpoint Quick Start
+=========================================================   
+**Demonstrates the sap-idoclist-destination component running in a standalone camel runtime.**   
+![Waldo](../waldo.png "Waldo")
+
 * * *
 Author: William Collins - Fuse Team  
 Level: Beginner  

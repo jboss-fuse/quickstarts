@@ -1,5 +1,8 @@
-sap-trfc-destination-standalone: Demonstrates the sap-trfc-destination component running in a standalone camel runtime.
+Standalone SAP Transactional RFC Destination Endpoint Quick Start
 =======================================================================================================================
+**Demonstrates the sap-trfc-destination component running in a standalone camel runtime.**   
+![Waldo](../waldo.png "Waldo")
+
 * * *
 Author: William Collins - Fuse Team  
 Level: Beginner  
