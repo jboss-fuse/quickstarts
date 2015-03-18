@@ -6,7 +6,7 @@ SAP Quick Starts
 ***  
 Author: William Collins - Fuse Team  
 Level: Beginner to Advanced  
-Technologies: SAP, Camel, Spring  
+Technologies: SAP, Camel, JBoss Fuse   
 Summary: These quick starts demonstrates how to configure and use the suite of JBoss Fuse SAP Camel components to integrate Apache Camel with SAP.       
 Target Product: Fuse  
 Source: <http://github.com/punkhorn/sap-quickstarts/>  
@@ -16,47 +16,21 @@ Source: <http://github.com/punkhorn/sap-quickstarts/>
 Overview  
 --------  
 
-It is recommended that you study and run the quick starts in the following order:  
+The JBoss Fuse SAP quick starts are divided into three categories which demonstrate how to configure, deploy and run the JBoss Fuse SAP Camel components in different runtime environments.   
 
-###[sap-srfc-destination-standalone](sap-srfc-destination-standalone/README.md)  
+###[Standalone](standalone/README.md)  
 
-Demonstrates how to perform *Synchronous Remote Function Calls* (sRFC) to SAP from Apache Camel.   
+The quick starts in this directory demonstrates how to configure, deploy and run the JBoss Fuse SAP Camel components in a standalone Camel container runtime.
 
-###[sap-trfc-destination-standalone](sap-trfc-destination-standalone/README.md)    
 
-Demonstrates how to perform *Transactional Remote Function Calls* (tRFC) to SAP from Apache Camel.   
+###[Fuse](fuse/README.md)  
 
-###[sap-qrfc-destination-standalone](sap-qrfc-destination-standalone/README.md)    
+The quick starts in this directory demonstrates how to configure, deploy and run the JBoss Fuse SAP Camel components in a JBoss Fuse OSGi container runtime.
 
-Demonstrates how to perform *Queued Remote Function Calls* (qRFC) to SAP from Apache Camel.   
 
-###[sap-srfc-server-standalone](sap-srfc-server-standalone/README.md)  
+###[Fabric](fabric/README.md)  
 
-Demonstrates how to handle *Synchronous Remote Function Calls* (sRFC) from SAP within Apache Camel.   
-  
-###[sap-trfc-server-standalone](sap-trfc-server-standalone/README.md)  
-
-Demonstrates how to handle *Transactional Remote Function Calls* (tRFC) from SAP within Apache Camel.   
-
-###[sap-idoc-destination-standalone](sap-idoc-destination-standalone/README.md)   
-
-Demonstrates how to send an Intermediate Document (IDoc) to SAP from Apache Camel.   
-
-###[sap-idoclist-destination-standalone](sap-idoclist-destination-standalone/README.md)   
-
-Demonstrates how to send a list of Intermediate Document (IDoc) to SAP from Apache Camel.   
-
-###[sap-qidoc-destination-standalone](sap-qidoc-destination-standalone/README.md)   
-
-Demonstrates how to send an Intermediate Document (IDoc) using the qRFC protocol to SAP from Apache Camel.   
-
-###[sap-qidoclist-destination-standalone](sap-qidoclist-destination-standalone/README.md)   
-
-Demonstrates how to send a list of Intermediate Document (IDoc) using the qRFC protocol to SAP from Apache Camel.   
-
-###[sap-idoclist-server-standalone](sap-idoclist-server-standalone/README.md)   
-
-Demonstrates how to handle a list of Intermediate Document (IDoc) from SAP within Apache Camel.   
+The quick starts in this directory demonstrates how to configure, deploy and run the JBoss Fuse SAP Camel components in a JBoss Fuse Fabric container runtime.
 
 -----
 For more information see:
