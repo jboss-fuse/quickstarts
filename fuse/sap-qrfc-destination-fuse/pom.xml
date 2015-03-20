@@ -5,12 +5,12 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.jboss.quickstarts.fuse</groupId>
-  <artifactId>sap-srfc-destination-fuse</artifactId>
+  <artifactId>sap-qrfc-destination-fuse</artifactId>
   <packaging>bundle</packaging>
   <version>6.2.0.redhat-SNAPSHOT</version>
 
-  <name>Fuse Synchronous RFC Example</name>
-  <description>This Quick Start demonstrates how to use the JBoss Fuse SAP Synchronous RFC Destination endpoint in a JBoss Fuse environment.</description>
+  <name>Fuse Queued RFC Example</name>
+  <description>This Quick Start demonstrates how to use the JBoss Fuse SAP Queued RFC Destination endpoint in a JBoss Fuse environment.</description>
   <url>http://www.jboss.org/products/fuse/overview/</url>
 
   <properties>
@@ -89,57 +89,6 @@
       </releases>
     </pluginRepository>
   </pluginRepositories>
-
-  <dependencies>
-  	<!-- JBoss Fuse SAP Camel Component -->
-  	<dependency>
-  		<groupId>org.fusesource</groupId>
-  		<artifactId>camel-sap</artifactId>
-  		<version>6.2.0.redhat-SNAPSHOT</version>
-  	</dependency>
-  
-  	<!-- Camel -->
-    <dependency>
-      <groupId>org.apache.camel</groupId>
-      <artifactId>camel-core</artifactId>
-      <version>2.12.0.redhat-610379</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.camel</groupId>
-      <artifactId>camel-blueprint</artifactId>
-      <version>2.12.0.redhat-610379</version>
-    </dependency>
-
-    <!-- logging -->
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-      <version>1.7.5</version>
-    </dependency>
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-log4j12</artifactId>
-      <version>1.7.5</version>
-    </dependency>
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>jcl-over-slf4j</artifactId>
-      <version>1.7.5</version>
-    </dependency>
-    <dependency>
-      <groupId>log4j</groupId>
-      <artifactId>log4j</artifactId>
-      <version>1.2.17</version>
-    </dependency>
-
-    <!-- testing -->
-    <dependency>
-      <groupId>org.apache.camel</groupId>
-      <artifactId>camel-test-blueprint</artifactId>
-      <version>2.12.0.redhat-610379</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
 
   <build>
     <defaultGoal>install</defaultGoal>

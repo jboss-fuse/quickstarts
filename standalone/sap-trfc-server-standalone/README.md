@@ -56,7 +56,7 @@ Configuring the Quickstart for your environment
 To configure the quick start for your environment: 
 
 1. Deploy the JCo3 library jar and native library (for your platform) and IDoc3 library jar to the `lib` folder of the project.
-* Edit the project's Spring file (`src/main/resources/spring/camel-context.xml`) and modify the `quickstartDestinationData` bean and the `quickstartServerData` bean to match the connection configuration for your SAP instance. 
+* Edit the project's Spring file (`src/main/resources/META-INF/spring/camel-context.xml`) and modify the `quickstartDestinationData` bean and the `quickstartServerData` bean to match the connection configuration for your SAP instance. 
 * Edit the project's IDoc files (`src/data/idoc?.xml`) and enter the SID of your SAP in the location indicated.
 4. Ensure the destination `QUICKSTART` has been defined in your SAP instance:   
 	a. Using the SAP GUI, run transaction `SM59` (RFC Destinations).    

@@ -5,12 +5,12 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.jboss.quickstarts.fuse</groupId>
-  <artifactId>sap-srfc-destination-fuse</artifactId>
+  <artifactId>sap-trfc-destination-fuse</artifactId>
   <packaging>bundle</packaging>
   <version>6.2.0.redhat-SNAPSHOT</version>
 
-  <name>Fuse Synchronous RFC Example</name>
-  <description>This Quick Start demonstrates how to use the JBoss Fuse SAP Synchronous RFC Destination endpoint in a JBoss Fuse environment.</description>
+  <name>Fuse Transactional RFC Example</name>
+  <description>This Quick Start demonstrates how to use the JBoss Fuse SAP Transactional RFC Destination endpoint in a JBoss Fuse environment.</description>
   <url>http://www.jboss.org/products/fuse/overview/</url>
 
   <properties>

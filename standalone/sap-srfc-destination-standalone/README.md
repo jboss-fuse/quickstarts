@@ -1,4 +1,4 @@
-Standalone Synchronouse RFC Destination Endpoint Quick Start  
+Standalone SAP Synchronouse RFC Destination Endpoint Quick Start  
 =======================================================================================================================
 **Demonstrates the sap-srfc-destination component running in a standalone camel runtime.**  
 ![Waldo](../../waldo.png "Waldo")
@@ -50,7 +50,7 @@ Configuring the Quickstart for your environment
 To configure the quick start for your environment: 
 
 1. Deploy the JCo3 library jar and native library (for your platform) and IDoc3 library jar to the `lib` folder of the project.
-* Edit the project's Spring file (`src/main/resources/spring/camel-context.xml`) and modify the `quickstartDestinationData` bean to match the connection configuration for your SAP instance. 
+* Edit the project's Spring file (`src/main/resources/META-INF/spring/camel-context.xml`) and modify the `quickstartDestinationData` bean to match the connection configuration for your SAP instance. 
 * Edit the project's IDoc files (`src/data/idoc?.xml`) and enter the SID of your SAP in the location indicated.
 
 Build and Run the Quickstart

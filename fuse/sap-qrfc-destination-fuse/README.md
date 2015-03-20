@@ -1,13 +1,13 @@
-Standalone SAP Queued RFC Destination Endpoint Quick Start
-==========================================================
-**Demonstrates the sap-qrfc-destination component running in a standalone camel runtime.**   
+FUSE SAP Queued RFC Destination Endpoint Quick Start  
+=======================================================================================================================
+**Demonstrates the sap-qrfc-destination component running in a Fuse camel runtime.**  
 ![Waldo](../../waldo.png "Waldo")
-   
+
 * * *
 Author: William Collins - Fuse Team  
 Level: Beginner  
 Technologies: SAP, Camel, Spring  
-Summary: This quickstart demonstrates how to configure and use the sap-qrfc-destination component. This component invokes remote function modules and BAPI methods within SAP using the *Queued RFC* (qRFC) protocol.   
+Summary: This quickstart demonstrates how to configure and use the sap-qrfc-destination component in a Fuse environment to invoke remote function modules and BAPI methods within SAP. This component invokes remote function modules and BAPI methods within SAP using the *Queued RFC* (tRFC) protocol.   
 Target Product: Fuse  
 Source: <http://github.com/punkhorn/sap-quickstarts/>  
 
@@ -24,10 +24,10 @@ This quick start uses XML files containing serialized SAP requests to create Cus
 
 In studying this quick start you will learn:
 
-* How to define a Camel route containing the JBoss Fuse SAP Queued Remote Function Call Destination Camel component using the Spring XML syntax.
+* How to define a Camel route containing the JBoss Fuse SAP Queued Remote Function Call Destination Camel component using the Blueprint XML syntax.
 * How to use the JBoss Fuse SAP Queued Remote Function Call Destination Camel component to reliably update data in SAP. 
-* How requests sent through the component are processed by SAP.
 * How to configure connections used by the component.
+* How to configure the Fuse runtime environment in order to deploy the JBoss Fuse SAP Transactional Remote Function Call Destination Camel component.
 
 For more information see:
 
@@ -41,7 +41,7 @@ Before building and running this quick start you will need:
 
 * Maven 3.0.4 or higher
 * JDK 1.7 or 1.8
-* JBoss Fuse 6.2
+* A JBoss Fuse 6.2 container not running with a Fabric
 * SAP JCo3 and IDoc3 libraries (sapjco3.jar, sapidoc3.jar and JCo native library for your OS platform)
 * SAP instance with [Flight Data Application](http://help.sap.com/saphelp_erp60_sp/helpdata/en/db/7c623cf568896be10000000a11405a/content.htm) setup.
 
@@ -50,19 +50,35 @@ Configuring the Quickstart for your environment
 
 To configure the quick start for your environment: 
 
-1. Deploy the JCo3 library jar and native library (for your platform) and IDoc3 library jar to the `lib` folder of the project.
-* Edit the project's Spring file (`src/main/resources/META-INF/spring/camel-context.xml`) and modify the `quickstartDestinationData` bean to match the connection configuration for your SAP instance. 
-* Edit the project's request files (`src/data/request?.xml`) and enter the SID of your SAP in the location indicated.
+1. Deploy the JCo3 library jar and native library (for your platform) and IDoc3 library jar to the `lib` folder of your JBoss Fuse installation.  
+2. Edit the custom properties file (`etc/custom.properties`) of your JBoss Fuse installation and add the following packages to the `org.osgi.framework.system.packages.extra` property:  
+
+> org.osgi.framework.system.packages.extra = \  
+>...  
+>> com.sap.conn.idoc, \  
+>> com.sap.conn.idoc.jco, \   
+>> com.sap.conn.jco, \   
+>> com.sap.conn.jco.ext, \   
+>> com.sap.conn.jco.monitor, \  
+>> com.sap.conn.jco.rt, \   
+>> com.sap.conn.jco.server  
+
+3. Edit the project's Spring file (`src/main/resources/OSGI-INF/blueprint/camel-context.xml`) and modify the `quickstartDestinationData` bean to match the connection configuration for your SAP instance.  
+4. Edit the project's request files (`src/data/request?.xml`) and enter the SID of your SAP in the location indicated.
 
 Build and Run the Quickstart
 ----------------------------
 
 To build and run the quick start:
 
-1. Change your working directory to the `sap-qrfc-destination-standalone` directory.
+1. Change your working directory to the `sap-qrfc-destination-fuse` directory.
 * Run `mvn clean install` to build the quick start.
-* Run `mvn camel:run` to start the Camel runtime.
-* In the console observe the contents of the IDoc processed by the route.
+* In your JBoss Fuse installation directory run, `./bin/fuse` to start the JBoss Fuse runtime.
+* In the JBoss Fuse console, run `osgi:install -s mvn:org.fusesource/camel-sap` to install the JBoss Fuse SAP Synchronous Remote Function Call Destination Camel component. Note the bundle number for the component bundle returned by this command.  
+* In the JBoss Fuse console, run `osgi:install -s mvn:org.jboss.quickstarts.fuse/sap-qrfc-destination-fuse` to install the quick start. Note the bundle number for the quick start returned by this command.  
+* In the JBoss Fuse console, run `log:tail` to monitor the JBoss Fuse log.
+* Copy the request files (`src/data/request?.xml`) in the project to the input directory(`work/sap-qrfc-destination-fuse/input`) of the quick start route.
+* In the JBoss Fuse console observe the request sent by the endpoint.
 * Execute the queued requests waiting in the inbound queue `QUICKSTARTQUEUE`. Using the SAP GUI, run transaction `SMQ2`, the Inbound Queue qRFC Monitor:  
     a. Select the `QUICKSTARTQUEUE` queue.  
     b. Display the queue contents (Edit > Display Selection).  
@@ -70,10 +86,12 @@ To build and run the quick start:
 * Using the SAP GUI, run transaction `SE16`, Data Browser, and display the contents of the table `SCUSTOM`.
 * Search the table (Edit > Find..) for the newly created Customer records: `Fred Flintstone`, `Wilma Flintstone`, `Barney Rubble`, and `Betty Rubble`. 
 
-Stopping the Quickstart
------------------------
+Stopping and Uninstalling the Quickstart
+----------------------------------------
 
-To stop the camel run-time:
+To uninstall the quick start and stop the JBoss Fuse run-time perform the following in the JBoss Fuse console:
 
-1. Enter Ctrl-c in the console.
-
+1. Enter Ctrl-c to stop monitoring the JBoss Fuse log.
+* Run `osgi:uninstall <quickstart-bundle-number>` providing the bundle number for the quick start bundle. 
+* Run `osgi:uninstall <camel-sap-bundle-number>` providing the bundle number for the component bundle. 
+* Run `osgi:shutdown -f` to shutdown the JBoss Fuse runtime.

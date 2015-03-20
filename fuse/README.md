@@ -22,6 +22,14 @@ It is recommended that you study and run the quick starts in the following order
 
 Demonstrates how to perform *Synchronous Remote Function Calls* (sRFC) to SAP from Apache Camel in JBoss Fuse.   
   
+###[sap-trfc-destination-fuse](sap-trfc-destination-fuse/README.md)  
+
+Demonstrates how to perform *Transactional Remote Function Calls* (tRFC) to SAP from Apache Camel in JBoss Fuse.      
+  
+###[sap-qrfc-destination-fuse](sap-qrfc-destination-fuse/README.md)  
+
+Demonstrates how to perform *Queued Remote Function Calls* (qRFC) to SAP from Apache Camel in JBoss Fuse.   
+  
 -----
 For more information see:
 

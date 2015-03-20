@@ -1,4 +1,4 @@
-FUSE Synchronouse RFC Destination Endpoint Quick Start  
+FUSE SAP Synchronouse RFC Destination Endpoint Quick Start  
 =======================================================================================================================
 **Demonstrates the sap-srfc-destination component running in a Fuse camel runtime.**  
 ![Waldo](../../waldo.png "Waldo")
@@ -63,7 +63,7 @@ To configure the quick start for your environment:
 >> com.sap.conn.jco.rt, \   
 >> com.sap.conn.jco.server  
 
-3. Edit the project's Spring file (`src/main/resources/spring/camel-context.xml`) and modify the `quickstartDestinationData` bean to match the connection configuration for your SAP instance.  
+3. Edit the project's Spring file (`src/main/resources/OSGI-INF/blueprint/camel-context.xml`) and modify the `quickstartDestinationData` bean to match the connection configuration for your SAP instance.  
 4. Edit the project's request file (`src/data/request1.xml`) and enter the SID of your SAP in the location indicated.
 
 Build and Run the Quickstart
@@ -71,7 +71,7 @@ Build and Run the Quickstart
 
 To build and run the quick start:
 
-1. Change your working directory to the `sap-srfc-destination-standalone` directory.
+1. Change your working directory to the `sap-srfc-destination-fuse` directory.
 * Run `mvn clean install` to build the quick start.
 * In your JBoss Fuse installation directory run, `./bin/fuse` to start the JBoss Fuse runtime.
 * In the JBoss Fuse console, run `osgi:install -s mvn:org.fusesource/camel-sap` to install the JBoss Fuse SAP Synchronous Remote Function Call Destination Camel component. Note the bundle number for the component bundle returned by this command.  
