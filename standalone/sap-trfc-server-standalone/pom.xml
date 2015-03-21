@@ -8,6 +8,7 @@
 	<packaging>jar</packaging>
 
 	<name>Standalone Transactional RFC Server Example</name>
+	<description>This Quick Start demonstrates how to use the JBoss Fuse SAP Transactional RFC Server endpoint.</description>
 	<url>http://http://www.jboss.org/products/fuse/overview/</url>
 
 	<parent>
@@ -18,6 +19,34 @@
 	</parent>
 	
 	<dependencies>
+
+		<dependency>
+			<groupId>org.fusesource</groupId>
+			<artifactId>camel-sap</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-spring</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-test-spring</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+		</dependency>
+
 		<dependency>
 			<groupId>com.sap.conn.jco</groupId>
 			<artifactId>sapjco3</artifactId>
@@ -32,8 +61,25 @@
 			<scope>system</scope>
 			<systemPath>${basedir}/lib/sapidoc3.jar</systemPath>
 		</dependency>
-	
+
 	</dependencies>
-	  
-	<description>This Quick Start demonstrates how to use the JBoss Fuse SAP Transactional RFC Server endpoint.</description>
+
+	<build>
+		<defaultGoal>install</defaultGoal>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.camel</groupId>
+				<artifactId>camel-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
 </project>

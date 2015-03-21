@@ -23,7 +23,7 @@ This quick start uses XML files containing serialized IDoc documents to create C
 In studying this quick start you will learn:
 
 * How to define a Camel route containing the JBoss Fuse SAP Queued IDoc Destination Camel component using the Spring XML syntax.
-* How to use the JBoss Fuse SAP Queued IDoc Destination Camel component. 
+* How to use the JBoss Fuse SAP Queued IDoc Destination Camel component to send IDocs to SAP. 
 * How to configure connections used by the component.
 
 For more information see:

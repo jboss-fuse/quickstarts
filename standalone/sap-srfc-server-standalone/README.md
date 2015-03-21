@@ -25,7 +25,7 @@ This quick start handles requests from SAP for the `BAPI_FLCUST_GETLIST` BAPI me
 In studying this quick start you will learn:
 
 * How to define a Camel route containing the JBoss Fuse SAP Synchronous Remote Function Call Server Camel component using the Spring XML syntax.
-* How to use the JBoss Fuse SAP Synchronous Remote Function Call Server Camel component. 
+* How to use the JBoss Fuse SAP Synchronous Remote Function Call Server Camel component to handle requests from SAP. 
 * How to configure connections used by the component.
 
 For more information see:

@@ -25,7 +25,7 @@ This quick start handles lists of `FLCUSTOMER_CREATEFROMDATA01` type IDoc docume
 In studying this quick start you will learn:
 
 * How to define a Camel route containing the JBoss Fuse SAP IDoc List Server Camel component using the Spring XML syntax.
-* How to use the JBoss Fuse SAP IDoc List Server Camel component. 
+* How to use the JBoss Fuse SAP IDoc List Server Camel component to receive IDoc lists from SAP. 
 * How to configure connections used by the component.
 
 For more information see:

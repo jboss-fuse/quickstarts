@@ -12,8 +12,8 @@
     <route>
         <from uri="file:src/data?noop=true"/>
         <convertBodyTo type="java.lang.String"/>
-        <to uri="sap-idoc-destination:quickstartDest:FLCUSTOMER_CREATEFROMDATA01"/>
         <log message="${body}" loggingLevel="INFO"/>
+        <to uri="sap-idoc-destination:quickstartDest:FLCUSTOMER_CREATEFROMDATA01"/>
     </route>
 </camelContext>
 
