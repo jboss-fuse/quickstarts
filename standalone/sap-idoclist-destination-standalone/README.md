@@ -16,9 +16,9 @@ Source: <http://github.com/punkhorn/sap-quickstarts/>
 What is it?  
 -----------  
 
-This quick start shows how to integrate Apache Camel with SAP using the JBoss Fuse SAP IDoc List Destination Camel component. This component and its endpoints should be used in cases where a camel route is required to send an Intermediate document (IDoc) to an SAP system.  
+This quick start shows how to integrate Apache Camel with SAP using the JBoss Fuse SAP IDoc List Destination Camel component. This component and its endpoints should be used in cases where a camel route is required to send an Intermediate document (IDoc) list to an SAP system.  
 
-This quick start uses XML files containing serialized IDoc document lists to create Customer records in the Flight Data Application within SAP. These files are consumed by the quickstart's route and their contents are then converted to string message bodies. These messages are then routed to an `sap-idoclist-destination` endpoint which converts and sends them to SAP as a list of `FLCUSTOMER_CREATEFROMDATA01` type IDoc documents to create Customer records.  
+This quick start uses XML files containing serialized IDoc document lists to create Customer records in the Flight Data Application within SAP. These files are consumed by the quickstart's route and their contents are then converted to string message bodies. These messages are then routed to an `sap-idoclist-destination` endpoint which converts and sends them to SAP as a list of `FLCUSTOMER_CREATEFROMDATA01` type IDoc document lists to create Customer records.  
 
 In studying this quick start you will learn:
 

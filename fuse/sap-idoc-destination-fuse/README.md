@@ -1,4 +1,4 @@
-FUSE SAP IDoc RFC Destination Endpoint Quick Start  
+FUSE SAP IDoc Destination Endpoint Quick Start  
 =======================================================================================================================
 **Demonstrates the sap-idoc-destination component running in a Fuse camel runtime.**  
 ![Waldo](../../waldo.png "Waldo")
@@ -110,7 +110,7 @@ Build and Run the Quickstart
 
 To build and run the quick start:
 
-1. Change your working directory to the `sap-qrfc-destination-fuse` directory.
+1. Change your working directory to the `sap-idoc-destination-fuse` directory.
 * Run `mvn clean install` to build the quick start.
 * In your JBoss Fuse installation directory run, `./bin/fuse` to start the JBoss Fuse runtime.
 * In the JBoss Fuse console, run `osgi:install -s mvn:org.fusesource/camel-sap` to install the JBoss Fuse SAP Synchronous Remote Function Call Destination Camel component. Note the bundle number for the component bundle returned by this command.  
