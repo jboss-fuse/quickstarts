@@ -24,7 +24,7 @@ This quick start uses XML files containing serialized SAP requests to query Cust
 
 In studying this quick start you will learn:
 
-* How to define a Camel route containing the JBoss Fuse SAP Synchronous Remote Function Call Destination Camel component using the Spring XML syntax.
+* How to define a Camel route containing the JBoss Fuse SAP Synchronous Remote Function Call Destination Camel component using the Blueprint XML syntax.
 * How to use the JBoss Fuse SAP Synchronous Remote Function Call Destination Camel component. 
 * How to configure connections used by the component.  
 * How to configure the Fuse runtime environment in order to deploy the JBoss Fuse SAP Synchronous Remote Function Call Destination Camel component.
@@ -63,7 +63,7 @@ To configure the quick start for your environment:
 >> com.sap.conn.jco.rt, \   
 >> com.sap.conn.jco.server  
 
-3. Edit the project's Spring file (`src/main/resources/OSGI-INF/blueprint/camel-context.xml`) and modify the `quickstartDestinationData` bean to match the connection configuration for your SAP instance.  
+3. Edit the project's Blueprint file (`src/main/resources/OSGI-INF/blueprint/camel-context.xml`) and modify the `quickstartDestinationData` bean to match the connection configuration for your SAP instance.  
 4. Edit the project's request file (`src/data/request1.xml`) and enter the SID of your SAP in the location indicated.
 
 Build and Run the Quickstart

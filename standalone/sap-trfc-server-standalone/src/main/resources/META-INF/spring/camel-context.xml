@@ -43,7 +43,7 @@
         <property name="lang" value="en" />
     </bean>
 
-    <!-- Configures an Inbound SAP Configuration -->
+    <!-- Configures an Inbound SAP Connection -->
     <!-- *** Please enter the connection property values for your environment *** -->
     <bean id="quickstartServerData"
         class="org.fusesource.camel.component.sap.model.rfc.impl.ServerDataImpl">

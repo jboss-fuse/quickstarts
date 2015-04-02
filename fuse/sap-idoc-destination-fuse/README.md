@@ -102,7 +102,7 @@ To configure the quick start for your environment:
 >> com.sap.conn.jco.rt, \   
 >> com.sap.conn.jco.server  
 
-3. Edit the project's Spring file (`src/main/resources/OSGI-INF/blueprint/camel-context.xml`) and modify the `quickstartDestinationData` bean to match the connection configuration for your SAP instance.  
+3. Edit the project's Blueprint file (`src/main/resources/OSGI-INF/blueprint/camel-context.xml`) and modify the `quickstartDestinationData` bean to match the connection configuration for your SAP instance.  
 4. Edit the project's request files (`src/data/idoc?.xml`) and enter the SID of your SAP in the location indicated.
 
 Build and Run the Quickstart
