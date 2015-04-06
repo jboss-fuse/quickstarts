@@ -30,6 +30,34 @@ Demonstrates how to perform *Transactional Remote Function Calls* (tRFC) to SAP 
 
 Demonstrates how to perform *Queued Remote Function Calls* (qRFC) to SAP from Apache Camel in JBoss Fuse.   
   
+###[sap-srfc-server-fuse](sap-srfc-server-fuse/README.md)   
+
+Demonstrates how to handle *Synchronous Remote Function Calls* (sRFC) from SAP within Apache Camel in JBoss Fuse.   
+  
+###[sap-trfc-server-fuse](sap-trfc-server-fuse/README.md)  
+
+Demonstrates how to handle *Transactional Remote Function Calls* (tRFC) from SAP within Apache Camel in JBoss Fuse.   
+  
+###[sap-idoc-destination-fuse](sap-idoc-destination-fuse/README.md)  
+
+Demonstrates how to send an Intermediate Document (IDoc) to SAP from Apache Camel in JBoss Fuse.   
+  
+###[sap-idoclist-destination-fuse](sap-idoclist-destination-fuse/README.md)  
+
+Demonstrates how to send a list of Intermediate Document (IDoc) to SAP from Apache Camel in JBoss Fuse.   
+  
+###[sap-qidoc-destination-fuse](sap-qidoc-destination-fuse/README.md)  
+
+Demonstrates how to send an Intermediate Document (IDoc) using the qRFC protocol to SAP from Apache Camel in JBoss Fuse.   
+  
+###[sap-qidoclist-destination-fuse](sap-qidoclist-destination-fuse/README.md)  
+
+Demonstrates how to send a list of Intermediate Document (IDoc) using the qRFC protocol to SAP from Apache Camel in JBoss Fuse.   
+  
+###[sap-idoclist-server-fuse](sap-idoclist-server-fuse/README.md)  
+
+Demonstrates how to handle a list of Intermediate Document (IDoc) from SAP within Apache Camel in JBoss Fuse.   
+  
 -----
 For more information see:
 
