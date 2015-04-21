@@ -35,9 +35,9 @@
     <bean id="MyRegionSupport" class="org.jboss.quickstarts.fuse.eip.RegionSupport" />
 
     <!--
-      The namespace for the camelContext element in Blueprint is 'http://camel.apache.org/schema/blueprint'. We can also define 
+      The namespace for the camelContext element in Blueprint is 'http://camel.apache.org/schema/blueprint'. We can also define
       namespace prefixes we want to use in the XPath expressions in our CBR here.
-      
+
       We defined the namespace prefix order so that we use the namespace from the order messages in the XPath expressions.
 
       While it is not required to assign id's to the <camelContext/> and <route/> elements, it is a good idea
@@ -81,7 +81,7 @@
             <from uri="direct:splitter" />
             <split>
                 <!--
-                  We are using XPath to split the message body. The namespace prefix, order, used in the XPath expression was 
+                  We are using XPath to split the message body. The namespace prefix, order, used in the XPath expression was
                   defined on the camelContext element.
                 -->
                 <xpath>//order:order</xpath>
@@ -92,7 +92,7 @@
                   - the geographical region : we are using a method called getRegion() on the MyRegionSupport bean we defined earlier
                 -->
                 <setHeader headerName="orderId">
-                    <xpath>/order:order/@id</xpath>
+                    <xpath resultType="java.lang.String">/order:order/@id</xpath>
                 </setHeader>
                 <setHeader headerName="region">
                     <method bean="MyRegionSupport" method="getRegion" />
@@ -120,7 +120,7 @@
         <route id="filterRoute">
             <from uri="direct:filter" />
             <filter>
-                <xpath>sum(//order:quantity/text()) > 100</xpath>
+                <xpath resultType="java.lang.String">sum(//order:quantity/text()) > 100</xpath>
                 <log message="[filter]   Order ${header.orderId} is an order for more than 100 animals" />
             </filter>
         </route>
