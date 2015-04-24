@@ -103,7 +103,7 @@ To configure the quick start for your environment:
 >> com.sap.conn.jco.server  
 
 3. Edit the project's Blueprint file (`src/main/resources/OSGI-INF/blueprint/camel-context.xml`) and modify the `quickstartDestinationData` bean to match the connection configuration for your SAP instance.  
-4. Edit the project's request files (`src/data/idoc?.xml`) and enter the SID of your SAP in the location indicated.
+4. Edit the project's IDoc files (`src/data/idoc?.xml`) and enter the SID of your SAP in the location indicated.
 
 Build and Run the Quickstart
 ----------------------------
@@ -116,7 +116,7 @@ To build and run the quick start:
 * In the JBoss Fuse console, run `osgi:install -s mvn:org.fusesource/camel-sap` to install the JBoss Fuse SAP Synchronous Remote Function Call Destination Camel component. Note the bundle number for the component bundle returned by this command.  
 * In the JBoss Fuse console, run `osgi:install -s mvn:org.jboss.quickstarts.fuse/sap-qidoc-destination-fuse` to install the quick start. Note the bundle number for the quick start returned by this command.  
 * In the JBoss Fuse console, run `log:tail` to monitor the JBoss Fuse log.
-* Copy the request files (`src/data/idoc?.xml`) in the project to the input directory(`work/sap-qidoc-destination-fuse/input`) of the quick start route.
+* Copy the IDoc files (`src/data/idoc?.xml`) in the project to the input directory(`work/sap-qidoc-destination-fuse/input`) of the quick start route.
 * In the JBoss Fuse console observe the request sent by the endpoint.
 * Execute the queued IDocs waiting in the inbound queue `QUICKSTARTQUEUE`. Using the SAP GUI, run transaction `SMQ2`, the Inbound Queue qRFC Monitor:  
     a. Select the `QUICKSTARTQUEUE` queue.  

@@ -7,7 +7,7 @@
 	<artifactId>sap-idoclist-server-fuse</artifactId>
 	<packaging>bundle</packaging>
 
-	<name>Fuse Transactional RFC Server Example</name>
+	<name>Fuse IDoc List Server Example</name>
 	<description>This Quick Start demonstrates how to use the JBoss Fuse SAP IDoc List Server endpoint in a JBoss Fuse environment.</description>
 	<url>http://http://www.jboss.org/products/fuse/overview/</url>
 
