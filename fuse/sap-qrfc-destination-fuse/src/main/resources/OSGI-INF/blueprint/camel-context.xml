@@ -4,8 +4,8 @@
 	xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
        http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
 
-	<camelContext trace="false" id="sap-trfc-destination-fuse-context" xmlns="http://camel.apache.org/schema/blueprint">
-    <route id="sap-trfc-destination-fuse-route">
+	<camelContext trace="false" id="sap-qrfc-destination-fuse-context" xmlns="http://camel.apache.org/schema/blueprint">
+    <route id="sap-qrfc-destination-fuse-route">
         <from uri="file:work/sap-qrfc-destination-fuse/input"/>
         <convertBodyTo type="java.lang.String"/>
         <log message="${body}" loggingLevel="INFO"/>

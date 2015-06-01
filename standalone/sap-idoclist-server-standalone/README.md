@@ -1,7 +1,7 @@
 Standalone SAP IDoc List Server Endpoint Quick Start   
 ====================================================   
 **Demonstrates the sap-idoclist-server component running in a standalone camel runtime.**   
-![Waldo](../../waldo.png "Waldo")
+![SAP Tool Suite](../../sap_tool_suite.png "SAP Tool Suite")
 
 * * *
 Author: William Collins - Fuse Team  

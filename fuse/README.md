@@ -1,7 +1,7 @@
 Fuse SAP Quick Starts  
 =====================  
  **This directory contains a set of quick start projects to get you started with using the suite of JBoss Fuse SAP Camel components in a JBoss Fuse environment.**  
-![Waldo](../waldo.png "Waldo")
+![SAP Tool Suite](../sap_tool_suite.png "SAP Tool Suite")
 
 ***  
 Author: William Collins - Fuse Team  
@@ -44,7 +44,7 @@ Demonstrates how to send an Intermediate Document (IDoc) to SAP from Apache Came
   
 ###[sap-idoclist-destination-fuse](sap-idoclist-destination-fuse/README.md)  
 
-Demonstrates how to send a list of Intermediate Document (IDoc) to SAP from Apache Camel in JBoss Fuse.   
+Demonstrates how to send a list of Intermediate Documents (IDoc) to SAP from Apache Camel in JBoss Fuse.   
   
 ###[sap-qidoc-destination-fuse](sap-qidoc-destination-fuse/README.md)  
 
@@ -52,11 +52,11 @@ Demonstrates how to send an Intermediate Document (IDoc) using the qRFC protocol
   
 ###[sap-qidoclist-destination-fuse](sap-qidoclist-destination-fuse/README.md)  
 
-Demonstrates how to send a list of Intermediate Document (IDoc) using the qRFC protocol to SAP from Apache Camel in JBoss Fuse.   
+Demonstrates how to send a list of Intermediate Documents (IDoc) using the qRFC protocol to SAP from Apache Camel in JBoss Fuse.   
   
 ###[sap-idoclist-server-fuse](sap-idoclist-server-fuse/README.md)  
 
-Demonstrates how to handle a list of Intermediate Document (IDoc) from SAP within Apache Camel in JBoss Fuse.   
+Demonstrates how to handle a list of Intermediate Documents (IDoc) from SAP within Apache Camel in JBoss Fuse.   
   
 -----
 For more information see:

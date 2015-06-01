@@ -1,7 +1,7 @@
 SAP Quick Starts  
 ================  
  **This directory contains a set of quick start projects to get you started with using the suite of JBoss Fuse SAP Camel components in a standalone Camel runtime.**  
-![Waldo](../waldo.png "Waldo")
+![SAP Tool Suite](../sap_tool_suite.png "SAP Tool Suite")
 
 ***  
 Author: William Collins - Fuse Team  

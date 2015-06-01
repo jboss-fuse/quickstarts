@@ -1,7 +1,7 @@
 Standalone SAP IDoc Destination Endpoint Quick Start
 ===========================================
 **Demonstrates the sap-idoc-destination component running in a standalone camel runtime.**   
-![Waldo](../../waldo.png "Waldo") 
+![SAP Tool Suite](../../sap_tool_suite.png "SAP Tool Suite")
 
 * * * 
 Author: William Collins - Fuse Team  

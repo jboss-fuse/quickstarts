@@ -1,7 +1,7 @@
 Fuse SAP Transactional RFC Server Endpoint Quick Start
 =======================================================================================================================
 **Demonstrates the sap-trfc-server component running in a Fuse camel runtime.**   
-![Waldo](../../waldo.png "Waldo")
+![SAP Tool Suite](../../sap_tool_suite.png "SAP Tool Suite")
 
 ***
 Author: William Collins - Fuse Team  

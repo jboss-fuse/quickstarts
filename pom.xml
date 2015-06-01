@@ -36,8 +36,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<!-- dependency versions -->
-		<camel-sap-version>6.2.0.redhat-SNAPSHOT</camel-sap-version>
-		<camel-version>2.14.0</camel-version>
+		<camel-sap-version>6.2.0.redhat-114</camel-sap-version>
+		<camel-version>2.14.1</camel-version>
 		<fabric.version>1.2.0.redhat-093</fabric.version>
 		<slf4j-api-version>1.7.5</slf4j-api-version>
 		<slf4j-version>1.7.5</slf4j-version>

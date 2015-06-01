@@ -1,7 +1,7 @@
 SAP Quick Starts  
 ================  
  **This directory contains a set of quick start projects to get you started with the suite of JBoss Fuse SAP Camel components.**  
-![Waldo](waldo.png "Waldo")
+![SAP Tool Suite](sap_tool_suite.png "SAP Tool Suite")
 
 ***  
 Author: William Collins - Fuse Team  
@@ -16,7 +16,7 @@ Source: <http://github.com/punkhorn/sap-quickstarts/>
 Overview  
 --------  
 
-The JBoss Fuse SAP quick starts are divided into three categories which demonstrate how to configure, deploy and run the JBoss Fuse SAP Camel components in different runtime environments.   
+The JBoss Fuse SAP quick starts are divided into two categories which demonstrate how to configure, deploy and run the JBoss Fuse SAP Camel components in different runtime environments.   
 
 ###[Standalone](standalone/README.md)  
 
@@ -27,10 +27,6 @@ The quick starts in this directory demonstrates how to configure, deploy and run
 
 The quick starts in this directory demonstrates how to configure, deploy and run the JBoss Fuse SAP Camel components in a JBoss Fuse OSGi container runtime.
 
-
-###[Fabric](fabric/README.md)  
-
-The quick starts in this directory demonstrates how to configure, deploy and run the JBoss Fuse SAP Camel components in a JBoss Fuse Fabric container runtime.
 
 -----
 For more information see:
