@@ -22,7 +22,7 @@
 
     <groupId>org.jboss.quickstarts.fuse</groupId>
     <artifactId>eip</artifactId>
-    <version>6.1.0.redhat-SNAPSHOT</version>
+    <version>6.2.0.redhat-SNAPSHOT</version>
     <packaging>bundle</packaging>
     <name>JBoss Fuse :: Examples :: Enterprise Integration Patterns</name>
     <description>Combine multiple EIPs into a single solution</description>
@@ -55,11 +55,11 @@
         <version.maven-bundle-plugin>2.3.4</version.maven-bundle-plugin>
 
         <!-- maven-compiler-plugin -->
-        <maven.compiler.target>1.6</maven.compiler.target>
-        <maven.compiler.source>1.6</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
 
         <!-- the version of the JBoss Fuse BOM, defining all the dependency versions -->
-        <jboss.fuse.bom.version>1.0.0-SNAPSHOT</jboss.fuse.bom.version>
+        <jboss.fuse.bom.version>6.2.0.redhat-133</jboss.fuse.bom.version>
     </properties>
 
     <licenses>
