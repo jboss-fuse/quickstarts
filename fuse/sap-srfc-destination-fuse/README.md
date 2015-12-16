@@ -1,4 +1,4 @@
-FUSE SAP Synchronouse RFC Destination Endpoint Quick Start  
+FUSE SAP Synchronous RFC Destination Endpoint Quick Start  
 =======================================================================================================================
 **Demonstrates the sap-srfc-destination component running in a Fuse camel runtime.**  
 ![SAP Tool Suite](../../sap_tool_suite.png "SAP Tool Suite")
