@@ -10,7 +10,7 @@
   <parent>
   	<groupId>org.jboss.quickstarts.fuse</groupId>
   	<artifactId>sap-quickstarts-parent</artifactId>
-  	<version>6.2.0.redhat-SNAPSHOT</version>
+  	<version>6.2.1.redhat-084</version>
   	<relativePath>../..</relativePath>
   </parent>
 
