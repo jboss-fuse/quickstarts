@@ -84,7 +84,7 @@ To build and run the quick start:
 		fabric:container-connect mychild
 				
 9. In the `mychild` container's JBoss Fuse console, run `log:tail` to monitor the container's log.
-10. Copy the request file (`src/data/request1.xml`) in the project to the input directory (`instances/mychild/work/sap-srfc-destination-fuse/input`) of the quick start route.
+10. Copy the request file (`src/data/request1.xml`) in the project to the input directory (`instances/mychild/work/sap-srfc-destination-fabric/input`) of the quick start route.
 11. In the container's log observe the request sent and the response returned by the endpoint.
 
 Stopping and Uninstalling the Quickstart
