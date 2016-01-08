@@ -55,7 +55,7 @@ To configure the quick start for your environment:
 
 >lib.sapjco3.jar=http://host/path/to/library/sapjco3.jar  
 >lib.sapidoc3.jar=http://host/path/to/library/sapidoc3.jar  
->lib.sapjco3.nativelib=http://host/path/to/library/<native-lib>  
+>lib.sapjco3.nativelib=http://host/path/to/library/\<native-lib\>  
 
 3. Edit the camel context file (`src/main/fabric8/camel.xml`) and modify the `quickstartDestinationData` bean to match the connection configuration for your SAP instance.
 4. Edit the project's request file (`src/data/request1.xml`) and enter the SID of your SAP in the location indicated.
