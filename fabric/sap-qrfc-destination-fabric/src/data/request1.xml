@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="ASCII"?>
+<!-- Replace here ==================================================================================vvv with the three character SID of your SAP instance -->
+<BAPI_FLCUST_CREATEFROMDATA:Request xmlns:BAPI_FLCUST_CREATEFROMDATA="http://sap.fusesource.org/rfc/XXX/BAPI_FLCUST_CREATEFROMDATA">
+  <CUSTOMER_DATA CUSTNAME="Fred Flintstone" FORM="Mr." STREET="123 Rubble Lane" POSTCODE="01234" CITY="Bedrock" COUNTR="US" PHONE="800-555-1212" EMAIL="fred@bedrock.com" CUSTTYPE="P" DISCOUNT="005" LANGU="E"/>
+</BAPI_FLCUST_CREATEFROMDATA:Request>
