@@ -7,7 +7,7 @@ Standalone SAP IDoc List Destination Endpoint Quick Start
 Author: William Collins - Fuse Team  
 Level: Beginner  
 Technologies: SAP, Camel, Spring  
-Summary: This quickstart demonstrates how to configure and use the sap-idoclist-destination component. This component sends IDoc document lists to SAP using the *Transactional RFC* (tRFC) protocol.  
+Summary: This quickstart demonstrates how to configure and use the sap-idoclist-destination component in a standalone Camel environment to send Intermediate Document (IDoc) lists to SAP. This component sends document lists to SAP using the *Transactional RFC* (tRFC) protocol.  
 Target Product: Fuse  
 Source: <http://github.com/punkhorn/sap-quickstarts/>  
 
@@ -20,8 +20,11 @@ This quick start shows how to integrate Apache Camel with SAP using the JBoss Fu
 
 This quick start uses XML files containing serialized IDoc document lists to create Customer records in the Flight Data Application within SAP. These files are consumed by the quickstart's route and their contents are then converted to string message bodies. These messages are then routed to an `sap-idoclist-destination` endpoint which converts and sends them to SAP as a list of `FLCUSTOMER_CREATEFROMDATA01` type IDoc document lists to create Customer records.  
 
+**NOTE:** This component does not guarantee that a series of IDoc lists sent through its endpoints are delivered and processed in the receiving SAP system in the same order that they were sent. The delivery and processing order of these lists may differ on the receiving SAP system due to communication errors and resends of a document list. To guarantee the delivery and processing order of a series of IDoc lists please see the JBoss Fuse SAP Queued IDoc List Destination Camel component.     
+
 In studying this quick start you will learn:
 
+* How to configure the Camel runtime environment in order to deploy the JBoss Fuse SAP IDoc List Destination Camel component. 
 * How to define a Camel route containing the JBoss Fuse SAP IDoc List Destination Camel component using the Spring XML syntax.
 * How to use the JBoss Fuse SAP IDoc List Destination Camel component to send IDoc lists to SAP. 
 * How to configure connections used by the component.
@@ -38,14 +41,14 @@ Before building and running this quick start you will need:
 
 * Maven 3.0.4 or higher
 * JDK 1.7 or 1.8
-* JBoss Fuse 6.2
+* JBoss Fuse 6.2.1
 * SAP JCo3 and IDoc3 libraries (sapjco3.jar, sapidoc3.jar and JCo native library for your OS platform)
 * SAP instance with [Flight Data Application](http://help.sap.com/saphelp_erp60_sp/helpdata/en/db/7c623cf568896be10000000a11405a/content.htm) setup.
 
 Configuring the ALE Subsystem
 -----------------------------
 
-To send IDocs from the quick start's route to your SAP system you must first configure the Application Linking Enabling (ALE) subsystem in your SAP system:
+To send IDoc Lists from the quick start's route to your SAP system you must first configure the Application Linking Enabling (ALE) subsystem in your SAP system:
 
 1. Using the SAP GUI, run transaction `SALE`, the ALE Implementation Guide.
 2. Ensure that Logical Systems for the quick start and your SAP client have been defined:   
@@ -90,7 +93,7 @@ To configure the quick start for your environment:
 
 1. Deploy the JCo3 library jar and native library (for your platform) and IDoc3 library jar to the `lib` folder of the project.
 * Edit the project's Spring file (`src/main/resources/META-INF/spring/camel-context.xml`) and modify the `quickstartDestinationData` bean to match the connection configuration for your SAP instance. 
-* Edit the project's IDoc files (`src/data/idoc?.xml`) and enter the SID of your SAP in the location indicated.
+* Edit the project's IDoc List files (`src/data/idoclist?.xml`) and enter the SID of your SAP in the location indicated.
 
 Build and Run the Quickstart
 ----------------------------

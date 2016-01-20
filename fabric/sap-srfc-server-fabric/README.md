@@ -18,9 +18,9 @@ What is it?
 
 This quick start shows how to integrate Apache Camel with SAP using the JBoss Fuse SAP Synchronous Remote Function Call Server Camel component. This component and its endpoints should be used in cases where a Camel route is required to synchronously handle requests from and responses to an SAP system.  
 
-**NOTE** The sRFC protocol used by this component delivers requests and responses to and from an SAP system **BEST-EFFORT**. In the case of a communication error when sending a request whether a remote function call is executed in a receiving SAP system is *in doubt*.     
-
 This quick start handles requests from SAP for the `BAPI_FLCUST_GETLIST` BAPI method to query for Customer records in the Flight Data Application. The route of this quick start simply mocks the behavior of this method by returning a fixed response of Customer records. The `sap-srfc-server` endpoint at the beginning of the route consumes requests from SAP and their contents are then converted to string message bodies and logged to the console. The message body of the exchange's message is then replaced with the contents of an XML file that contains a serialized SAP response for the BAPI method. This new message body content is then converted to a string, logged to the console and then sent back by the endpoint to SAP as the response to the call.
+
+**NOTE** The sRFC protocol used by this component delivers requests and responses from and to an SAP system **BEST-EFFORT**. When an SAP system experiences a communication error when sending a request to or receiving a response from this component, it will be *in doubt* whether the processing of a remote function call in Camel was successful. For the guaranteed delivery and processing of requests in Camel please see the JBoss Fuse SAP Transactional Remote Function Call Server Camel component.     
 
 In studying this quick start you will learn:
 
@@ -28,7 +28,6 @@ In studying this quick start you will learn:
 * How to define a Camel route containing the JBoss Fuse SAP Synchronous Remote Function Call Server Camel component using the Blueprint XML syntax.
 * How to use the JBoss Fuse SAP Synchronous Remote Function Call Server Camel component to handle requests from SAP. 
 * How to configure connections used by the component.
-* How to configure the Fuse runtime environment in order to deploy the JBoss Fuse SAP Synchronous Remote Function Call Server Camel component.
 
 For more information see:
 

@@ -7,7 +7,7 @@ Standalone SAP Transactional RFC Server Endpoint Quick Start
 Author: William Collins - Fuse Team  
 Level: Beginner  
 Technologies: SAP, Camel, Spring  
-Summary: This quickstart demonstrates how to configure and use the sap-trfc-server component to handle a remote function call from SAP. This component handles a remote function call from SAP using the *Transactional RFC* (tRFC) protocol.       
+Summary: This quickstart demonstrates how to configure and use the sap-trfc-server component in a standalone Camel environment to handle a remote function call from SAP. This component handles a remote function call from SAP using the *Transactional RFC* (tRFC) protocol.       
 Target Product: Fuse  
 Source: <http://github.com/punkhorn/sap-quickstarts/>  
 
@@ -26,10 +26,11 @@ This quick start handles requests from SAP for the `BAPI_FLCUST_CREATEFROMDATA` 
 
 **NOTE:** If the endpoints of this component receive a request from SAP using the sRFC protocol, the request will be processed as in the JBoss Fuse SAP Synchronous Remote Function Call Server Camel component however a response will not be sent back to the calling SAP system.    
 
-**NOTE:** This component does not guarantee in and of itself the order of a series of requests through its endpoints in a transaction. It is incumbent upon the sending SAP system to serialize the requests it sends to this component; the component simply delivers the requests in the order it receives them. To achieve **Queued RFC** (qRFC) delivery guarantees, the sending SAP system should use an output queue when sending its requests.     
+**NOTE:** This component does not guarantee that a series of requests sent through its endpoints are handled and processed in the receiving Camel route in the same order that they were sent. The delivery and processing order of these requests may differ on the receiving Camel route due to communication errors and resends of a document list. This component only guarantees that each request is processed **AT-MOST-ONCE**. To guarantee the delivery **and** processing order of a series of requests from SAP it is incumbent upon the sending SAP system to serialize its requests to an **outbound queue** when sending them to this component to achieve **IN-ORDER** delivery and processing guarantees.  
 
 In studying this quick start you will learn:
 
+* How to configure the Camel runtime environment in order to deploy the JBoss Fuse SAP Transactional Remote Function Call Server Camel component. 
 * How to define a Camel route containing the JBoss Fuse SAP Transactional Remote Function Call Server Camel component using the Spring XML syntax.
 * How to use the JBoss Fuse SAP Transactional Remote Function Call Server Camel component to handle requests from SAP. 
 * How to configure connections used by the component.
@@ -46,7 +47,7 @@ Before building and running this quick start you will need:
 
 * Maven 3.0.4 or higher
 * JDK 1.7 or 1.8
-* JBoss Fuse 6.2
+* JBoss Fuse 6.2.1
 * SAP JCo3 and IDoc3 libraries (sapjco3.jar, sapidoc3.jar and JCo native library for your OS platform)
 * SAP instance with [Flight Data Application](http://help.sap.com/saphelp_erp60_sp/helpdata/en/db/7c623cf568896be10000000a11405a/content.htm) setup.
 
@@ -56,9 +57,8 @@ Configuring the Quickstart for your environment
 To configure the quick start for your environment: 
 
 1. Deploy the JCo3 library jar and native library (for your platform) and IDoc3 library jar to the `lib` folder of the project.
-* Edit the project's Spring file (`src/main/resources/META-INF/spring/camel-context.xml`) and modify the `quickstartDestinationData` bean and the `quickstartServerData` bean to match the connection configuration for your SAP instance. 
-* Edit the project's IDoc files (`src/data/idoc?.xml`) and enter the SID of your SAP in the location indicated.
-4. Ensure the destination `QUICKSTART` has been defined in your SAP instance:   
+2. Edit the project's Spring file (`src/main/resources/META-INF/spring/camel-context.xml`) and modify the `quickstartDestinationData` bean and the `quickstartServerData` bean to match the connection configuration for your SAP instance. 
+3. Ensure the destination `QUICKSTART` has been defined in your SAP instance:   
 	a. Using the SAP GUI, run transaction `SM59` (RFC Destinations).    
     b. Create a new destination (Edit > Create):  
 		1. **RFC Destination** : `QUICKSTART`.    
@@ -68,7 +68,7 @@ To configure the quick start for your environment:
             ii.**Program ID** : `QUICKSTART`.   
         4. **Unicode**:   
         	i. **Communication Type with Target System** : `Unicode`   
-* Ensure the following `ZBAPI_FLCUST_CREATEFROMDATA` ABAP program is installed and activated in your SAP client:  
+4. Ensure the following `ZBAPI_FLCUST_CREATEFROMDATA` ABAP program is installed and activated in your SAP client:  
 
 		*&---------------------------------------------------------------------*
 		*& Report  ZBAPI_FLCUST_CREATEFROMDATA

@@ -6,7 +6,7 @@ FABRIC SAP IDoc Destination Endpoint Quick Start
 * * *
 Author: William Collins - JBoss Fuse Team  
 Level: Advanced  
-Technologies: Fabric, Camel, SAP  
+Technologies: Fabric, Camel, SAP, Blueprint  
 Summary: This quick start demonstrates how to configure and use the sap-idoc-destination component in a JBoss Fuse Fabric environment to send Intermediate Documents (IDocs) to SAP. This component sends IDoc documents to SAP using the *Transactional RFC* (tRFC) protocol.    
 Target Product: Fuse  
 Source: <https://github.com/jboss-fuse/fuse/tree/master/quickstarts/camel-sap>  
@@ -18,15 +18,15 @@ What is it?
 
 This quick start shows how to integrate Apache Camel with SAP using the JBoss Fuse SAP IDoc Destination Camel component. This component and its endpoints should be used in cases where a camel route is required to send an Intermediate document (IDoc) to an SAP system.  
 
-**NOTE:** This component does not guarantee the order of a series of documents through its endpoints and the delivery and processing order of these documents may differ on the receiving SAP system due to communication errors and resends of a documents. For guaranteed delivery order please see the JBoss Fuse SAP Queued IDoc Destination Camel component.     
-
 This quick start uses XML files containing serialized IDoc documents to create Customer records in the Flight Data Application within SAP. These files are consumed by the quickstart's route and their contents are then converted to string message bodies. These messages are then routed to an `sap-idoc-destination` endpoint which converts and sends them to SAP as `FLCUSTOMER_CREATEFROMDATA01` type IDoc documents to create Customer records.  
+
+**NOTE:** This component does not guarantee that a series of IDocs sent through its endpoints are delivered and processed in the receiving SAP system in the same order that they were sent. The delivery and processing order of these documents may differ on the receiving SAP system due to communication errors and resends of a document. To guarantee the delivery and processing order of a series of IDocs please see the JBoss Fuse SAP Queued IDoc Destination Camel component.     
 
 In studying this quick start you will learn:
 
 * How to define, build and deploy a JBoss Fuse Fabric profile that configures a Fabric container to use the JBoss Fuse SAP IDoc Destination Camel component
 * How to define a Camel route containing the JBoss Fuse SAP IDoc Destination Camel component using the Blueprint XML syntax.
-* How to use the JBoss Fuse SAP IDoc Destination Camel component. 
+* How to use the JBoss Fuse SAP IDoc Destination Camel component to send IDocs to SAP. 
 * How to configure connections used by the component.  
 
 For more information see:
@@ -125,8 +125,10 @@ To build and run the quick start:
 		fabric:container-connect mychild
 				
 9. In the `mychild` container's JBoss Fuse console, run `log:tail` to monitor the container's log.
-10. Copy the idoc files (`src/data/idoc?.xml`) in the project to the input directory (`instances/mychild/work/sap-idoc-destination-fabric/input`) of the quick start route.
-11. In the container's log observe the request sent and the response returned by the endpoint.
+10. Copy the IDoc files (`src/data/idoc?.xml`) in the project to the input directory (`instances/mychild/work/sap-idoc-destination-fabric/input`) of the quick start route.
+11. In the container's log observe the documents sent to the endpoint.
+12. Using the SAP GUI, run transaction `SE16`, Data Browser, and display the contents of the table `SCUSTOM`.
+13. Search the table (Edit > Find..) for the newly created Customer records: `Fred Flintstone`, `Wilma Flintstone`, `Barney Rubble`, and `Betty Rubble`. 
 
 Stopping and Uninstalling the Quickstart
 ----------------------------------------

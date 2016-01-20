@@ -7,7 +7,7 @@ FABRIC SAP IDoc List Server Endpoint Quick Start
 Author: William Collins - JBoss Fuse Team  
 Level: Advanced  
 Technologies: Fabric, Camel, SAP  
-Summary: This quick start demonstrates how to configure and use the sap-idoclist-server component in a JBoss Fuse Fabric environment to handle a remote function call from SAP. This component handles IDoc document lists from SAP using the *Transactional RFC* (tRFC) protocol.  
+Summary: This quick start demonstrates how to configure and use the sap-idoclist-server component in a JBoss Fuse Fabric environment to handle Intermediate Document (IDoc) Lists from SAP. This component handles IDoc document lists from SAP using the *Transactional RFC* (tRFC) protocol.  
 Target Product: Fuse  
 Source: <https://github.com/jboss-fuse/fuse/tree/master/quickstarts/camel-sap>  
 
@@ -20,7 +20,7 @@ This quick start shows how to integrate Apache Camel with SAP using the JBoss Fu
 
 This quick start handles lists of `FLCUSTOMER_CREATEFROMDATA01` type IDoc documents from SAP to create Customer records in the Flight Data Application. The route of this quick start simply mocks the processing of these documents. The `sap-idoclist-server` endpoint at the beginning of the route consumes a list of IDoc documents from SAP and then converts them to a string message body and logs them to the console. 
 
-**NOTE:** This component does not guarantee in and of itself the order of a series of document lists sent through its endpoints in a transaction. It is incumbent upon the sending SAP system to serialize the document lists it sends to this component; the component simply delivers the document lists in the order it receives them. To achieve **Queued RFC** (qRFC) delivery guarantees, the sending SAP system should use an output queue when sending it's document lists.     
+**NOTE:** This component does not guarantee that a series of IDoc lists sent through its endpoints are handled and processed in the receiving Camel route in the same order that they were sent. The delivery and processing order of these lists may differ on the receiving Camel route due to communication errors and resends of a document list. This component only guarantees that each idoc list is processed **AT-MOST-ONCE**. To guarantee the delivery **and** processing order of a series of IDoc lists from SAP it is incumbent upon the sending SAP system to serialize its document lists to an **outbound queue** when sending them to this component to achieve **IN-ORDER** delivery and processing guarantees.  
 
 In studying this quick start you will learn:
 
@@ -28,7 +28,6 @@ In studying this quick start you will learn:
 * How to define a Camel route containing the JBoss Fuse SAP IDoc List Server Camel component using the Blueprint XML syntax.
 * How to use the JBoss Fuse SAP IDoc List Server Camel component to handle requests from SAP. 
 * How to configure connections used by the component.
-* How to configure the Fuse runtime environment in order to deploy the JBoss Fuse SAP IDoc List Server Camel component.
 
 For more information see:
 

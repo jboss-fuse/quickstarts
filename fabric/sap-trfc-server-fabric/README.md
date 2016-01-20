@@ -26,7 +26,7 @@ This quick start handles requests from SAP for the `BAPI_FLCUST_CREATEFROMDATA` 
 
 **NOTE:** If the endpoints of this component receive a request from SAP using the sRFC protocol, the request will be processed as in the JBoss Fuse SAP Synchronous Remote Function Call Server Camel component however a response will not be sent back to the calling SAP system.    
 
-**NOTE:** This component does not guarantee in and of itself the order of a series of requests through its endpoints in a transaction. It is incumbent upon the sending SAP system to serialize the requests it sends to this component; the component simply delivers the requests in the order it receives them. To achieve **Queued RFC** (qRFC) delivery guarantees, the sending SAP system should use an output queue when sending its requests.     
+**NOTE:** This component does not guarantee that a series of requests sent through its endpoints are handled and processed in the receiving Camel route in the same order that they were sent. The delivery and processing order of these requests may differ on the receiving Camel route due to communication errors and resends of a document list. This component only guarantees that each request is processed **AT-MOST-ONCE**. To guarantee the delivery **and** processing order of a series of requests from SAP it is incumbent upon the sending SAP system to serialize its requests to an **outbound queue** when sending them to this component to achieve **IN-ORDER** delivery and processing guarantees.  
 
 In studying this quick start you will learn:
 
@@ -34,7 +34,6 @@ In studying this quick start you will learn:
 * How to define a Camel route containing the JBoss Fuse SAP Transactional Remote Function Call Server Camel component using the Blueprint XML syntax.
 * How to use the JBoss Fuse SAP Transactional Remote Function Call Server Camel component to handle requests from SAP. 
 * How to configure connections used by the component.
-* How to configure the Fuse runtime environment in order to deploy the JBoss Fuse SAP Transactional Remote Function Call Server Camel component.
 
 For more information see:
 

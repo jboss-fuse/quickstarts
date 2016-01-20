@@ -16,7 +16,7 @@ Source: <https://github.com/jboss-fuse/fuse/tree/master/quickstarts/camel-sap>
 What is it?  
 -----------  
 
-This quick start shows how to integrate Apache Camel with SAP using the JBoss Fuse SAP Queued IDoc Destination Camel component. This component and its endpoints should be used in cases where a camel route is required to send a series of Intermediate documents (IDocs) to an SAP system and ensure that they are processed in the same order in which they were sent.  
+This quick start shows how to integrate Apache Camel with SAP using the JBoss Fuse SAP Queued IDoc Destination Camel component. This component and its endpoints should be used in cases where a camel route is required to send a series of Intermediate documents (IDocs) to an SAP system and ensure that the documents are processed in the SAP system in the same order that they were sent.  
 
 This quick start uses XML files containing serialized IDoc documents to create Customer records in the Flight Data Application within SAP. These files are consumed by the quickstart's route and their contents are then converted to string message bodies. These messages are then routed to an `sap-qidoc-destination` endpoint which converts and sends them to SAP as `FLCUSTOMER_CREATEFROMDATA01` type IDoc documents to create Customer records.  
 
@@ -123,7 +123,7 @@ To build and run the quick start:
 		fabric:container-connect mychild
 				
 9. In the `mychild` container's JBoss Fuse console, run `log:tail` to monitor the container's log.
-10. Copy the idoc files (`src/data/idoc?.xml`) in the project to the input directory (`instances/mychild/work/sap-idoc-destination-fabric/input`) of the quick start route.
+10. Copy the idoc files (`src/data/idoc?.xml`) in the project to the input directory (`instances/mychild/work/sap-qidoc-destination-fabric/input`) of the quick start route.
 11. In the container's log observe the documents sent to the endpoint.
 12. Execute the queued IDocs waiting in the inbound queue `QUICKSTARTQUEUE`. Using the SAP GUI, run transaction `SMQ2`, the Inbound Queue qRFC Monitor:  
     a. Select the `QUICKSTARTQUEUE` queue.  

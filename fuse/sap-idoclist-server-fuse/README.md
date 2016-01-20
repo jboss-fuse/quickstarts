@@ -5,8 +5,8 @@ Fuse SAP IDoc List Server Endpoint Quick Start
 
 ***
 Author: William Collins - Fuse Team  
-Level: Beginner  
-Technologies: SAP, Camel, Spring  
+Level: Intermediate  
+Technologies: Fuse, SAP, Camel, Blueprint  
 Summary: This quickstart demonstrates how to configure and use the sap-idoclist-server component in a Fuse environment to handle a remote function call from SAP. This component handles IDoc document lists from SAP using the *Transactional RFC* (tRFC) protocol.         
 Target Product: Fuse  
 Source: <http://github.com/punkhorn/sap-quickstarts/>  
@@ -20,14 +20,16 @@ This quick start shows how to integrate Apache Camel with SAP using the JBoss Fu
 
 This quick start handles lists of `FLCUSTOMER_CREATEFROMDATA01` type IDoc documents from SAP to create Customer records in the Flight Data Application. The route of this quick start simply mocks the processing of these documents. The `sap-idoclist-server` endpoint at the beginning of the route consumes a list of IDoc documents from SAP and then converts them to a string message body and logs them to the console. 
 
-**NOTE:** This component does not guarantee in and of itself the order of a series of document lists sent through its endpoints in a transaction. It is incumbent upon the sending SAP system to serialize the document lists it sends to this component; the component simply delivers the document lists in the order it receives them. To achieve **Queued RFC** (qRFC) delivery guarantees, the sending SAP system should use an output queue when sending it's document lists.     
+**NOTE:** This component does not guarantee that a series of IDoc lists sent through its endpoints are handled and processed in the receiving Camel route in the same order that they were sent. The delivery and processing order of these lists may differ on the receiving Camel route due to communication errors and resends of a document list. This component only guarantees that each idoc list is processed **AT-MOST-ONCE**. To guarantee the delivery **and** processing order of a series of IDoc lists from SAP it is incumbent upon the sending SAP system to serialize its document lists to an **outbound queue** when sending them to this component to achieve **IN-ORDER** delivery and processing guarantees.  
+
+For guaranteed delivery and processing order please see the JBoss Fuse SAP Queued IDoc List Server Camel component.     
 
 In studying this quick start you will learn:
 
+* How to configure the Fuse runtime environment in order to deploy the JBoss Fuse SAP IDoc List Server Camel component.
 * How to define a Camel route containing the JBoss Fuse SAP IDoc List Server Camel component using the Blueprint XML syntax.
 * How to use the JBoss Fuse SAP IDoc List Server Camel component to handle requests from SAP. 
 * How to configure connections used by the component.
-* How to configure the Fuse runtime environment in order to deploy the JBoss Fuse SAP IDoc List Server Camel component.
 
 For more information see:
 
@@ -41,7 +43,7 @@ Before building and running this quick start you will need:
 
 * Maven 3.0.4 or higher
 * JDK 1.7 or 1.8
-* JBoss Fuse 6.2
+* JBoss Fuse 6.2.1 container not running with a Fabric
 * SAP JCo3 and IDoc3 libraries (sapjco3.jar, sapidoc3.jar and JCo native library for your OS platform)
 * SAP instance with [Flight Data Application](http://help.sap.com/saphelp_erp60_sp/helpdata/en/db/7c623cf568896be10000000a11405a/content.htm) setup.
 
@@ -92,10 +94,10 @@ Configuring the Quickstart for your environment
 To configure the quick start for your environment: 
 
 1. Deploy the JCo3 library jar and native library (for your platform) and IDoc3 library jar to the `lib` folder of your JBoss Fuse installation.  
-2. Edit the custom properties file (`etc/custom.properties`) of your JBoss Fuse installation and add the following packages to the `org.osgi.framework.system.packages.extra` property:  
+2. In your JBoss Fuse installation, copy the `org.osgi.framework.system.packages.extra` property from the config properties file (`etc/config.properties`) to the custom properties file (`etc/custom.properties`) and append the following packages to the copied property:  
 
 > org.osgi.framework.system.packages.extra = \  
->...  
+>> ... \  
 >> com.sap.conn.idoc, \  
 >> com.sap.conn.idoc.jco, \   
 >> com.sap.conn.jco, \   
@@ -184,13 +186,18 @@ Build and Run the Quickstart
 To build and run the quick start:
 
 1. Change your working directory to the `sap-idoclist-server-fuse` directory.
-* Run `mvn clean install` to build the quick start.
-* In your JBoss Fuse installation directory run, `./bin/fuse` to start the JBoss Fuse runtime.
-* In the JBoss Fuse console, run `osgi:install -s mvn:org.fusesource/camel-sap` to install the JBoss Fuse SAP Synchronous Remote Function Call Server Camel component. Note the bundle number for the component bundle returned by this command.  
-* In the JBoss Fuse console, run `osgi:install -s mvn:org.jboss.quickstarts.fuse/sap-idoclist-server-fuse` to install the quick start. Note the bundle number for the quick start returned by this command.  
-* In the JBoss Fuse console, run `log:tail` to monitor the JBoss Fuse log.
-* Invoke the camel route from SAP by running the `ZFLCUSTOMER_CREATEFROMDATA01` program.
-* In the console observe the request received by the endpoint.  
+2. Run `mvn clean install` to build the quick start.
+3. In your JBoss Fuse installation directory run, `./bin/fuse` to start the JBoss Fuse runtime.
+4. In the JBoss Fuse console, run `osgi:install -s mvn:org.fusesource/camel-sap` to install the JBoss Fuse SAP Synchronous Remote Function Call Server Camel component. Note the bundle number for the component bundle returned by this command.  
+5. In the JBoss Fuse console, run `osgi:install -s mvn:org.jboss.quickstarts.fuse/sap-idoclist-server-fuse` to install the quick start. Note the bundle number for the quick start returned by this command.  
+6. In the JBoss Fuse console, run `log:tail` to monitor the JBoss Fuse log.
+7. Invoke the camel route from SAP:  
+  a.Run the `ZFLCUSTOMER_CREATEFROMDATA01` program.  
+  b.Using the SAP GUI, run transaction `SM58`, the Transactional RFC Monitor:   
+    i. 		Display the outstanding transactions (Program > Execute).  
+    ii.		Select the transaction destined for the `QUICKSTART`.  
+    iii.	Execute the transaction to send the requests (Edit > Execute LUW).  
+8. In the console observe the document received by the endpoint.  
 
 Stopping and Uninstalling the Quickstart
 ----------------------------------------
@@ -198,7 +205,7 @@ Stopping and Uninstalling the Quickstart
 To uninstall the quick start and stop the JBoss Fuse run-time perform the following in the JBoss Fuse console:
 
 1. Enter Ctrl-c to stop monitoring the JBoss Fuse log.
-* Run `osgi:uninstall <quickstart-bundle-number>` providing the bundle number for the quick start bundle. 
-* Run `osgi:uninstall <camel-sap-bundle-number>` providing the bundle number for the component bundle. 
-* Run `osgi:shutdown -f` to shutdown the JBoss Fuse runtime.
+2. Run `osgi:uninstall <quickstart-bundle-number>` providing the bundle number for the quick start bundle. 
+3. Run `osgi:uninstall <camel-sap-bundle-number>` providing the bundle number for the component bundle. 
+4. Run `osgi:shutdown -f` to shutdown the JBoss Fuse runtime.
 

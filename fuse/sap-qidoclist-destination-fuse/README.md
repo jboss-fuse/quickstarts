@@ -5,9 +5,9 @@ FUSE SAP Queued IDoc List Destination Endpoint Quick Start
 
 * * *
 Author: William Collins - Fuse Team  
-Level: Beginner  
-Technologies: SAP, Camel, Blueprint  
-Summary: This quickstart demonstrates how to configure and use the sap-qidoclist-destination component in a Fuse environment to send Intermediate Document (IDoc) Lists to SAP in order. This component sends IDoc document lists to SAP using the *Queued RFC* (qRFC) protocol.    
+Level: Intermediate  
+Technologies: Fuse, SAP, Camel, Blueprint  
+Summary: This quickstart demonstrates how to configure and use the sap-qidoclist-destination component in a Fuse environment to send Intermediate Document (IDoc) Lists to SAP. This component sends IDoc document lists to SAP using the *Queued RFC* (qRFC) protocol.    
 Target Product: Fuse  
 Source: <http://github.com/punkhorn/sap-quickstarts/>  
 
@@ -16,16 +16,16 @@ Source: <http://github.com/punkhorn/sap-quickstarts/>
 What is it?  
 -----------  
 
-This quick start shows how to integrate Apache Camel with SAP using the JBoss Fuse SAP Queued IDoc List Destination Camel component. This component and its endpoints should be used in cases where a camel route is required to send a list of Intermediate documents (IDocs) list to an SAP system in order.  
+This quick start shows how to integrate Apache Camel with SAP using the JBoss Fuse SAP Queued IDoc List Destination Camel component. This component and its endpoints should be used in cases where a camel route is required to send a list of Intermediate documents (IDocs) list to an SAP system and ensure that the document lists are processed in the SAP system in the same order that they were sent.  
 
 This quick start uses XML files containing serialized IDoc document lists to create Customer records in the Flight Data Application within SAP. These files are consumed by the quickstart's route and their contents are then converted to string message bodies. These messages are then routed to an `sap-qidoclist-destination` endpoint which converts and sends them to SAP as `FLCUSTOMER_CREATEFROMDATA01` type IDoc document lists to create Customer records.  
 
 In studying this quick start you will learn:
 
+* How to configure the Fuse runtime environment in order to deploy the JBoss Fuse SAP Queued IDoc Destination Camel component.   
 * How to define a Camel route containing the JBoss Fuse SAP Queued IDoc List Destination Camel component using the Blueprint XML syntax.
 * How to use the JBoss Fuse SAP Queued IDoc List Destination Camel component to send IDoc Lists to SAP. 
 * How to configure connections used by the component.
-* How to configure the Fuse runtime environment in order to deploy the JBoss Fuse SAP Queued IDoc Destination Camel component.   
 
 For more information see:
 
@@ -39,14 +39,14 @@ Before building and running this quick start you will need:
 
 * Maven 3.0.4 or higher
 * JDK 1.7 or 1.8
-* A JBoss Fuse 6.2 container not running with a Fabric
+* A JBoss Fuse 6.2.1 container not running with a Fabric
 * SAP JCo3 and IDoc3 libraries (sapjco3.jar, sapidoc3.jar and JCo native library for your OS platform)
 * SAP instance with [Flight Data Application](http://help.sap.com/saphelp_erp60_sp/helpdata/en/db/7c623cf568896be10000000a11405a/content.htm) setup.
 
 Configuring the ALE Subsystem
 -----------------------------
 
-To send IDocs from the quick start's route to your SAP system, you must first configure the Application Linking Enabling (ALE) subsystem in your SAP system:
+To send IDoc Lists from the quick start's route to your SAP system, you must first configure the Application Linking Enabling (ALE) subsystem in your SAP system:
 
 1. Using the SAP GUI, run transaction `SALE`, the ALE Implementation Guide.
 2. Ensure that Logical Systems for the quick start and your SAP client have been defined:  
@@ -90,10 +90,10 @@ Configuring the Quickstart for your environment
 To configure the quick start for your environment: 
 
 1. Deploy the JCo3 library jar and native library (for your platform) and IDoc3 library jar to the `lib` folder of your JBoss Fuse installation.  
-2. Edit the custom properties file (`etc/custom.properties`) of your JBoss Fuse installation and add the following packages to the `org.osgi.framework.system.packages.extra` property:  
+2. In your JBoss Fuse installation, copy the `org.osgi.framework.system.packages.extra` property from the config properties file (`etc/config.properties`) to the custom properties file (`etc/custom.properties`) and append the following packages to the copied property:  
 
 > org.osgi.framework.system.packages.extra = \  
->...  
+>> ... \  
 >> com.sap.conn.idoc, \  
 >> com.sap.conn.idoc.jco, \   
 >> com.sap.conn.jco, \   
@@ -103,7 +103,7 @@ To configure the quick start for your environment:
 >> com.sap.conn.jco.server  
 
 3. Edit the project's Blueprint file (`src/main/resources/OSGI-INF/blueprint/camel-context.xml`) and modify the `quickstartDestinationData` bean to match the connection configuration for your SAP instance.  
-4. Edit the project's IDoc files (`src/data/idoclist?.xml`) and enter the SID of your SAP in the location indicated.
+4. Edit the project's IDoc List files (`src/data/idoclist?.xml`) and enter the SID of your SAP in the location indicated.
 
 Build and Run the Quickstart
 ----------------------------
@@ -116,8 +116,8 @@ To build and run the quick start:
 * In the JBoss Fuse console, run `osgi:install -s mvn:org.fusesource/camel-sap` to install the JBoss Fuse SAP Synchronous Remote Function Call Destination Camel component. Note the bundle number for the component bundle returned by this command.  
 * In the JBoss Fuse console, run `osgi:install -s mvn:org.jboss.quickstarts.fuse/sap-qidoclist-destination-fuse` to install the quick start. Note the bundle number for the quick start returned by this command.  
 * In the JBoss Fuse console, run `log:tail` to monitor the JBoss Fuse log.
-* Copy the IDoc files (`src/data/idoclist?.xml`) in the project to the input directory(`work/sap-qidoclist-destination-fuse/input`) of the quick start route.
-* In the JBoss Fuse console observe the request sent by the endpoint.
+* Copy the IDoc List files (`src/data/idoclist?.xml`) in the project to the input directory(`work/sap-qidoclist-destination-fuse/input`) of the quick start route.
+* In the JBoss Fuse console observe the document lists sent by the endpoint.
 * Execute the queued IDoc lists waiting in the inbound queue `QUICKSTARTQUEUE`. Using the SAP GUI, run transaction `SMQ2`, the Inbound Queue qRFC Monitor:  
     a. Select the `QUICKSTARTQUEUE` queue.  
     b. Display the queue contents (Edit > Display Selection).  

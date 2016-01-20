@@ -16,7 +16,7 @@ Source: <https://github.com/jboss-fuse/fuse/tree/master/quickstarts/camel-sap>
 What is it?  
 -----------  
 
-This quick start shows how to integrate Apache Camel with SAP using the JBoss Fuse SAP Queued IDoc List Destination Camel component. This component and its endpoints should be used in cases where a camel route is required to send a series of Intermediate document (IDoc) lists to an SAP system and ensure that they are processed in the same order in which they were sent.  
+This quick start shows how to integrate Apache Camel with SAP using the JBoss Fuse SAP Queued IDoc List Destination Camel component. This component and its endpoints should be used in cases where a camel route is required to send a series of Intermediate document (IDoc) lists to an SAP system and ensure that the document lists are processed in the SAP system in the same order that they were sent.  
 
 This quick start uses XML files containing serialized IDoc document lists to create Customer records in the Flight Data Application within SAP. These files are consumed by the quickstart's route and their contents are then converted to string message bodies. These messages are then routed to an `sap-qidoclist-destination` endpoint which converts and sends them to SAP as `FLCUSTOMER_CREATEFROMDATA01` type IDoc document lists to create Customer records.  
 
@@ -97,7 +97,7 @@ To configure the quick start for your environment:
 >lib.sapjco3.nativelib=http://host/path/to/library/\<native-lib\>  
 
 3. Edit the camel context file (`src/main/fabric8/camel.xml`) and modify the `quickstartDestinationData` bean to match the connection configuration for your SAP instance.
-4. Edit the project's IDoc files (`src/data/idoc?.xml`) and enter the SID of your SAP in the location indicated.
+4. Edit the project's IDoc List files (`src/data/idoclist?.xml`) and enter the SID of your SAP in the location indicated.
 
 Build and Run the Quickstart
 ----------------------------

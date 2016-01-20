@@ -22,6 +22,42 @@ It is recommended that you study and run the quick starts in the following order
 
 Demonstrates how to perform *Synchronous Remote Function Calls* (sRFC) to SAP from Apache Camel in a JBoss Fuse Fabric Container.   
   
+###[sap-trfc-destination-fabric](sap-trfc-destination-fabric/README.md)  
+
+Demonstrates how to perform *Transactional Remote Function Calls* (tRFC) to SAP from Apache Camel in JBoss Fuse Fabric Container.      
+  
+###[sap-qrfc-destination-fabric](sap-qrfc-destination-fabric/README.md)  
+
+Demonstrates how to perform *Queued Remote Function Calls* (qRFC) to SAP from Apache Camel in JBoss Fuse Fabric Container.   
+  
+###[sap-srfc-server-fabric](sap-srfc-server-fabric/README.md)   
+
+Demonstrates how to handle *Synchronous Remote Function Calls* (sRFC) from SAP within Apache Camel in JBoss Fuse Fabric Container.   
+  
+###[sap-trfc-server-fabric](sap-trfc-server-fabric/README.md)  
+
+Demonstrates how to handle *Transactional Remote Function Calls* (tRFC) from SAP within Apache Camel in JBoss Fuse Fabric Container.   
+  
+###[sap-idoc-destination-fabric](sap-idoc-destination-fabric/README.md)  
+
+Demonstrates how to send an Intermediate Document (IDoc) to SAP from Apache Camel in JBoss Fuse Fabric Container.   
+  
+###[sap-idoclist-destination-fabric](sap-idoclist-destination-fabric/README.md)  
+
+Demonstrates how to send a list of Intermediate Documents (IDoc) to SAP from Apache Camel in JBoss Fuse Fabric Container.   
+  
+###[sap-qidoc-destination-fabric](sap-qidoc-destination-fabric/README.md)  
+
+Demonstrates how to send an Intermediate Document (IDoc) using the qRFC protocol to SAP from Apache Camel in JBoss Fuse Fabric Container.   
+  
+###[sap-qidoclist-destination-fabric](sap-qidoclist-destination-fabric/README.md)  
+
+Demonstrates how to send a list of Intermediate Documents (IDoc) using the qRFC protocol to SAP from Apache Camel in JBoss Fuse Fabric Container.   
+  
+###[sap-idoclist-server-fabric](sap-idoclist-server-fabric/README.md)  
+
+Demonstrates how to handle a list of Intermediate Documents (IDoc) from SAP within Apache Camel in JBoss Fuse Fabric Container.   
+  
 -----
 For more information see:
 

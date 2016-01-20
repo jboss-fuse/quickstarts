@@ -28,11 +28,11 @@
 	<!-- *** Please enter the connection property values for your environment *** -->
 	<bean id="quickstartDestinationData"
 		class="org.fusesource.camel.component.sap.model.rfc.impl.DestinationDataImpl">
-		<property name="ashost" value="example.com" />
-		<property name="sysnr" value="00" />
-		<property name="client" value="000" />
-		<property name="user" value="username" />
-		<property name="passwd" value="password" />
+		<property name="ashost" value="nplhost" />
+		<property name="sysnr" value="42" />
+		<property name="client" value="001" />
+		<property name="user" value="developer" />
+		<property name="passwd" value="ch4ngeme" />
 		<property name="lang" value="en" />
 	</bean>
 

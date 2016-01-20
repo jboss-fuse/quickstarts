@@ -5,8 +5,8 @@ Fuse SAP Transactional RFC Server Endpoint Quick Start
 
 ***
 Author: William Collins - Fuse Team  
-Level: Beginner  
-Technologies: SAP, Camel, Spring  
+Level: Intermediate  
+Technologies: Fuse, SAP, Camel, Blueprint  
 Summary: This quickstart demonstrates how to configure and use the sap-trfc-server component in a Fuse environment to handle a remote function call from SAP. This component handles a remote function call from SAP using the *Transactional RFC* (tRFC) protocol.       
 Target Product: Fuse  
 Source: <http://github.com/punkhorn/sap-quickstarts/>  
@@ -26,7 +26,7 @@ This quick start handles requests from SAP for the `BAPI_FLCUST_CREATEFROMDATA` 
 
 **NOTE:** If the endpoints of this component receive a request from SAP using the sRFC protocol, the request will be processed as in the JBoss Fuse SAP Synchronous Remote Function Call Server Camel component however a response will not be sent back to the calling SAP system.    
 
-**NOTE:** This component does not guarantee in and of itself the order of a series of requests through its endpoints in a transaction. It is incumbent upon the sending SAP system to serialize the requests it sends to this component; the component simply delivers the requests in the order it receives them. To achieve **Queued RFC** (qRFC) delivery guarantees, the sending SAP system should use an output queue when sending its requests.     
+**NOTE:** This component does not guarantee that a series of requests sent through its endpoints are handled and processed in the receiving Camel route in the same order that they were sent. The delivery and processing order of these requests may differ on the receiving Camel route due to communication errors and resends of a document list. This component only guarantees that each request is processed **AT-MOST-ONCE**. To guarantee the delivery **and** processing order of a series of requests from SAP it is incumbent upon the sending SAP system to serialize its requests to an **outbound queue** when sending them to this component to achieve **IN-ORDER** delivery and processing guarantees.  
 
 
 In studying this quick start you will learn:
@@ -48,7 +48,7 @@ Before building and running this quick start you will need:
 
 * Maven 3.0.4 or higher
 * JDK 1.7 or 1.8
-* JBoss Fuse 6.2
+* A JBoss Fuse 6.2.1 container not running with a Fabric
 * SAP JCo3 and IDoc3 libraries (sapjco3.jar, sapidoc3.jar and JCo native library for your OS platform)
 * SAP instance with [Flight Data Application](http://help.sap.com/saphelp_erp60_sp/helpdata/en/db/7c623cf568896be10000000a11405a/content.htm) setup.
 
@@ -58,10 +58,10 @@ Configuring the Quickstart for your environment
 To configure the quick start for your environment: 
 
 1. Deploy the JCo3 library jar and native library (for your platform) and IDoc3 library jar to the `lib` folder of your JBoss Fuse installation.  
-2. Edit the custom properties file (`etc/custom.properties`) of your JBoss Fuse installation and add the following packages to the `org.osgi.framework.system.packages.extra` property:  
+2. In your JBoss Fuse installation, copy the `org.osgi.framework.system.packages.extra` property from the config properties file (`etc/config.properties`) to the custom properties file (`etc/custom.properties`) and append the following packages to the copied property:  
 
 > org.osgi.framework.system.packages.extra = \  
->...  
+>> ... \  
 >> com.sap.conn.idoc, \  
 >> com.sap.conn.idoc.jco, \   
 >> com.sap.conn.jco, \   

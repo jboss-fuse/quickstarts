@@ -31,11 +31,11 @@
 	<!-- *** Please enter the connection property values for your environment *** -->
 	<bean id="quickstartDestinationData"
 		class="org.fusesource.camel.component.sap.model.rfc.impl.DestinationDataImpl">
-		<property name="ashost" value="example.com" />
-		<property name="sysnr" value="00" />
-		<property name="client" value="000" />
-		<property name="user" value="username" />
-		<property name="passwd" value="passowrd" />
+		<property name="ashost" value="nplhost" />
+		<property name="sysnr" value="42" />
+		<property name="client" value="001" />
+		<property name="user" value="developer" />
+		<property name="passwd" value="ch4ngeme" />
 		<property name="lang" value="en" />
 	</bean>
 
@@ -43,8 +43,8 @@
 	<!-- *** Please enter the connection property values for your environment ** -->
 	<bean id="quickstartServerData"
 		class="org.fusesource.camel.component.sap.model.rfc.impl.ServerDataImpl">
-		<property name="gwhost" value="example.com" />
-		<property name="gwserv" value="3300" />
+		<property name="gwhost" value="nplhost" />
+		<property name="gwserv" value="3342" />
 		<!-- The following property values should not be changed -->
 		<property name="progid" value="QUICKSTART" />
 		<property name="repositoryDestination" value="quickstartDest" />
