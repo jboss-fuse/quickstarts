@@ -1,0 +1,9 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ord="http://order.camelinaction/">
+  <soapenv:Body>
+      <ord:order>
+         <arg0>motor</arg0>
+         <arg1>1</arg1>
+         <arg2>honda</arg2>
+      </ord:order>
+   </soapenv:Body>
+</soapenv:Envelope>
