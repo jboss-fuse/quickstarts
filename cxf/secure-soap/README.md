@@ -45,7 +45,7 @@ To build the quick start:
 * In the JBoss Fuse console, enter the following command:
 
         features:install cxf-ws-security
-        osgi:install -s mvn:org.jboss.quickstarts.fuse/cxf-secure-soap/6.3.0.redhat-SNAPSHOT
+        osgi:install -s mvn:org.jboss.quickstarts.fuse/cxf-secure-soap/6.2.1.redhat-084
 
 * Fuse should give you an id when the bundle is deployed
 * You can check that everything is ok by issuing  the command:

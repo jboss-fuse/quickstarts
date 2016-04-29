@@ -38,7 +38,7 @@ Build and Deploy the Quickstart
 * Start JBoss Fuse 6 by running bin/fuse (on Linux) or bin\fuse.bat (on Windows).
 * In the JBoss Fuse console, enter the following command:
 
-        osgi:install -s mvn:org.jboss.quickstarts.fuse/cxf-rest/6.3.0.redhat-SNAPSHOT
+        osgi:install -s mvn:org.jboss.quickstarts.fuse/cxf-rest/6.2.1.redhat-084
 
 * Fuse should give you an id when the bundle is deployed
 * You can check that everything is ok by issuing  the command:

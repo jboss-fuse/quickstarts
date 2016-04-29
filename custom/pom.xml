@@ -24,7 +24,7 @@
     <groupId>org.jboss.quickstarts.fuse</groupId>
     <artifactId>custom-distro</artifactId>
     <packaging>pom</packaging>
-    <version>6.3.0.redhat-SNAPSHOT</version>
+    <version>6.2.1.redhat-084</version>
 
     <name>JBoss Fuse Quickstart: custom</name>
 
@@ -34,7 +34,7 @@
         <cxf.version>3.0.4.redhat-621084</cxf.version>
         <fabric8.version>1.2.0.redhat-621084</fabric8.version>
         <hawtio.version>1.4.redhat-621084</hawtio.version>
-        <jboss.fuse.version>6.3.0.redhat-SNAPSHOT</jboss.fuse.version>
+        <jboss.fuse.version>6.2.1.redhat-084</jboss.fuse.version>
         <karaf.version>2.4.0.redhat-621084</karaf.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
