@@ -237,6 +237,7 @@
                   </extraargs>
                 </wsdlOption>
               </wsdlOptions>
+              <fork>always</fork>
               <additionalJvmArgs>-Djavax.xml.accessExternalSchema=jar:file,file</additionalJvmArgs>
             </configuration>
             <goals>
