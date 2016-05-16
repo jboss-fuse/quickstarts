@@ -34,7 +34,7 @@ public class TCPClient {
         KeyStore keystore = KeyStore.getInstance("JKS");
         keystore.load(new FileInputStream("users.jks"), "changeit".toCharArray());
 
-        TrustManagerFactory tmf = TrustManagerFactory.getInstance("SunX509");
+        TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
         tmf.init(keystore);
 
         SSLContext context = SSLContext.getInstance("TLS");
