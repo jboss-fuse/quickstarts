@@ -59,7 +59,7 @@ public class CamelServiceRoute extends RouteBuilder {
                 }
             })
             .marshal(bindy)
-            .to("file:///tmp/output.txt")
+            .to("file:///tmp/output")
             .end();
            
     }
