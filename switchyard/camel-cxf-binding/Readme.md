@@ -103,7 +103,7 @@ karaf@root> features:install switchyard-quickstart-camel-cxf-binding
 
 3. Open a console window and type
 <pre>
-mvn exec:java -Pkaraf -Dexec.args="Boeing 10"
+mvn exec:java -Dexec.args="Boeing 10"
 </pre>
 
 4. Undeploy the quickstart:
