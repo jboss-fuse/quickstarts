@@ -1,2 +1,0 @@
-Dependencies: org.apache.mina, org.apache.camel.mina2, org.apache.camel.hl7
-

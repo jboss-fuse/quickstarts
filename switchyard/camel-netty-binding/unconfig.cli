@@ -1,3 +1,0 @@
-if (outcome == success) of /subsystem=security/security-domain=netty-security-cert:read-resource
-    /subsystem=security/security-domain=netty-security-cert:remove
-end-if

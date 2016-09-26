@@ -1,3 +1,0 @@
-if (outcome == success) of /subsystem=datasources/data-source=myDS:read-resource
-/subsystem=datasources/data-source="java:jboss/myDS":remove
-end-if

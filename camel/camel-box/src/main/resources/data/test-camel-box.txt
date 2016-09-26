@@ -1,1 +1,0 @@
-Test file for JBoss Fuse Quickstarts Camel Box example.
