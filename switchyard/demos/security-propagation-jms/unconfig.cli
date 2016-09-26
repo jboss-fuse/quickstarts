@@ -1,0 +1,10 @@
+if (outcome == success) of /subsystem=web/connector=https/:read-resource
+    /subsystem=web/connector=https/:remove
+end-if
+if (outcome == success) of /subsystem=messaging/hornetq-server=default/jms-queue=WorkStoreQueue:read-resource
+    jms-queue remove --queue-address=WorkStoreQueue
+end-if
+if (outcome == success) of /subsystem=messaging/hornetq-server=default/jms-queue=WorkAckStoreQueue:read-resource
+    jms-queue remove --queue-address=WorkAckStoreQueue
+end-if
+:reload

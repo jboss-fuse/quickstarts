@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+     Copyright 2005-2016 Red Hat, Inc.
+
+     Red Hat licenses this file to you under the Apache License, version
+     2.0 (the "License"); you may not use this file except in compliance
+     with the License.  You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+     implied.  See the License for the specific language governing
+     permissions and limitations under the License.
+
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.jboss.quickstarts.fuse</groupId>
+    <artifactId>cxf</artifactId>
+    <version>6.3.0.redhat-187</version>
+  </parent>
+
+    <groupId>org.jboss.quickstarts.fuse</groupId>
+    <artifactId>cxf-secure-rest</artifactId>
+    <version>6.3.0.redhat-187</version>
+    <packaging>bundle</packaging>
+    <name>JBoss Fuse Quickstart: secure-rest</name>
+    <description>Secure Restful Web Services Example using JAX-RS Basic Authentication with Fabric8</description>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <distribution>repo</distribution>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+        </license>
+    </licenses>
+
+    <repositories>
+       <repository>
+            <id>redhat-ga-repository</id>
+            <url>https://maven.repository.redhat.com/ga</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>redhat-ea-repository</id>
+            <url>https://maven.repository.redhat.com/earlyaccess/all</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>redhat-ga-repository</id>
+            <url>https://maven.repository.redhat.com/ga</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+        <pluginRepository>
+            <id>redhat-ea-repository</id>
+            <url>https://maven.repository.redhat.com/earlyaccess/all</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.target>1.7</maven.compiler.target>
+    <maven.compiler.source>1.7</maven.compiler.source>
+      <cxf-version>3.0.2</cxf-version>
+    <version.maven-surefire-plugin>2.15</version.maven-surefire-plugin>
+    <version.maven-bundle-plugin>2.3.7</version.maven-bundle-plugin>
+    <skipTests>true</skipTests>
+
+    <!-- the version of the BOM, defining all the dependency versions -->
+    <fabric.version>1.2.0.redhat-630187</fabric.version>
+
+    <!-- fabric8 deploy profile configuration -->
+    <fabric8.profile>quickstarts-cxf-secure.rest</fabric8.profile>
+    <fabric8.parentProfiles>feature-cxf</fabric8.parentProfiles>
+    <fabric8.features>cxf-jaxrs swagger</fabric8.features>
+
+      <!-- the version of the JBoss Fuse BOM, defining all the dependency versions -->
+      <jboss.fuse.bom.version>6.3.0.redhat-187</jboss.fuse.bom.version>
+  </properties>
+
+    <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.jboss.fuse.bom</groupId>
+        <artifactId>jboss-fuse-parent</artifactId>
+        <version>${jboss.fuse.bom.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+    <dependencies>
+    <!--
+        For coding the example, we don't actually depend on any CXF classes - we only use the JAX-RS (JSR-339)
+        standard annotations and API
+    -->
+    <dependency>
+      <groupId>org.apache.servicemix.specs</groupId>
+      <artifactId>org.apache.servicemix.specs.jsr339-api-2.0</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
+    <!--
+        For logging, we will use SLF4J, which is also available in the container by default.
+     -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.wordnik</groupId>
+      <artifactId>swagger-jaxrs_2.10</artifactId>
+      <optional>true</optional>
+      <exclusions>
+        <exclusion>
+          <groupId>javassist</groupId>
+          <artifactId>javassist</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.javassist</groupId>
+      <artifactId>javassist</artifactId>
+      <version>3.18.1-GA-redhat-1</version>
+    </dependency>
+    <dependency>
+      <groupId>joda-time</groupId>
+      <artifactId>joda-time</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>xml-apis</groupId>
+      <artifactId>xml-apis</artifactId>
+      <version>1.4.01</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.module</groupId>
+      <artifactId>jackson-module-jsonSchema</artifactId>
+      <version>2.4.3</version>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.module</groupId>
+      <artifactId>jackson-module-scala_2.10</artifactId>
+      <version>2.4.3</version>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+    </dependency>
+
+    <!-- Test Dependencies -->
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <!--
+        We are also building a small Java client application that we can use to test our web services.
+        For performing the HTTP requests, we are using Apache Commons HttpClient.
+    -->
+    <dependency>
+      <groupId>commons-httpclient</groupId>
+      <artifactId>commons-httpclient</artifactId>
+      <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>commons-logging</groupId>
+          <artifactId>commons-logging</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>jcl-over-slf4j</artifactId>
+    </dependency>
+
+    <!--
+      Add the slf4j-log4j12 dependency jar for testing
+    -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+    <build>
+    <finalName>shared</finalName>
+    <plugins>
+      <!-- Skip Test by default and enable them only in test profile -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>${version.maven-surefire-plugin}</version>
+        <configuration>
+          <skipTests>true</skipTests>
+        </configuration>
+      </plugin>
+      <!-- Compiler plugin enforces Java 1.7 compatibility and activates annotation processors -->
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.1</version>
+        <configuration>
+          <source>1.7</source>
+          <target>1.7</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <version>${version.maven-bundle-plugin}</version>
+        <extensions>true</extensions>
+        <configuration>
+          <instructions>
+            <Import-Package>
+              javax.xml.bind.annotation,
+              javax.ws.rs,
+              javax.ws.rs.core,
+              org.apache.karaf.jaas.boot.principal,
+              org.apache.cxf.interceptor.security,
+              org.apache.cxf.jaxrs.security,
+              org.osgi.service.blueprint,
+              com.wordnik.swagger.jaxrs.config,
+              com.wordnik.swagger.jaxrs.listing,
+              com.wordnik.swagger.annotations,
+              org.apache.cxf.transport.http,
+              io.fabric8.cxf,
+              com.fasterxml.jackson.annotation, com.fasterxml.jackson.core, com.fasterxml.jackson.databind,
+              com.fasterxml.jackson.jaxrs.json, javax.ws.rs.ext,*
+            </Import-Package>
+            <Import-Service>org.apache.aries.blueprint.NamespaceHandler;
+                osgi.service.blueprint.namespace=http://cxf.apache.org/transports/http/configuration
+            </Import-Service>
+            <Export-Package>
+              io.fabric8.quickstarts.rest.secure
+            </Export-Package>
+          </instructions>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.cxf</groupId>
+        <artifactId>cxf-java2wadl-plugin</artifactId>
+        <version>3.1.5.redhat-630187</version>
+        <executions>
+          <execution>
+            <id>process-classes</id>
+            <phase>process-classes</phase>
+            <goals>
+              <goal>java2wadl</goal>
+            </goals>
+            <configuration>
+              <classResourceNames>
+                <classResourceName>io.fabric8.quickstarts.rest.secure.CustomerService</classResourceName>
+              </classResourceNames>
+              <attachWadl>false</attachWadl>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <!--plugin>
+        <groupId>io.fabric8</groupId>
+        <artifactId>fabric-cxf-plugins</artifactId>
+        <version>1.2.0.redhat-630187</version>
+        <executions>
+            <execution>
+                <id>addswaggerannotation</id>
+                <phase>generate-sources</phase>
+                <goals>
+                    <goal>addswaggerannotation</goal>
+                </goals>
+            </execution>
+        </executions>
+      </plugin-->
+      <plugin>
+        <!--
+          this plugin will use the fabric.* properties to configure its behaviour
+          see the Properties section here: http://fabric8.io/gitbook/mavenPlugin.html
+        -->
+        <groupId>io.fabric8</groupId>
+        <artifactId>fabric8-maven-plugin</artifactId>
+        <version>1.2.0.redhat-630187</version>
+      </plugin>
+    </plugins>
+  </build>
+
+    <profiles>
+    <profile>
+      <id>test</id>
+      <properties>
+        <skipTests>false</skipTests>
+      </properties>
+      <build>
+        <defaultGoal>verify</defaultGoal>
+      </build>
+    </profile>
+  </profiles>
+</project>

@@ -1,0 +1,11 @@
+if (outcome != success) of /subsystem=undertow/server=default-server/https-listener=https/:read-resource
+    /core-service=management/security-realm=https:add()
+    /core-service=management/security-realm=https/server-identity=ssl:add(keystore-path=${jboss.home.dir}/quickstarts/demos/security-propagation-jms/connector.jks, keystore-password=changeit)
+    /subsystem=undertow/server=default-server/https-listener=https:add(socket-binding=https, security-realm=https)
+end-if
+if (outcome != success) of /subsystem=messaging/hornetq-server=default/jms-queue=WorkStoreQueue:read-resource
+    jms-queue add --queue-address=WorkStoreQueue --entries=WorkStoreQueue
+end-if
+if (outcome != success) of /subsystem=messaging/hornetq-server=default/jms-queue=WorkAckStoreQueue:read-resource
+    jms-queue add --queue-address=WorkAckStoreQueue --entries=WorkAckStoreQueue
+end-if

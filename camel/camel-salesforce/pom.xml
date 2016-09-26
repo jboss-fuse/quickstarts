@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+     Copyright 2005-2016 Red Hat, Inc.
+
+     Red Hat licenses this file to you under the Apache License, version
+     2.0 (the "License"); you may not use this file except in compliance
+     with the License.  You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+     implied.  See the License for the specific language governing
+     permissions and limitations under the License.
+
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+      <groupId>org.jboss.quickstarts.fuse</groupId>
+      <artifactId>camel-quickstarts</artifactId>
+      <version>6.3.0.redhat-187</version>
+    </parent>
+
+    <groupId>org.jboss.quickstarts.fuse</groupId>
+    <artifactId>camel-salesforce</artifactId>
+    <version>6.3.0.redhat-187</version>
+    <packaging>bundle</packaging>
+    <name>JBoss Fuse Quickstart: camel-salesforce</name>
+    <description>Camel Olingo2 OData Example</description>
+    <url>https://github.com/jboss-fuse/fuse/tree/master/quickstarts/camel-salesforce</url>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <distribution>repo</distribution>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+        </license>
+    </licenses>
+
+    <developers>
+      <developer>
+        <id>fuseteam</id>
+        <name>JBoss Fuse Development Team</name>
+        <organization>JBoss</organization>
+        <organizationUrl>http://jboss.org/</organizationUrl>
+      </developer>
+    </developers>
+
+    <scm>
+      <connection>scm:git:git@github.com:jboss-fuse/fuse.git</connection>
+      <developerConnection>scm:git:git@github.com:jboss-fuse/fuse.git</developerConnection>
+      <url>https://github.com/jboss-fuse/fuse/tree/master/quickstarts/camel-salesforce</url>
+    </scm>
+
+    <properties>
+        <!-- Explicitly declaring the source encoding eliminates the following message: -->
+        <!-- [WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent! -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <version.maven-bundle-plugin>2.3.7</version.maven-bundle-plugin>
+        <version.build-helper-maven-plugin>1.9.1</version.build-helper-maven-plugin>
+
+        <!-- maven-compiler-plugin -->
+        <maven.compiler.target>1.7</maven.compiler.target>
+        <maven.compiler.source>1.7</maven.compiler.source>
+
+        <!-- the version of the JBoss Fuse BOM, defining all the dependency versions -->
+        <jboss.fuse.bom.version>6.3.0.redhat-187</jboss.fuse.bom.version>
+
+        <!-- fabric8 deploy profile configuration -->
+        <fabric8.profile>quickstarts-fuse-camel.salesforce</fabric8.profile>
+        <fabric8.parentProfiles>feature-camel</fabric8.parentProfiles>
+        <fabric8.features></fabric8.features>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.jboss.fuse.bom</groupId>
+                <artifactId>jboss-fuse-parent</artifactId>
+                <version>${jboss.fuse.bom.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+         <!--
+          For this example, we will be using the OSGi Blueprint XML syntax for Apache Camel.
+          The camel-blueprint bundle is installed in JBoss Fuse by default,
+          so we are setting the dependency's scope to 'provided'.
+        -->
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-blueprint</artifactId>
+        </dependency>
+
+        <!--
+          Salesforce component dependency for compiling SObject POJOs
+        -->
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-salesforce</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>${version.maven-bundle-plugin}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Export-Package>org.apache.camel.salesforce.dto,org.jboss.quickstarts.fuse.salesforce</Export-Package>
+                        <Import-Package>org.apache.camel.salesforce.dto;version=${project.version},org.jboss.quickstarts.fuse.salesforce;version=${project.version},*</Import-Package>
+                    </instructions>
+                </configuration>
+            </plugin>
+                <!--
+                  this plugin will use the fabric.* properties to configure its behaviour
+                  see the Properties section here: http://fabric8.io/#/site/book/doc/index.md?chapter=mavenPlugin_md
+            <plugin>
+                <groupId>io.fabric8</groupId>
+                <artifactId>fabric8-maven-plugin</artifactId>
+                <version>${fabric.version}</version>
+            </plugin>
+                -->
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <!-- Include sample DTO code by default to avoid compilation errors -->
+            <id>sample-pojos</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <!-- Add sample POJOs to sources -->
+                    <plugin>
+                      <groupId>org.codehaus.mojo</groupId>
+                      <artifactId>build-helper-maven-plugin</artifactId>
+                      <version>${version.build-helper-maven-plugin}</version>
+                      <executions>
+                        <execution>
+                          <id>add-source</id>
+                          <phase>generate-sources</phase>
+                          <goals>
+                            <goal>add-source</goal>
+                          </goals>
+                          <configuration>
+                            <sources>
+                              <source>${project.basedir}/src/sample-pojos/main/java</source>
+                            </sources>
+                          </configuration>
+                        </execution>
+                      </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>generate-pojos</id>
+            <build>
+                <plugins>
+                    <!-- Read Salesforce login properties -->
+                    <plugin>
+                      <groupId>org.codehaus.mojo</groupId>
+                      <artifactId>properties-maven-plugin</artifactId>
+                      <version>1.0-alpha-2</version>
+                      <executions>
+                        <execution>
+                          <phase>initialize</phase>
+                          <goals>
+                            <goal>read-project-properties</goal>
+                          </goals>
+                          <configuration>
+                            <files>
+                              <file>${project.basedir}/org.jboss.quickstarts.fuse.salesforce.cfg</file>
+                            </files>
+                          </configuration>
+                        </execution>
+                      </executions>
+                    </plugin>
+                    <!-- Generate POJOs for Salesforce SObjects -->
+                    <plugin>
+                      <groupId>org.apache.camel.maven</groupId>
+                      <artifactId>camel-salesforce-maven-plugin</artifactId>
+                      <executions>
+                        <execution>
+                          <goals>
+                            <goal>generate</goal>
+                          </goals>
+                          <configuration>
+                            <clientId>${clientId}</clientId>
+                            <clientSecret>${clientSecret}</clientSecret>
+                            <userName>${userName}</userName>
+                            <password>${password}</password>
+                            <includes>
+                              <include>Cheese__c</include>
+                            </includes>
+                          </configuration>
+                        </execution>
+                      </executions>
+                    </plugin>
+                    <!-- Add generated POJOs to sources -->
+                    <plugin>
+                      <groupId>org.codehaus.mojo</groupId>
+                      <artifactId>build-helper-maven-plugin</artifactId>
+                      <version>${version.build-helper-maven-plugin}</version>
+                      <executions>
+                        <execution>
+                          <id>add-source</id>
+                          <phase>generate-sources</phase>
+                          <goals>
+                            <goal>add-source</goal>
+                          </goals>
+                          <configuration>
+                            <sources>
+                              <source>${project.build.directory}/generated-sources/camel-salesforce</source>
+                            </sources>
+                          </configuration>
+                        </execution>
+                      </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>

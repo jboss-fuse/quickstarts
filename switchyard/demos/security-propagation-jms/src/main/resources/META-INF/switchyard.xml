@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<switchyard xmlns="urn:switchyard-config:switchyard:1.0" xmlns:_1="urn:switchyard-component-soap:config:1.0" xmlns:_2="urn:switchyard-component-bean:config:1.0" xmlns:_3="urn:switchyard-config:transform:1.0" xmlns:jms="urn:switchyard-component-camel-jms:config:1.0" xmlns:sca="http://docs.oasis-open.org/ns/opencsa/sca/200912" name="securty-propagation-jms">
+  <sca:composite name="security-propagation-jms" targetNamespace="urn:switchyard-quickstart-demo:security-propagation-jms:0.1.0">
+    <sca:service name="WorkService" promote="WorkConsumerService/WorkService">
+      <sca:interface.wsdl interface="META-INF/WorkService.wsdl#wsdl.porttype(WorkService)"/>
+      <_1:binding.soap name="soap1">
+        <_1:wsdl>META-INF/WorkService.wsdl</_1:wsdl>
+        <_1:contextPath>security-propagation-jms</_1:contextPath>
+      </_1:binding.soap>
+    </sca:service>
+    <sca:component name="WorkConsumerService">
+      <_2:implementation.bean requires="authorization" class="org.switchyard.quickstarts.demo.security.propagation.jms.WorkConsumerServiceBean"/>
+      <sca:service name="WorkService" requires="confidentiality clientAuthentication">
+        <sca:interface.java interface="org.switchyard.quickstarts.demo.security.propagation.jms.WorkService"/>
+      </sca:service>
+      <sca:reference name="StoreService">
+        <sca:interface.java interface="org.switchyard.quickstarts.demo.security.propagation.jms.WorkService"/>
+      </sca:reference>
+    </sca:component>
+    <sca:reference name="StoreService" multiplicity="0..1" promote="WorkConsumerService/StoreService">
+      <sca:interface.java interface="org.switchyard.quickstarts.demo.security.propagation.jms.WorkService"/>
+      <jms:binding.jms name="jms1">
+        <jms:messageComposer class="org.switchyard.quickstarts.demo.security.propagation.jms.security.SecurityCamelJMSMessageComposer"/>
+        <jms:queue>WorkStoreQueue</jms:queue>
+        <jms:connectionFactory>#ConnectionFactory</jms:connectionFactory>
+        <jms:replyTo>WorkAckStoreQueue</jms:replyTo>
+        <jms:replyToType>Exclusive</jms:replyToType>
+      </jms:binding.jms>
+    </sca:reference>
+    <sca:service name="WorkProviderService" promote="WorkProviderService/WorkProviderService">
+      <sca:interface.java interface="org.switchyard.quickstarts.demo.security.propagation.jms.WorkService"/>
+      <jms:binding.jms name="jms1">
+        <jms:queue>WorkStoreQueue</jms:queue>
+        <jms:connectionFactory>#ConnectionFactory</jms:connectionFactory>
+        <jms:replyTo>WorkAckStoreQueue</jms:replyTo>
+        <jms:replyToType>Exclusive</jms:replyToType>
+        <jms:transacted>false</jms:transacted>
+      </jms:binding.jms>
+    </sca:service>
+    <sca:component name="WorkProviderService">
+      <_2:implementation.bean requires="authorization" class="org.switchyard.quickstarts.demo.security.propagation.jms.WorkProviderServiceBean"/>
+      <sca:service name="WorkProviderService" requires="clientAuthentication">
+        <sca:interface.java interface="org.switchyard.quickstarts.demo.security.propagation.jms.WorkService"/>
+      </sca:service>
+    </sca:component>
+  </sca:composite>
+  <transforms>
+    <_3:transform.java from="java:org.switchyard.quickstarts.demo.security.propagation.jms.WorkAck" to="java:org.switchyard.quickstarts.demo.security.propagation.jms.Work" class="org.switchyard.quickstarts.demo.security.propagation.jms.Transformers"/>
+    <_3:transform.java from="java:org.switchyard.quickstarts.demo.security.propagation.jms.WorkAck" to="{urn:switchyard-quickstart-demo:security-propagation-jms:0.1.0}doWorkResponse" class="org.switchyard.quickstarts.demo.security.propagation.jms.Transformers"/>
+    <_3:transform.java from="{urn:switchyard-quickstart-demo:security-propagation-jms:0.1.0}doWork" to="java:org.switchyard.quickstarts.demo.security.propagation.jms.Work" class="org.switchyard.quickstarts.demo.security.propagation.jms.Transformers"/>
+  </transforms>
+  <domain>
+    <securities>
+      <security rolesAllowed="friend"/>
+    </securities>
+  </domain>
+</switchyard>

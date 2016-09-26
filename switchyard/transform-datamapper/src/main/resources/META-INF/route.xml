@@ -1,0 +1,6 @@
+<!-- A Camel service route definition -->
+<route xmlns="http://camel.apache.org/schema/spring">
+    <from uri="switchyard://OrderService"/>
+    <setHeader headerName="approval"><constant>AUTO</constant></setHeader>
+    <to uri="switchyard://StoreService"/>
+</route>

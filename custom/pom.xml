@@ -1,0 +1,811 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+     Copyright 2005-2016 Red Hat, Inc.
+
+     Red Hat licenses this file to you under the Apache License, version
+     2.0 (the "License"); you may not use this file except in compliance
+     with the License.  You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+     implied.  See the License for the specific language governing
+     permissions and limitations under the License.
+
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.jboss.quickstarts.fuse</groupId>
+    <artifactId>custom-distro</artifactId>
+    <packaging>pom</packaging>
+    <version>6.3.0.redhat-187</version>
+
+    <name>JBoss Fuse Quickstart: custom</name>
+
+    <properties>
+        <!-- Used to configure the custom assembly -->
+        <activemq.version>5.11.0.redhat-630187</activemq.version>
+        <camel.version>2.17.0.redhat-630187</camel.version>
+        <cxf.version>3.1.5.redhat-630187</cxf.version>
+        <fabric8.version>1.2.0.redhat-630187</fabric8.version>
+        <hawtio.version>1.4.0.redhat-630187</hawtio.version>
+        <jboss.fuse.version>6.3.0.redhat-187</jboss.fuse.version>
+        <karaf.version>2.4.0.redhat-630187</karaf.version>
+        <jasypt-version>1.9.3.redhat_3</jasypt-version>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <!-- Used to build the original assembly -->
+        <activemq-version>5.11.0.redhat-630187</activemq-version>
+        <xerces.version>2.11.0.SP4-redhat-1</xerces.version>
+        <camel-version>2.17.0.redhat-630187</camel-version>
+        <cxf-version>3.1.5.redhat-630187</cxf-version>
+        <fabric.version>1.2.0.redhat-630187</fabric.version>
+        <hawtio-version>1.4.0.redhat-630187</hawtio-version>
+        <karaf-version>2.4.0.redhat-630187</karaf-version>
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>redhat-ga-repository</id>
+            <url>https://maven.repository.redhat.com/ga</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>redhat-ea-repository</id>
+            <url>https://maven.repository.redhat.com/earlyaccess/all</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>redhat-ga-repository</id>
+            <url>https://maven.repository.redhat.com/ga</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+        <pluginRepository>
+            <id>redhat-ea-repository</id>
+            <url>https://maven.repository.redhat.com/earlyaccess/all</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.jboss.fuse</groupId>
+            <artifactId>esb-shared</artifactId>
+            <version>6.3.0.redhat-187</version>
+        </dependency>
+        <dependency>
+            <groupId>io.fabric8</groupId>
+            <artifactId>fabric8-karaf</artifactId>
+            <version>1.2.0.redhat-630187</version>
+            <type>zip</type>
+            <exclusions>
+                <exclusion>
+                    <groupId>io.fabric8.quickstarts</groupId>
+                    <artifactId>fabric8-quickstarts-parent</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.fuse</groupId>
+            <artifactId>org.jboss.fuse.branding.karaf</artifactId>
+            <version>6.3.0.redhat-187</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.fuse</groupId>
+            <artifactId>org.jboss.fuse.branding.fabric8</artifactId>
+            <version>6.3.0.redhat-187</version>
+        </dependency>
+        <dependency>
+            <groupId>io.fabric8.patch</groupId>
+            <artifactId>patch-client</artifactId>
+            <version>1.2.0.redhat-630187</version>
+        </dependency>
+        <dependency>
+            <groupId>io.fabric8.support</groupId>
+            <artifactId>support-profiles</artifactId>
+            <version>1.2.0.redhat-630187</version>
+        </dependency>
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk15on</artifactId>
+            <version>1.54</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.servicemix.specs</groupId>
+            <artifactId>org.apache.servicemix.specs.activator</artifactId>
+            <version>2.7.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.servicemix.specs</groupId>
+            <artifactId>org.apache.servicemix.specs.jaxp-api-1.4</artifactId>
+            <version>2.7.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.servicemix.specs</groupId>
+            <artifactId>org.apache.servicemix.specs.jaxws-api-2.2</artifactId>
+            <version>2.7.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.soa.bpel</groupId>
+            <artifactId>riftsaw-dao-jpa-hibernate</artifactId>
+            <version>3.2.0.Final-redhat-5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.soa.bpel</groupId>
+            <artifactId>riftsaw-dao-jpa</artifactId>
+            <version>3.2.0.Final-redhat-5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.fuse</groupId>
+            <artifactId>esb-commands</artifactId>
+            <version>6.3.0.redhat-187</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.fuse</groupId>
+            <artifactId>jboss-fuse</artifactId>
+            <version>6.3.0.redhat-187</version>
+            <type>xml</type>
+            <classifier>features</classifier>
+        </dependency>
+        <dependency>
+            <groupId>io.fabric8.support</groupId>
+            <artifactId>support-features</artifactId>
+            <version>1.2.0.redhat-630187</version>
+            <type>xml</type>
+            <classifier>features</classifier>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <!--
+            Step 1: build the original assembly
+        -->
+        <resources>
+            <resource>
+                <directory>${project.basedir}/src/main/filtered-resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+            </resource>
+        </resources>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-antrun-plugin</artifactId>
+                    <version>1.7</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.fusesource.mvnplugins</groupId>
+                    <artifactId>maven-notices-plugin</artifactId>
+                    <configuration>
+                        <projectName>JBoss Fuse</projectName>
+                        <organizationName>Red Hat, Inc. All Rights Reserved.</organizationName>
+                        <organizationURL>http://redhat.com</organizationURL>
+                        <preamble>In addition to the Red Hat products, this disk contains certain third party software or components ("Third Party Components"), which are bundled as separate files or modules and separately licensed to you by said third parties. This file contains a listing of all NOTICE/NOTICE.txt files included with the Third Party Component jars in this distribution of Fuse ESB. Please see the dependencies.txt file for the complete listing of Third Party Components and their attributed license agreements. Your use of the Third Party Components is subject to the terms and conditions set forth in the applicable third party license agreement. The Third Party Components are provided by Red Hat, Inc. solely on an "AS IS" basis, without any warranty. Red Hat, Inc. disclaims all warranties and indemnities with respect to the Third Party Components, express or implied, and assumes no liability with respect to the Third Party Components. You acknowledge that the authors of the Third Party Components have no obligation to provide support to you for the Third Party Components. You hereby undertake to comply with all licenses related to the applicable Third Party Components. All third party license agreements are contained in the licenses directory of </preamble>
+                        <listDependencies>true</listDependencies>
+                        <!--  exclude newer saxon from notice gen due to maven shade plugin being unable to process META-INF/SAXONICA.RSA/SF -->
+                        <excludeDependencies>org.apache.servicemix.bundles:org.apache.servicemix.bundles.saxon</excludeDependencies>
+                        <extraDependencies>xerces:xercesImpl:2.11.0.SP4-redhat-1,xalan:xalan:2.7.1.redhat-8,xalan:serializer:2.7.1.redhat-8,org.apache.servicemix.specs:org.apache.servicemix.specs.activator:2.7.0,org.apache.servicemix.specs:org.apache.servicemix.specs.jaxp-api-1.4:2.7.0,org.apache.servicemix.specs:org.apache.servicemix.specs.jaxws-api-2.2:2.7.0,org.apache.servicemix.bundles:org.apache.servicemix.bundles.saxon:9.5.1-1_1</extraDependencies>
+                        <noticeSupplements>shared/notice-supplements.xml</noticeSupplements>
+                        <repositories>${project.basedir}/target/features-repo,${project.basedir}/target/dependencies/unix/fabric8-karaf-1.2.0.redhat-630187/system</repositories>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-remote-resources-plugin</artifactId>
+                <configuration>
+                    <appendedResourcesDirectory>${basedir}/target/shared/appended-resources</appendedResourcesDirectory>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>process</goal>
+                        </goals>
+                        <configuration>
+                            <resourceBundles>
+                                <resourceBundle>org.apache:apache-jar-resource-bundle:1.4</resourceBundle>
+                            </resourceBundles>
+                            <properties>
+                                <addLicense>true</addLicense>
+                                <addArtifact>true</addArtifact>
+                                <projectName>Apache ServiceMix</projectName>
+                            </properties>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>unpack-shared</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>org.jboss.fuse</groupId>
+                                    <artifactId>esb-shared</artifactId>
+                                    <type>jar</type>
+                                    <outputDirectory>target/shared</outputDirectory>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>unpack-unix</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>io.fabric8</groupId>
+                                    <artifactId>fabric8-karaf</artifactId>
+                                    <version>1.2.0.redhat-630187</version>
+                                    <type>zip</type>
+                                    <outputDirectory>target/dependencies/unix</outputDirectory>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>unpack-support-profiles</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>io.fabric8.support</groupId>
+                                    <artifactId>support-profiles</artifactId>
+                                    <version>1.2.0.redhat-630187</version>
+                                    <type>jar</type>
+                                    <outputDirectory>target/shared</outputDirectory>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>sy-quickstarts</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>org.switchyard.quickstarts</groupId>
+                                    <artifactId>switchyard-quickstart-distro</artifactId>
+                                    <type>zip</type>
+                                    <version>2.1.0.redhat-630187</version>
+                                </artifactItem>
+                            </artifactItems>
+                            <outputDirectory>target/shared/syquickstarts</outputDirectory>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>copy-unix</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>io.fabric8</groupId>
+                                    <artifactId>fabric8-karaf</artifactId>
+                                    <version>1.2.0.redhat-630187</version>
+                                    <type>zip</type>
+                                    <outputDirectory>target/features-repo/io/fabric8/fabric8-karaf/1.2.0.redhat-630187</outputDirectory>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.apache.camel</groupId>
+                                    <artifactId>apache-camel</artifactId>
+                                    <version>2.17.0.redhat-630187</version>
+                                    <type>zip</type>
+                                    <outputDirectory>target/dependencies/unix</outputDirectory>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.apache.cxf</groupId>
+                                    <artifactId>apache-cxf</artifactId>
+                                    <version>3.1.5.redhat-630187</version>
+                                    <type>zip</type>
+                                    <outputDirectory>target/dependencies/unix</outputDirectory>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.jasypt</groupId>
+                                    <artifactId>jasypt</artifactId>
+                                    <version>1.9.3.redhat_3</version>
+                                    <type>jar</type>
+                                    <outputDirectory>target/dependencies/unix</outputDirectory>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.jboss.quickstarts.fuse</groupId>
+                                    <artifactId>quickstarts-parent</artifactId>
+                                    <version>6.3.0.redhat-187</version>
+                                    <classifier>profile</classifier>
+                                    <type>zip</type>
+                                    <outputDirectory>target/features-repo/org/jboss/quickstarts/fuse/quickstarts-parent/6.3.0.redhat-187</outputDirectory>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>io.fabric8.quickstarts</groupId>
+                                    <artifactId>fabric8-quickstarts-parent</artifactId>
+                                    <version>1.2.0.redhat-630187</version>
+                                    <classifier>profile</classifier>
+                                    <type>zip</type>
+                                    <outputDirectory>target/features-repo/io/fabric8/quickstarts/fabric8-quickstarts-parent/1.2.0.redhat-630187</outputDirectory>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>io.fabric8</groupId>
+                                    <artifactId>fabric8-karaf</artifactId>
+                                    <version>1.2.0.redhat-630187</version>
+                                    <type>zip</type>
+                                    <outputDirectory>target/features-repo/io/fabric8/fabric8-karaf/1.2.0.redhat-630187</outputDirectory>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>unpack-javadocs</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>org.switchyard</groupId>
+                                    <artifactId>switchyard-javadocs</artifactId>
+                                    <version>2.1.0.redhat-630187</version>
+                                    <classifier>javadoc</classifier>
+                                    <outputDirectory>${project.build.directory}/docs/javadocs/switchyard</outputDirectory>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.apache.cxf</groupId>
+                                    <artifactId>cxf-distribution-javadoc</artifactId>
+                                    <version>3.1.5.redhat-630187</version>
+                                    <classifier>javadoc</classifier>
+                                    <outputDirectory>${project.build.directory}/docs/javadocs/cxf</outputDirectory>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.apache.camel</groupId>
+                                    <artifactId>camel-core</artifactId>
+                                    <version>2.17.0.redhat-630187</version>
+                                    <classifier>javadoc</classifier>
+                                    <outputDirectory>${project.build.directory}/docs/javadocs/camel</outputDirectory>
+                                </artifactItem>
+
+                                <artifactItem>
+                                    <groupId>org.apache.karaf.shell</groupId>
+                                    <artifactId>org.apache.karaf.shell.console</artifactId>
+                                    <version>2.4.0.redhat-630187</version>
+                                    <classifier>javadoc</classifier>
+                                    <outputDirectory>${project.build.directory}/docs/javadocs/karaf/shell</outputDirectory>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.apache.karaf.shell</groupId>
+                                    <artifactId>org.apache.karaf.shell.console</artifactId>
+                                    <version>2.4.0.redhat-630187</version>
+                                    <classifier>javadoc</classifier>
+                                    <outputDirectory>${project.build.directory}/docs/javadocs/karaf/shell</outputDirectory>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.osgi</groupId>
+                                    <artifactId>org.osgi.core</artifactId>
+                                    <version>5.0.0</version>
+                                    <classifier>javadoc</classifier>
+                                    <outputDirectory>${project.build.directory}/docs/javadocs/karaf/osgi-core</outputDirectory>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.osgi</groupId>
+                                    <artifactId>org.osgi.enterprise</artifactId>
+                                    <version>5.0.0</version>
+                                    <classifier>javadoc</classifier>
+                                    <outputDirectory>${project.build.directory}/docs/javadocs/karaf/osgi-enterprise</outputDirectory>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>filter</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>resources</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>copy-system-folder</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>target/features-repo</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>target/dependencies/unix/fabric8-karaf-1.2.0.redhat-630187/system</directory>
+                                    <includes>
+                                        <!-- otherwise features-maven-plugin throws an NPE -->
+                                        <include>**/*features*.xml</include>
+
+                                        <!-- top-level packages from base Apache Karaf distro -->
+                                        <include>org/apache/karaf/**</include>
+                                        <include>org/apache/aries/**</include>
+                                        <include>org/apache/felix/**</include>
+                                        <include>org/apache/mina/**</include>
+                                        <include>org/apache/servicemix/**</include>
+                                        <include>org/apache/sshd/**</include>
+                                        <include>org/ops4j/pax/logging/**</include>
+                                        <include>org/ops4j/pax/url/**</include>
+
+                                        <!-- artifacts listed in fabric8-karaf distro startup.properties -->
+                                        <include>org/fusesource/insight/insight-log/**</include>
+                                        <include>com/weiglewilczek/scala-lang-osgi/scala-library/**</include>
+                                        <include>org/codehaus/jackson/jackson-core-asl/**</include>
+                                        <include>io/fabric8/fabric-boot-commands/**</include>
+                                        <include>org/codehaus/jackson/jackson-mapper-asl/**</include>
+                                        <include>io/fabric8/fabric-zookeeper/**</include>
+                                        <include>commons-codec/commons-codec/**</include>
+                                        <include>io/fabric8/fabric-core/**</include>
+                                        <include>org/jledit/**</include>
+                                        <include>org/bouncycastle/**</include>
+
+                                        <!-- for loading quickstart profiles -->
+                                        <include>io/fabric8/quickstarts/**</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>properties-maven-plugin</artifactId>
+                <version>1.0-alpha-2</version>
+                <executions>
+                    <execution>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>read-project-properties</goal>
+                        </goals>
+                        <configuration>
+                            <files>
+                                <file>target/dependencies/unix/fabric8-karaf-1.2.0.redhat-630187/fabric/import/fabric/profiles/default.profile/io.fabric8.version.properties</file>
+                            </files>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>enable-obr</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target name="enable-obr">
+                                <echo message="Updating etc/startup.properties in unix assembly" />
+                                <concat destfile="target/dependencies/unix/fabric8-karaf-1.2.0.redhat-630187/etc/startup.properties"
+                                        append="true" eol="unix">
+                                    <fileset file="target/shared/startup-obr.properties" />
+                                    <fileset file="target/shared/startup-esb-commands.properties" />
+                                </concat>
+                                <echo message="Updating etc/shell.init.script in unix assembly" />
+                                <concat destfile="target/dependencies/unix/fabric8-karaf-1.2.0.redhat-630187/etc/shell.init.script" append="true" eol="unix">
+                                    <fileset file="target/shared/appended-resources/shell.init.script" />
+                                </concat>
+
+                                <echo message="Fixing start/stop scripts in assembly" />
+                                <replace file="target/dependencies/unix/fabric8-karaf-1.2.0.redhat-630187/bin/start.bat" token="fabric8.bat" value="fuse.bat" />
+                                <replace file="target/dependencies/unix/fabric8-karaf-1.2.0.redhat-630187/bin/stop.bat" token="fabric8.bat" value="fuse.bat" />
+                                <replace file="target/dependencies/unix/fabric8-karaf-1.2.0.redhat-630187/bin/start" token="bin/fabric8" value="bin/fuse" />
+                                <replace file="target/dependencies/unix/fabric8-karaf-1.2.0.redhat-630187/bin/stop" token="bin/fabric8" value="bin/fuse" />
+                                <echo message="Updating etc/system.properties in unix assembly" />
+                                <concat destfile="target/dependencies/unix/fabric8-karaf-1.2.0.redhat-630187/etc/system.properties"
+                                        append="true" eol="unix">
+                                    <fileset file="target/shared/system-smx.properties" />
+                                </concat>
+                                <echo message="Updating etc/config.properties in unix assembly" />
+                                <concat destfile="target/dependencies/unix/fabric8-karaf-1.2.0.redhat-630187/etc/config.properties"
+                                        append="true" eol="unix">
+                                    <fileset file="target/shared/appended-resources/config.properties" />
+                                </concat>
+                                <echo file="target/dependencies/unix/fabric8-karaf-1.2.0.redhat-630187/etc/system.properties" append="true">profiles=esb-shared</echo>
+                                <replace file="target/dependencies/unix/fabric8-karaf-1.2.0.redhat-630187/etc/config.properties" token="Fuse Fabric" value="JBoss Fuse" />
+
+                                <echo message="Add patch scripts to assembly" />
+                                <copy todir="target/dependencies/unix/fabric8-karaf-1.2.0.redhat-630187/bin">
+                                    <fileset dir="target/shared/bin" />
+                                </copy>
+                            </target>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>hawtio-branding</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target name="hawtio-branding">
+                                <echo message="Updating hawtio profile to add reference to RH branding" />
+                                <replaceregexp
+                                        match="^\s*feature.*branding\s*$"
+                                        replace="feature.hawtio-redhat-fuse-branding=hawtio-redhat-fuse-branding${line.separator}feature.hawtio-redhat-amq-branding=hawtio-redhat-amq-branding${line.separator}"
+                                        file="target/dependencies/unix/fabric8-karaf-1.2.0.redhat-630187/fabric/import/fabric/profiles/hawtio.profile/io.fabric8.agent.properties"
+                                        byline="true" />
+                            </target>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>add-esb-commands-startup</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target name="add-esb-commands-startup">
+                                <echo message="Adding esb-commands-startup feature to default.profile" />
+                                <concat destfile="target/dependencies/unix/fabric8-karaf-1.2.0.redhat-630187/fabric/import/fabric/profiles/default.profile/io.fabric8.agent.properties"
+                                        append="true" eol="unix">
+                                    <fileset file="target/shared/appended-resources/fabric/import/fabric/profiles/default.profile/io.fabric8.agent.properties" />
+                                </concat>
+                            </target>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.karaf.tooling</groupId>
+                <artifactId>features-maven-plugin</artifactId>
+                <version>2.4.0.redhat-630187</version>
+                <executions>
+                    <execution>
+                        <id>add-features-to-repo</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>add-features-to-repo</goal>
+                        </goals>
+                        <configuration>
+                            <descriptors>
+                                <descriptor>mvn:org.apache.karaf.assemblies.features/standard/2.4.0.redhat-630187/xml/features</descriptor>
+                                <descriptor>mvn:org.apache.karaf.assemblies.features/spring/2.4.0.redhat-630187/xml/features</descriptor>
+                                <descriptor>mvn:org.apache.karaf.assemblies.features/enterprise/2.4.0.redhat-630187/xml/features</descriptor>
+                                <descriptor>mvn:org.apache.activemq/activemq-karaf/5.11.0.redhat-630187/xml/features</descriptor>
+                                <descriptor>mvn:org.apache.camel.karaf/apache-camel/2.17.0.redhat-630187/xml/features</descriptor>
+                                <descriptor>mvn:org.apache.cxf.karaf/apache-cxf/3.1.5.redhat-630187/xml/features</descriptor>
+                                <descriptor>mvn:org.jboss.fuse/jboss-fuse/6.3.0.redhat-187/xml/features</descriptor>
+                                <descriptor>mvn:io.fabric8.patch/patch-features/1.2.0.redhat-630187/xml/features</descriptor>
+                                <descriptor>mvn:io.hawt/hawtio-karaf/1.4.0.redhat-630187/xml/features</descriptor>
+                                <descriptor>mvn:io.fabric8/fabric8-karaf/1.2.0.redhat-630187/xml/features</descriptor>
+                                <descriptor>mvn:io.fabric8.support/support-features/1.2.0.redhat-630187/xml/features</descriptor>
+                            </descriptors>
+                            <includeMvnBasedDescriptors>true</includeMvnBasedDescriptors>
+                            <repository>target/features-repo</repository>
+                            <failOnArtifactResolutionError>false</failOnArtifactResolutionError>
+                            <blackList>
+                                pax-cdi-openwebbeans,pax-cdi-web-openwebbeans,spring-struts,cxf-bean-validation-java6,pax-cdi-1.2-web,pax-jsf-support,camel-ignite,camel-jetty8,camel-ironmq,camel-gae
+                            </blackList>
+                        </configuration>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.httpcomponents</groupId>
+                        <artifactId>httpclient</artifactId>
+                        <version>4.5.1</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.apache.httpcomponents</groupId>
+                        <artifactId>httpcore</artifactId>
+                        <version>4.4.4</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.apache.maven.wagon</groupId>
+                        <artifactId>wagon-http</artifactId>
+                        <version>2.8</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.fusesource.mvnplugins</groupId>
+                <artifactId>maven-notices-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>merge-notices-in-repository</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>merge-notices-in-repository</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>unix-bin-baseline</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <ignoreMissingDescriptor>true</ignoreMissingDescriptor>
+                            <descriptors>
+                                <descriptor>src/main/descriptors/unix-baseline-bin.xml</descriptor>
+                            </descriptors>
+                            <finalName>jboss-fuse-karaf-${fuse}</finalName>
+                            <appendAssemblyId>true</appendAssemblyId>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>unix-bin</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <ignoreMissingDescriptor>true</ignoreMissingDescriptor>
+                            <descriptors>
+                                <descriptor>src/main/descriptors/unix-with-notices-bin.xml</descriptor>
+                            </descriptors>
+                            <finalName>original</finalName>
+                            <appendAssemblyId>false</appendAssemblyId>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!--
+                Step 2: copy and filter any text files you want to add/replace in the assembly
+                        typically, config files like the org.apache.karaf.features.cfg file
+            -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.7</version>
+                <executions>
+                    <execution>
+                        <id>filter-resources</id>
+                        <goals>
+                            <goal>resources</goal>
+                        </goals>
+                        <phase>generate-resources</phase>
+                    </execution>
+                </executions>
+            </plugin>
+            <!--
+                 Step 3: gather all the bundles for the features your want to install
+             -->
+            <plugin>
+                <groupId>org.apache.karaf.tooling</groupId>
+                <artifactId>features-maven-plugin</artifactId>
+                <version>2.4.0.redhat-630187</version>
+                <executions>
+                    <execution>
+                        <id>add-features</id>
+                        <goals>
+                            <goal>add-features-to-repo</goal>
+                        </goals>
+                        <phase>generate-resources</phase>
+                        <configuration>
+                            <descriptors>
+                                <descriptor>mvn:org.apache.karaf.assemblies.features/standard/${karaf.version}/xml/features</descriptor>
+                                <descriptor>mvn:org.apache.karaf.assemblies.features/spring/${karaf.version}/xml/features</descriptor>
+                                <descriptor>mvn:org.apache.karaf.assemblies.features/enterprise/${karaf.version}/xml/features</descriptor>
+                                <descriptor>mvn:org.apache.cxf.karaf/apache-cxf/${cxf.version}/xml/features</descriptor>
+                                <descriptor>mvn:org.apache.camel.karaf/apache-camel/${camel.version}/xml/features</descriptor>
+                                <descriptor>mvn:org.apache.activemq/activemq-karaf/${activemq.version}/xml/features-core</descriptor>
+                                <descriptor>mvn:io.fabric8/fabric8-karaf/${fabric8.version}/xml/features</descriptor>
+                                <descriptor>mvn:org.jboss.fuse/jboss-fuse/${jboss.fuse.version}/xml/features</descriptor>
+                                <descriptor>mvn:io.fabric8.patch/patch-features/${fabric8.version}/xml/features</descriptor>
+                                <descriptor>mvn:io.hawt/hawtio-karaf/${hawtio.version}/xml/features</descriptor>
+                                <descriptor>mvn:io.fabric8.support/support-features/${fabric8.version}/xml/features</descriptor>
+                            </descriptors>
+                            <features>
+                                <!-- TODO: add the feature you want to use in your custom assembly to the list below -->
+                                <feature>shell</feature>
+                                <feature>admin</feature>
+                                <feature>management</feature>
+                                <feature>camel-blueprint</feature>
+                                <feature>camel-jaxb</feature>
+                            </features>
+                            <repository>target/repository</repository>
+                        </configuration>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.httpcomponents</groupId>
+                        <artifactId>httpclient</artifactId>
+                        <version>4.5.1</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.apache.httpcomponents</groupId>
+                        <artifactId>httpcore</artifactId>
+                        <version>4.4.4</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.apache.maven.wagon</groupId>
+                        <artifactId>wagon-http</artifactId>
+                        <version>2.8</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <!--
+               Step 4: Create the custom assembly ZIP file
+           -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.4</version>
+                <executions>
+                    <execution>
+                        <id>package-custom-assembly</id>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <phase>package</phase>
+                        <configuration>
+                            <descriptor>src/main/descriptors/custom.xml</descriptor>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
