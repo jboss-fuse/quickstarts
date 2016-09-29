@@ -15,7 +15,7 @@ output directory per country.
 
 In this example we will use two containers, one container to run as a standalone A-MQ broker, and another as a client to the broker, where the Camel routes is running. This scenario is illustrated in the figure below:
 
-![Camel AMQ Quickstart Diagram](https://raw.githubusercontent.com/fabric8io/fabric8/master/docs/images/camel-amq-quickstart-diagram.jpg)
+![Camel AMQ Quickstart Diagram](https://raw.githubusercontent.com/jboss-fuse/fabric8/1.2.0.redhat-6-3-x/docs/images/camel-amq-quickstart-diagram.jpg)
 
 The two Camel routes send and receives JMS message using the `amq:incomingOrders` endpoint, which is a queue on the A-MQ broker.
 
