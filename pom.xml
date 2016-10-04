@@ -116,5 +116,10 @@
     </modules>
     
 
-
+    <repositories>
+        <repository>
+            <id>FuseRepository</id>
+            <url>https://repository.jboss.org/nexus/content/groups/ea/</url>
+        </repository>
+    </repositories>
 </project>
