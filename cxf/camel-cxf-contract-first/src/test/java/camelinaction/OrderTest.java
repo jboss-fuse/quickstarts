@@ -61,7 +61,7 @@ public class OrderTest {
         /*
          * Set up the URL connection to the web service address
          */
-        URLConnection connection = new URL("http://localhost:8181/cxf/order").openConnection();
+        URLConnection connection = new URL("http://localhost:8181/cxf/contract_first_order").openConnection();
         connection.setDoInput(true);
         connection.setDoOutput(true);
 

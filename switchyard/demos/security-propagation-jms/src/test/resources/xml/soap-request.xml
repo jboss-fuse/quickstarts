@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:security-propagation-jms="urn:switchyard-quickstart-demo:security-propagation-jms:0.1.0">
+    <soap:Header/>
+    <soap:Body>
+        <security-propagation-jms:doWork>
+            <work>
+                <command>WORK_CMD</command>
+            </work>
+        </security-propagation-jms:doWork>
+    </soap:Body>
+</soap:Envelope>

@@ -15,14 +15,14 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-<switchyard xmlns="urn:switchyard-config:switchyard:1.0" xmlns:camel="urn:switchyard-component-camel:config:1.0" xmlns:sca="http://docs.oasis-open.org/ns/opencsa/sca/200912">
+<switchyard xmlns="urn:switchyard-config:switchyard:2.0" xmlns:camel="urn:switchyard-component-camel:config:2.0" xmlns:sca="http://docs.oasis-open.org/ns/opencsa/sca/200912">
     <sca:composite name="camel-service" targetNamespace="urn:switchyard-quickstart:camel-service:0.1.0">
         <sca:service name="JavaDSL" promote="JavaDSLBuilder/JavaDSL">
             <sca:binding.sca/>
         </sca:service>
         <sca:component name="JavaDSLBuilder">
             <camel:implementation.camel>
-                <camel:java class="org.switchyard.quickstarts.camel.service.JavaDSLBuilder"/>
+                <camel:java bean="JavaDSLBuilder"/>
             </camel:implementation.camel>
             <sca:service name="JavaDSL">
                 <sca:interface.java interface="org.switchyard.quickstarts.camel.service.JavaDSL"/>

@@ -1,0 +1,1 @@
+class=org.switchyard.quickstarts.demo.security.propagation.jms.security.SecurityCamelJMSBindingDataCreator

@@ -1,0 +1,11 @@
+if (outcome == success) of /subsystem=undertow/server=default-server/https-listener=https/:read-resource
+    /subsystem=undertow/server=default-server/https-listener=https/:remove
+    /core-service=management/security-realm=https/:remove
+end-if
+if (outcome == success) of /subsystem=messaging/hornetq-server=default/jms-queue=WorkStoreQueue:read-resource
+    jms-queue remove --queue-address=WorkStoreQueue
+end-if
+if (outcome == success) of /subsystem=messaging/hornetq-server=default/jms-queue=WorkAckStoreQueue:read-resource
+    jms-queue remove --queue-address=WorkAckStoreQueue
+end-if
+:reload

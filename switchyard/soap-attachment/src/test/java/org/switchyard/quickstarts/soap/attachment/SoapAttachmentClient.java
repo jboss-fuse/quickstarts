@@ -64,6 +64,13 @@ public class SoapAttachmentClient {
         ap.setDataHandler(new DataHandler(new URLDataSource(imageUrl)));
         ap.setContentId("switchyard.png");
         msg.addAttachmentPart(ap);
+        msg.saveChanges();
+
+        // SWITCHYARD-2818/CXF-6665 - CXF does not set content-type properly.
+        String contentType = msg.getMimeHeaders().getHeader("Content-Type")[0];
+        contentType += "; start=\"<root.message@cxf.apache.org>\"; start-info=\"application/soap+xml\"; action=\"urn:switchyard-quickstart:soap-attachment:1.0:echoImage\"";
+        msg.getMimeHeaders().setHeader("Content-Type", contentType);
+
         return connection.call(msg, new URL(switchyard_web_service));
     }
 }

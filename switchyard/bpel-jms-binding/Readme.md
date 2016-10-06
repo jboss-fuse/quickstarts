@@ -45,22 +45,28 @@ EAP
 
 Fuse
 ----------
-1. Start the Fuse server :
+1. Check that the karaf user is created on the  ${KARAF_HOME}/etc/users.properties .  In case no karaf user
+   is created add these lines:
+
+ karaf = karaf,_g_:admingroup
+_g_\:admingroup = group,admin,manager,viewer,webconsole
+
+2. Start the Fuse server :
 
 ${FUSE_HOME}/bin/fuse
 
-2. Install the feature for the bpel-jms-binding quickstart :
+3. Install the feature for the bpel-jms-binding quickstart :
 
 JBossFuse:karaf@root> features:install switchyard-quickstart-bpel-jms-binding
 
-3. To submit a webservice request to invoke the SOAP gateway, run the quickstart client :
+4. To submit a webservice request to invoke the SOAP gateway, run the quickstart client :
 <br/>
 ```
 mvn exec:java -Pkaraf
 ```
 <br/>
 
-4. Undeploy the quickstart:
+5. Undeploy the quickstart:
 
 JBossFuse:karaf@root> features:uninstall switchyard-quickstart-bpel-jms-binding
 

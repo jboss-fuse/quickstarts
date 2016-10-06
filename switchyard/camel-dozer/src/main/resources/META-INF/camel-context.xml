@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="
+             http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+             http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+    <!-- CamelContext -->
+    <camelContext xmlns="http://camel.apache.org/schema/spring">
+        <endpoint id="xml2json" uri="dozer:xml2json?sourceModel=org.switchyard.quickstarts.camel.dozer.abcorder.ABCOrder&amp;targetModel=org.switchyard.quickstarts.camel.dozer.xyzorder.XyzOrder&amp;marshalId=transform-json&amp;unmarshalId=abcorder&amp;mappingFile=transformation.xml"/>
+        <dataFormats>
+            <jaxb contextPath="org.switchyard.quickstarts.camel.dozer.abcorder" id="abcorder"/>
+            <json id="transform-json" library="Jackson"/>
+        </dataFormats>
+        <route>
+            <from uri="switchyard://OrderService"/>
+            <setHeader headerName="approval"><constant>AUTO</constant></setHeader>
+            <to ref="xml2json"/>
+            <to uri="switchyard://StoreService"/>
+        </route>
+    </camelContext>
+</beans>

@@ -77,6 +77,8 @@
       <property name="cxfPort" value="${org.switchyard.component.camel.cxf.port:8082}"/>
       <property name="cxfPort2" value="${org.switchyard.component.camel.cxf.port2:8083}"/>
       <property name="org.switchyard.handlers.messageTrace.enabled" value="false"/>
+      <property name="route1.from" value="switchyard://OrderService"/>
+      <property name="route1.to" value="switchyard://WarehouseServiceExternal?operationName=order"/>
     </properties>
   </domain>
 </switchyard>

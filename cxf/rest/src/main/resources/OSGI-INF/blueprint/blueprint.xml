@@ -58,6 +58,13 @@
         <cxf:features>
           <cxf:logging />
         </cxf:features>
+        <cxf:properties>
+          <!--
+            This property needs to be set 'true' in order to give preference to JacksonJsonProvider
+            over the default Jettison provider.
+          -->
+          <entry key="skip.default.json.provider.registration" value="true" />
+        </cxf:properties>
     </cxf:bus>
 
 

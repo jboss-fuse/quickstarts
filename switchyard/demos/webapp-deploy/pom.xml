@@ -16,7 +16,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.switchyard.quickstarts.demos</groupId>
     <artifactId>switchyard-demo-webapp-deploy</artifactId>
-    <version>2.0.1.redhat-621084</version>
+    <version>2.1.0.redhat-630187</version>
     <packaging>war</packaging>
     <name>Quickstart Demo : JEE Webapp Deployment</name>
     <description>Quickstart Demo : JEE Webapp Deployment</description>
@@ -50,18 +50,24 @@
                 <updatePolicy>never</updatePolicy>
             </snapshots>
         </repository>
-        <repository>
-            <id>jboss-enterprise-repository-group</id>
-            <name>JBoss Enterprise Maven Repository Group</name>
-            <url>http://maven.repository.redhat.com/ga/</url>
-            <layout>default</layout>
+       <repository>
+            <id>redhat-ga-repository</id>
+            <url>https://maven.repository.redhat.com/ga</url>
             <releases>
                 <enabled>true</enabled>
-                <updatePolicy>never</updatePolicy>
             </releases>
             <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>redhat-ea-repository</id>
+            <url>https://maven.repository.redhat.com/earlyaccess/all</url>
+            <releases>
                 <enabled>true</enabled>
-                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
             </snapshots>
         </repository>
         <repository>
@@ -79,17 +85,23 @@
     </repositories>
     <pluginRepositories>
         <pluginRepository>
-            <id>jboss-enterprise-repository-group</id>
-            <name>JBoss Enterprise Maven Repository Group</name>
-            <url>http://maven.repository.redhat.com/ga/all/</url>
-            <layout>default</layout>
+            <id>redhat-ga-repository</id>
+            <url>https://maven.repository.redhat.com/ga</url>
             <releases>
                 <enabled>true</enabled>
-                <updatePolicy>never</updatePolicy>
             </releases>
             <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+        <pluginRepository>
+            <id>redhat-ea-repository</id>
+            <url>https://maven.repository.redhat.com/earlyaccess/all</url>
+            <releases>
                 <enabled>true</enabled>
-                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
             </snapshots>
         </pluginRepository>
     </pluginRepositories>

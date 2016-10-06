@@ -66,6 +66,8 @@
     <properties>
       <property name="soapPort" value="${org.switchyard.component.soap.standalone.port:8080}"/>
       <property name="soapClientPort" value="${org.switchyard.component.soap.client.port:8080}"/>
+      <property name="URL_SOAP_EXTERNAL_SERVICE" value="http://localhost:8080/external/HelloWorldWSService"/>
+      <property name="URL_SOAP_SERVICE" value="http://localhost:8080/soap-binding-rpc/HelloWorldWS"/>
     </properties>
   </domain>
 </switchyard>

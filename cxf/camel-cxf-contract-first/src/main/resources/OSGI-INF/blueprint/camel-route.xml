@@ -24,7 +24,7 @@
              http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
 
   <cxf:cxfEndpoint id="orderEndpoint"
-                   address="/order/"
+                   address="/contract_first_order/"
                    serviceClass="camelinaction.order.OrderEndpoint"/>
 
   <camelContext xmlns="http://camel.apache.org/schema/blueprint">

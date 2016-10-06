@@ -136,7 +136,7 @@ ${FUSE_HOME}/bin/fuse
 2. Add the features URL for the respective version of SwitchYard.   
 
     ```
-    JBossFuse:karaf@root> features:addurl mvn:org.switchyard.karaf/switchyard/2.0.1.redhat-621084/xml/core-features
+    JBossFuse:karaf@root> features:addurl mvn:org.switchyard.karaf/switchyard/2.1.0.redhat-630187/xml/core-features
     ```
 
 3. Install the feature for the sap-binding quickstart :

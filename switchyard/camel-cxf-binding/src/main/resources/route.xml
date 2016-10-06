@@ -17,7 +17,7 @@
 -->
 <routes xmlns="http://camel.apache.org/schema/spring">
   <route>
-    <from uri="switchyard://OrderService"/>
-    <to uri="switchyard://WarehouseServiceExternal?operationName=order"/>
+    <from uri="{{route1.from}}"/>
+    <to uri="{{route1.to}}"/>
   </route>
 </routes>

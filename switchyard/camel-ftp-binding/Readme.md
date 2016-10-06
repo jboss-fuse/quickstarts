@@ -50,23 +50,32 @@ EAP
 
 Fuse
 ----------
-1. Start the Fuse server :
+
+1. Add these properties to the ${KARAF_HOME}/etc/system.properties
+
+org.switchyard.component.camel.ftps.storefile=${karaf.home}/quickstarts/switchyard/camel-ftp-binding/src/test/resources/ftpclient.jks
+org.switchyard.component.camel.sftp.knownhosts=${karaf.home}/quickstarts/switchyard/camel-ftp-binding/src/test/resources/known_hosts_sftp
+org.switchyard.component.camel.sftp.keyfile=${karaf.home}/quickstarts/switchyard/camel-ftp-binding/src/test/resources/id_sftp_rsa
+
+2. Start the Fuse server :
 
 ${FUSE_HOME}/bin/fuse
 
-2. From src/test/resources, copy ftpclient.jks, id_sftp_rsa, and known_hosts_sftp to ${KARAF_HOME}/etc.
+3. From src/test/resources, copy ftpclient.jks, id_sftp_rsa, and known_hosts_sftp to ${KARAF_HOME}/etc.
 
-3. Install the feature for the camel-ftp-binding quickstart :
+4. Install the feature for the camel-ftp-binding quickstart :
 
 JBossFuse:karaf@root> features:install switchyard-quickstart-camel-ftp-binding
 
-4. Create a file on the ftp server using a standalone FTP client.
+5. Create a file on the ftp server using a standalone FTP client.
 
-5. Check the server console for output from the service.
+6. Check the server console for output from the service.
 
-6. Undeploy the quickstart:
+7. Undeploy the quickstart:
 
 JBossFuse:karaf@root> features:uninstall switchyard-quickstart-camel-ftp-binding
+
+8. Remove the added properties of the step 1 from the ${KARAF_HOME}/etc/system.properties file
 
 
 Wildfly
@@ -101,28 +110,37 @@ mvn clean -Pdeploy -Pwildfly
 
 Karaf
 ----------
-1. Start the Karaf server :
+1. Add these properties to the ${KARAF_HOME}/etc/system.properties
+
+org.switchyard.component.camel.ftps.storefile=${karaf.home}/quickstarts/switchyard/camel-ftp-binding/src/test/resources/ftpclient.jks
+org.switchyard.component.camel.sftp.knownhosts=${karaf.home}/quickstarts/switchyard/camel-ftp-binding/src/test/resources/known_hosts_sftp
+org.switchyard.component.camel.sftp.keyfile=${karaf.home}/quickstarts/switchyard/camel-ftp-binding/src/test/resources/id_sftp_rsa
+
+
+2. Start the Karaf server :
 
 ${KARAF_HOME}/bin/karaf
 
-2. Add the features URL for the respective version of SwitchYard.   Replace {SWITCHYARD-VERSION}
+3. Add the features URL for the respective version of SwitchYard.   Replace {SWITCHYARD-VERSION}
 with the version of SwitchYard that you are using (ex. 2.0.0): 
 
 karaf@root> features:addurl mvn:org.switchyard.karaf/switchyard/{SWITCHYARD-VERSION}/xml/features
 
-3. From src/test/resources, copy ftpclient.jks, id_sftp_rsa, and known_hosts_sftp to ${KARAF_HOME}/etc.
+4. From src/test/resources, copy ftpclient.jks, id_sftp_rsa, and known_hosts_sftp to ${KARAF_HOME}/etc.
 
-4. Install the feature for the camel-ftp-binding quickstart :
+5. Install the feature for the camel-ftp-binding quickstart :
 
 karaf@root> features:install switchyard-quickstart-camel-ftp-binding
 
-5. Create a file on the ftp server using a standalone FTP client.
+6. Create a file on the ftp server using a standalone FTP client.
 
-6. Check the server console for output from the service.
+7. Check the server console for output from the service.
 
-7. Undeploy the quickstart:
+8. Undeploy the quickstart:
 
 karaf@root> features:uninstall switchyard-quickstart-camel-ftp-binding
+
+9. Remove the added properties of the step 1 from the ${KARAF_HOME}/etc/system.properties file
 
 
 ## Further Reading

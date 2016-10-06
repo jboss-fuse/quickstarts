@@ -1,5 +1,5 @@
 /**
- *  Copyright 2005-2015 Red Hat, Inc.
+ *  Copyright 2005-2016 Red Hat, Inc.
  *
  *  Red Hat licenses this file to you under the Apache License, version
  *  2.0 (the "License"); you may not use this file except in compliance
@@ -16,7 +16,6 @@
 package org.jboss.quickstarts.fuse.processor;
 
 import org.apache.camel.Exchange;
-import org.apache.camel.ExchangeProperty;
 import org.apache.camel.processor.aggregate.AggregationStrategy;
 
 public class BodyInAggregatingStrategy implements AggregationStrategy {
@@ -31,16 +30,4 @@ public class BodyInAggregatingStrategy implements AggregationStrategy {
         oldExchange.getIn().setBody(oldBody + "+" + newBody);
         return oldExchange;
     }
-
-    /**
-     * An expression used to determine if the aggregation is complete
-     */
-    public boolean isCompleted(@ExchangeProperty(Exchange.AGGREGATED_SIZE) Integer aggregated) {
-        if (aggregated == null) {
-            return false;
-        }
-
-        return aggregated == 3;
-    }
-
 }

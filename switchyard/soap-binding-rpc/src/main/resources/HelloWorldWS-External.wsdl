@@ -35,7 +35,7 @@
     </wsdl:binding>
     <wsdl:service name="HelloWorldWSService">
         <wsdl:port name="HelloWorldPort" binding="tns:HelloWorldPortBinding">
-            <soap:address location="http://localhost:8080/external/HelloWorldWSService"/>
+            <soap:address location="${URL_SOAP_EXTERNAL_SERVICE}"/>
         </wsdl:port>
     </wsdl:service>
 </wsdl:definitions>

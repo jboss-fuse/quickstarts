@@ -23,6 +23,7 @@ import javax.inject.Named;
 
 import org.fusesource.camel.component.sap.SapConnectionConfiguration;
 import org.fusesource.camel.component.sap.SapSynchronousRfcServerComponent;
+import org.fusesource.camel.component.sap.SapTransactionalRfcDestinationComponent;
 import org.fusesource.camel.component.sap.model.rfc.RepositoryData;
 
 /**
@@ -34,8 +35,18 @@ public class CamelSAPComponentProducer {
     @Named("sap-srfc-server")
     public SapSynchronousRfcServerComponent create(
             @Named("sap-configuration") SapConnectionConfiguration sapConfiguration,
-            @Named("repositoryDataStore") Map<String,RepositoryData> repositoryDataStore ) {
+            @Named("repositoryDataStore") Map<String, RepositoryData> repositoryDataStore) {
         SapSynchronousRfcServerComponent sap = new SapSynchronousRfcServerComponent();
+        sapConfiguration.setRepositoryDataStore(repositoryDataStore);
+        return sap;
+    }
+
+    @Produces
+    @Named("sap-trfc-destination")
+    public SapTransactionalRfcDestinationComponent createTrfcDestination(
+            @Named("sap-configuration") SapConnectionConfiguration sapConfiguration,
+            @Named("repositoryDataStore") Map<String, RepositoryData> repositoryDataStore) {
+        final SapTransactionalRfcDestinationComponent sap = new SapTransactionalRfcDestinationComponent();
         sapConfiguration.setRepositoryDataStore(repositoryDataStore);
         return sap;
     }

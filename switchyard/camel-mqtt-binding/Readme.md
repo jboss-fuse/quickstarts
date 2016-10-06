@@ -53,7 +53,7 @@ EAP
 
 Fuse
 ----------
-1. Add MQTT connector into ${FUSE_HOME}/etc/broker.xml
+1. Add MQTT connector into ${FUSE_HOME}/etc/activemq.xml
 ```diff
 --- etc/broker.xml.orig	2015-05-18 17:50:46.160564013 +0900
 +++ etc/broker.xml	2015-05-18 17:51:32.480579624 +0900
@@ -65,6 +65,10 @@ Fuse
          </transportConnectors>
      </broker>
 ```
+2. Add karaf user to ${FUSE_HOME}/etc/users.properties
+
+karaf=karaf,admin,manager,viewer,Monitor, Operator, Maintainer, Deployer, Auditor, Administrator, SuperUser
+
 2. Start the Fuse server :
 
 ${FUSE_HOME}/bin/fuse
@@ -166,3 +170,17 @@ run from the command-line using:
 ## Further Reading
 
 1. [Camel MQTT](http://camel.apache.org/mqtt.html)
+
+---
+#### Note
+You may see following warnings on client execution when you run with IBM JDK:
+```
+[WARNING] thread Thread[MemoryPoolMXBean notification dispatcher,6,org.switchyard.quickstarts.camel.mqtt.binding.MQTTClient] was interrupted but is still alive after waiting at least 14999msecs
+[WARNING] thread Thread[MemoryPoolMXBean notification dispatcher,6,org.switchyard.quickstarts.camel.mqtt.binding.MQTTClient] will linger despite being asked to die via interruption
+[WARNING] NOTE: 1 thread(s) did not finish despite being asked to  via interruption. This is not a problem with exec:java, it is a problem with the running code. Although not serious, it should be remedied.
+[WARNING] Couldn't destroy threadgroup org.codehaus.mojo.exec.ExecJavaMojo$IsolatedThreadGroup[name=org.switchyard.quickstarts.camel.mqtt.binding.MQTTClient,maxpri=10]
+java.lang.IllegalThreadStateException: Has threads
+	at java.lang.ThreadGroup.destroyImpl(ThreadGroup.java:256)
+.....
+```
+The "MemoryPoolMXBean notification dispatcher" thread is started by IBM JDK itself, but is not shutdown at the end. The exec-maven-plugin complains about the remaining threads at the end, but it's harmless at all. You can just ignore those warnings.

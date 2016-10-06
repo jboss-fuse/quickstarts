@@ -34,7 +34,7 @@ public class TCPClient {
         KeyStore keystore = KeyStore.getInstance("JKS");
         keystore.load(new FileInputStream("users.jks"), "changeit".toCharArray());
 
-        TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+        TrustManagerFactory tmf = TrustManagerFactory.getInstance("SunX509");
         tmf.init(keystore);
 
         SSLContext context = SSLContext.getInstance("TLS");
@@ -51,8 +51,12 @@ public class TCPClient {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         System.out.print("Message body to send over TCP: ");
 
-        outputStream.write(reader.readLine().getBytes());
-        Thread.sleep(50);
+        String message = reader.readLine();
+        outputStream.write(message.getBytes());
+        outputStream.flush();
+        System.out.println(String.format("Sent [%s] over TCP. Check the server log.", message));
+        Thread.sleep(500);
+        outputStream.close();
         clientSocket.close();
     }
 

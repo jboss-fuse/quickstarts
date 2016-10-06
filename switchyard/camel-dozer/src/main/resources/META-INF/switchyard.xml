@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<switchyard xmlns="urn:switchyard-config:switchyard:1.0" xmlns:camel="urn:switchyard-component-camel:config:1.0" xmlns:file="urn:switchyard-component-camel-file:config:1.0" xmlns:sca="http://docs.oasis-open.org/ns/opencsa/sca/200912">
+  <sca:composite name="camel-dozer" targetNamespace="urn:switchyard-quickstart:camel-dozer:0.1.0">
+    <sca:service name="OrderService" promote="OrderService/OrderService">
+      <file:binding.file name="file1">
+        <file:directory>target/input</file:directory>
+        <file:fileName>abc-order.xml</file:fileName>
+        <file:consume>
+          <file:initialDelay>10</file:initialDelay>
+          <file:delay>10</file:delay>
+          <file:delete>true</file:delete>
+        </file:consume>
+      </file:binding.file>
+    </sca:service>
+    <sca:component name="OrderService">
+      <camel:implementation.camel>
+        <camel:xml path="META-INF/camel-context.xml"/>
+      </camel:implementation.camel>
+      <sca:service name="OrderService">
+        <sca:interface.java interface="org.switchyard.quickstarts.camel.dozer.OrderService"/>
+      </sca:service>
+      <sca:reference name="StoreService">
+        <sca:interface.java interface="org.switchyard.quickstarts.camel.dozer.StoreService"/>
+      </sca:reference>
+    </sca:component>
+    <sca:reference name="StoreService" multiplicity="0..1" promote="OrderService/StoreService">
+      <sca:interface.java interface="org.switchyard.quickstarts.camel.dozer.StoreService"/>
+      <file:binding.file name="file2">
+        <file:directory>target/output</file:directory>
+        <file:fileName>xyz-order.json</file:fileName>
+      </file:binding.file>
+    </sca:reference>
+  </sca:composite>
+  <domain>
+  </domain>
+</switchyard>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-     Copyright 2005-2015 Red Hat, Inc.
+     Copyright 2005-2016 Red Hat, Inc.
 
      Red Hat licenses this file to you under the Apache License, version
      2.0 (the "License"); you may not use this file except in compliance
@@ -22,12 +22,12 @@
     <parent>
       <groupId>org.jboss.quickstarts.fuse</groupId>
       <artifactId>quickstarts-parent</artifactId>
-      <version>6.2.1.redhat-084</version>
+      <version>6.3.0.redhat-187</version>
     </parent>
 
     <groupId>org.jboss.quickstarts.fuse</groupId>
     <artifactId>camel-quickstarts</artifactId>
-    <version>6.2.1.redhat-084</version>
+    <version>6.3.0.redhat-187</version>
     <packaging>pom</packaging>
     <name>JBoss Fuse Quickstart: camel</name>
 
@@ -47,21 +47,7 @@
         <organizationUrl>http://jboss.org/</organizationUrl>
       </developer>
     </developers>
-
-    <repositories>
-        <repository>
-            <id>fuse-public-repository</id>
-            <name>FuseSource Community Release Repository</name>
-            <url>https://repo.fusesource.com/nexus/content/groups/public</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-        </repository>
-    </repositories>
-
+    
     <scm>
       <connection>scm:git:git@github.com:jboss-fuse/fuse.git</connection>
       <developerConnection>scm:git:git@github.com:jboss-fuse/fuse.git</developerConnection>

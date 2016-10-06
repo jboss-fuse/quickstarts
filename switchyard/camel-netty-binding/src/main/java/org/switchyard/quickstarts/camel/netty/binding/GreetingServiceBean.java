@@ -50,7 +50,7 @@ public class GreetingServiceBean implements GreetingService {
     @Override
     public final void greet(final String name) {
         ExchangeSecurity es = exchange.getSecurity();
-        String msg = String.format(MSG, _type, name, es.getCallerPrincipal(), es.isCallerInRole("friend"), es.isCallerInRole("enemy"));
+        String msg = String.format(MSG, _type, name.trim(), es.getCallerPrincipal(), es.isCallerInRole("friend"), es.isCallerInRole("enemy"));
         _logger.info(msg);
     }
 

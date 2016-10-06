@@ -70,7 +70,7 @@ public class CamelNettyBindingTest {
         KeyStore keystore = KeyStore.getInstance("JKS");
         keystore.load(new FileInputStream("users.jks"), "changeit".toCharArray());
 
-        TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+        TrustManagerFactory tmf = TrustManagerFactory.getInstance("SunX509");
         tmf.init(keystore);
 
         SSLContext context = SSLContext.getInstance("TLS");

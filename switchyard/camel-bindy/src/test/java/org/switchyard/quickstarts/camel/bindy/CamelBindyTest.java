@@ -17,7 +17,6 @@
 package org.switchyard.quickstarts.camel.bindy;
 
 import org.junit.Assert;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.switchyard.component.test.mixins.cdi.CDIMixIn;

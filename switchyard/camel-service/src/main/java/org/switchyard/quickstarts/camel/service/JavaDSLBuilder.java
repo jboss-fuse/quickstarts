@@ -17,12 +17,18 @@
 package org.switchyard.quickstarts.camel.service;
 
 import org.apache.camel.builder.RouteBuilder;
+import javax.inject.Inject;
+import javax.inject.Named;
 
+@Named("JavaDSLBuilder")
 public class JavaDSLBuilder extends RouteBuilder {
 
+    @Inject
+    private PlainBean bean;
+    
     public void configure() {
         from("switchyard://JavaDSL")
-            .log("Message received in Java DSL Route")
+            .log("Message received in Java DSL Route with injected CDI bean >> " + bean.getMessage())
             .log("${body}")
             .split(body(String.class).tokenize("\n"))
             .filter()
