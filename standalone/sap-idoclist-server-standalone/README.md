@@ -18,7 +18,7 @@ What is it?
 
 This quick start shows how to integrate Apache Camel with SAP using the JBoss Fuse SAP IDoc List Server Camel component. This component and its endpoints should be used in cases where a sending SAP system requires delivery of Intermediate Document lists to a Camel route. This component uses the tRFC protocol to communicate with SAP as described in the `sap-trfc-server-standalone` quick start.
 
-This quick start handles lists of `FLCUSTOMER_CREATEFROMDATA01` type IDoc documents from SAP to create Customer records in the Flight Data Application. The route of this quick start simply mocks the processing of these documents. The `sap-idoclist-server` endpoint at the beginning of the route consumes a list of IDoc documents from SAP and then converts them to a string message body and logs them to the console. 
+This quick start handles lists of `FLCUSTOMER_CREATEFROMDATA01` type IDoc documents from SAP to create Customer records in the Flight Data Application. The route of this quick start simply mocks the processing of these documents by logging the documents it receives. The `sap-idoclist-server` endpoint at the beginning of the route consumes a list of IDoc documents from SAP and its contents is placed into the message body of the exchange's message. The document list is then logged to the console.
 
 **NOTE:** This component does not guarantee that a series of IDoc lists sent through its endpoints are handled and processed in the receiving Camel route in the same order that they were sent. The delivery and processing order of these lists may differ on the receiving Camel route due to communication errors and resends of a document list. This component only guarantees that each idoc list is processed **AT-MOST-ONCE**. To guarantee the delivery **and** processing order of a series of IDoc lists from SAP it is incumbent upon the sending SAP system to serialize its document lists to an **outbound queue** when sending them to this component to achieve **IN-ORDER** delivery and processing guarantees.  
 
@@ -31,8 +31,8 @@ In studying this quick start you will learn:
 
 For more information see:
 
-* <https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Fuse/6.2/html/Apache_Camel_Component_Reference/SAP.html> for more information about the JBoss Fuse SAP Camel components 
-* <https://access.redhat.com/site/documentation/JBoss_Fuse/> for more information about using JBoss Fuse
+* <https://access.redhat.com/documentation/en/red-hat-jboss-fuse/6.3/paged/apache-camel-component-reference/chapter-138-sap-component> for more information about the JBoss Fuse SAP Camel components 
+* <https://access.redhat.com/documentation/en/red-hat-jboss-fuse/> for more information about using JBoss Fuse
 
 System requirements
 -------------------
@@ -41,7 +41,7 @@ Before building and running this quick start you will need:
 
 * Maven 3.0.4 or higher
 * JDK 1.7 or 1.8
-* JBoss Fuse 6.2.1
+* JBoss Fuse 6.3.0
 * SAP JCo3 and IDoc3 libraries (sapjco3.jar, sapidoc3.jar and JCo native library for your OS platform)
 * SAP instance with [Flight Data Application](http://help.sap.com/saphelp_erp60_sp/helpdata/en/db/7c623cf568896be10000000a11405a/content.htm) setup.
 
@@ -92,7 +92,7 @@ Configuring the Quickstart for your environment
 To configure the quick start for your environment: 
 
 1. Deploy the JCo3 library jar and native library (for your platform) and IDoc3 library jar to the `lib` folder of the project.
-* Edit the project's Spring file (`src/main/resources/META-INF/spring/camel-context.xml`) and modify the `quickstartDestinationData` bean and the `quickstartServerData` bean to match the connection configuration for your SAP instance. 
+2. Ensure that the **SAP Instance Configuration Configuration Parameters** in the parent pom.xml file (`../../.pom.xml`) of quick starts project has been set to match the connection configuration for your SAP instance.  
 * Ensure the following `ZFLCUSTOMER_CREATEFROMDATA01` ABAP program is installed and activated in your SAP client:  
 
 		*&---------------------------------------------------------------------*

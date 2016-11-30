@@ -18,7 +18,7 @@ What is it?
 
 This quick start shows how to integrate Apache Camel with SAP using the JBoss Fuse SAP Synchronous Remote Function Call Destination Camel component. This component and its endpoints should be used in cases where Camel routes require synchronous delivery of requests to and responses from an SAP system.  
 
-This quick start uses XML files containing serialized SAP requests to query Customer records in the Flight Data Application within SAP. These files are consumed by the quickstart's route and their contents are then converted to string message bodies. These messages are then routed to an `sap-srfc-destination` endpoint which converts and sends them to SAP as `BAPI_FLCUST_GETLIST` requests to query Customer records.  
+This quick start contains a route with an initial timer endpoint which triggers and executes that route once. The route uses a processor bean to build a request to the `GetList` method of the `FlightCustomer` BAPI to retrieve up to 10 Customer records from SAP. The request is routed to a `sap-srfc-destination` endpoint to invoke the BAPI method and receive its response. The route logs to the console the serialized contents of the request and response messages it sends and receives.   
 
 **NOTE** The sRFC protocol used by this component delivers requests and responses to and from an SAP system **BEST-EFFORT**. When the component experiences a communication error when sending a request to or receiving a response from an SAP system, it will be *in doubt* whether the processing of a remote function call in the SAP system was successful. For the guaranteed delivery and processing of requests in an SAP system please see the JBoss Fuse SAP Transactional Remote Function Call Destination Camel component.     
 
@@ -31,8 +31,8 @@ In studying this quick start you will learn:
 
 For more information see:
 
-* <https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Fuse/6.2/html/Apache_Camel_Component_Reference/SAP.html> for more information about the JBoss Fuse SAP Camel components 
-* <https://access.redhat.com/site/documentation/JBoss_Fuse/> for more information about using JBoss Fuse
+* <https://access.redhat.com/documentation/en/red-hat-jboss-fuse/6.3/paged/apache-camel-component-reference/chapter-138-sap-component> for more information about the JBoss Fuse SAP Camel components 
+* <https://access.redhat.com/documentation/en/red-hat-jboss-fuse/> for more information about using JBoss Fuse
 
 System requirements
 -------------------
@@ -41,7 +41,7 @@ Before building and running this quick start you will need:
 
 * Maven 3.0.4 or higher
 * JDK 1.7 or 1.8
-* A JBoss Fuse 6.2.1 container not running with a Fabric
+* A JBoss Fuse 6.3.0 container not running with a Fabric
 * SAP JCo3 and IDoc3 libraries (sapjco3.jar, sapidoc3.jar and JCo native library for your OS platform)
 * SAP instance with [Flight Data Application](http://help.sap.com/saphelp_erp60_sp/helpdata/en/db/7c623cf568896be10000000a11405a/content.htm) setup.
 
@@ -63,8 +63,7 @@ To configure the quick start for your environment:
 >> com.sap.conn.jco.rt, \   
 >> com.sap.conn.jco.server  
 
-3. Edit the project's Blueprint file (`src/main/resources/OSGI-INF/blueprint/camel-context.xml`) and modify the `quickstartDestinationData` bean to match the connection configuration for your SAP instance.  
-4. Edit the project's request file (`src/data/request1.xml`) and enter the SID of your SAP in the location indicated.
+3. Ensure that the **SAP Instance Configuration Configuration Parameters** in the parent pom.xml file (`../../.pom.xml`) of quick starts project has been set to match the connection configuration for your SAP instance.  
 
 Build and Run the Quickstart
 ----------------------------
@@ -77,7 +76,6 @@ To build and run the quick start:
 * In the JBoss Fuse console, run `osgi:install -s mvn:org.fusesource/camel-sap` to install the JBoss Fuse SAP Synchronous Remote Function Call Destination Camel component. Note the bundle number for the component bundle returned by this command.  
 * In the JBoss Fuse console, run `osgi:install -s mvn:org.jboss.quickstarts.fuse/sap-srfc-destination-fuse` to install the quick start. Note the bundle number for the quick start returned by this command.  
 * In the JBoss Fuse console, run `log:tail` to monitor the JBoss Fuse log.
-* Copy the request file (`src/data/request1.xml`) in the project to the input directory(`work/sap-srfc-destination-fuse/input`) of the quick start route.
 * In the JBoss Fuse console observe the request sent and the response returned by the endpoint.
 
 Stopping and Uninstalling the Quickstart

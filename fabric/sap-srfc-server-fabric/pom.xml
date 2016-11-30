@@ -15,19 +15,19 @@
 	<parent>
 		<groupId>org.jboss.quickstarts.fuse</groupId>
 		<artifactId>sap-quickstarts-parent</artifactId>
-		<version>6.2.1.redhat-084</version>
+		<version>6.3.0.redhat-187</version>
 		<relativePath>../..</relativePath>
 	</parent>
 
 	<artifactId>sap-srfc-server-fabric</artifactId>
 	<packaging>bundle</packaging>
 
-	<name>FABRIC Synchronous RFC Server Example</name>
-	<description>This Quick Start demonstrates how to use the JBoss Fuse SAP Synchronous RFC Server endpoint in a JBoss Fuse FABRIC environment.</description>
+	<name>Fabric Synchronous RFC Server Example</name>
+	<description>This Quick Start demonstrates how to use the JBoss Fuse SAP Synchronous RFC Server endpoint in a JBoss Fuse Fabric environment.</description>
 
 	<properties>
 		<!-- the version of the JBoss Fuse BOM, defining all the dependency versions -->
-		<jboss.fuse.bom.version>6.2.1.redhat-084</jboss.fuse.bom.version>
+		<jboss.fuse.bom.version>6.3.0.redhat-187</jboss.fuse.bom.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
@@ -36,6 +36,29 @@
 		<fabric8.parentProfiles>feature-camel</fabric8.parentProfiles>
 		<fabric8.features></fabric8.features>
 	</properties>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>org.fusesource</groupId>
+			<artifactId>camel-sap</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-core</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+		</dependency>
+
+	</dependencies>
 
 	<build>
 		<defaultGoal>install</defaultGoal>

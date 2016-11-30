@@ -36,8 +36,8 @@ The quick starts in this directory demonstrates how to configure, deploy and run
 -----
 For more information see:
 
-* <https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Fuse/6.2/html/Apache_Camel_Component_Reference/SAP.html> for more information about the JBoss Fuse SAP Camel components 
-* <https://access.redhat.com/site/documentation/JBoss_Fuse/> for more information about using JBoss Fuse
+* <https://access.redhat.com/documentation/en/red-hat-jboss-fuse/6.3/paged/apache-camel-component-reference/chapter-138-sap-component> for more information about the JBoss Fuse SAP Camel components 
+* <https://access.redhat.com/documentation/en/red-hat-jboss-fuse/> for more information about using JBoss Fuse
 
 System requirements
 -------------------
@@ -46,7 +46,7 @@ To run these quick starts you will need:
 
 * Maven 3.0.4 or higher
 * JDK 1.7 or 1.8
-* JBoss Fuse 6.2.1
+* JBoss Fuse 6.3.0
 * SAP JCo3 and IDoc3 libraries (sapjco3.jar, sapidoc3.jar and JCo native library for your OS platform)
 * SAP instance with [Flight Data Application](http://help.sap.com/saphelp_erp60_sp/helpdata/en/db/7c623cf568896be10000000a11405a/content.htm) setup.
 

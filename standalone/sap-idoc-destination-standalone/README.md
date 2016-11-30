@@ -18,7 +18,7 @@ What is it?
 
 This quick start shows how to integrate Apache Camel with SAP using the JBoss Fuse SAP IDoc Destination Camel component. This component and its endpoints should be used in cases where a camel route is required to send an Intermediate document (IDoc) to an SAP system.  
 
-This quick start uses XML files containing serialized IDoc documents to create Customer records in the Flight Data Application within SAP. These files are consumed by the quickstart's route and their contents are then converted to string message bodies. These messages are then routed to an `sap-idoc-destination` endpoint which converts and sends them to SAP as `FLCUSTOMER_CREATEFROMDATA01` type IDoc documents to create Customer records.  
+This quick start contains a route with an initial timer endpoint which triggers and executes that route once. The route uses processor beans to build `FLCUSTOMER_CREATEFROMDATA01` type IDoc documents to create Customer records in SAP. These documents are routed to `sap-idoc-destination` endpoints which use the tRFC protocol to send these documents to the ALE subsystem in SAP which creates the Customer records. The route logs to the console the serialized contents of each document it sends.  
 
 **NOTE:** This component does not guarantee that a series of IDocs sent through its endpoints are delivered and processed in the receiving SAP system in the same order that they were sent. The delivery and processing order of these documents may differ on the receiving SAP system due to communication errors and resends of a document. To guarantee the delivery and processing order of a series of IDocs please see the JBoss Fuse SAP Queued IDoc Destination Camel component.     
 
@@ -31,8 +31,8 @@ In studying this quick start you will learn:
 
 For more information see:
 
-* <https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Fuse/6.2/html/Apache_Camel_Component_Reference/SAP.html> for more information about the JBoss Fuse SAP Camel components 
-* <https://access.redhat.com/site/documentation/JBoss_Fuse/> for more information about using JBoss Fuse
+* <https://access.redhat.com/documentation/en/red-hat-jboss-fuse/6.3/paged/apache-camel-component-reference/chapter-138-sap-component> for more information about the JBoss Fuse SAP Camel components 
+* <https://access.redhat.com/documentation/en/red-hat-jboss-fuse/> for more information about using JBoss Fuse
 
 System requirements
 -------------------
@@ -41,7 +41,7 @@ Before building and running this quick start you will need:
 
 * Maven 3.0.4 or higher
 * JDK 1.7 or 1.8
-* JBoss Fuse 6.2.1
+* JBoss Fuse 6.3.0
 * SAP JCo3 and IDoc3 libraries (sapjco3.jar, sapidoc3.jar and JCo native library for your OS platform)
 * SAP instance with [Flight Data Application](http://help.sap.com/saphelp_erp60_sp/helpdata/en/db/7c623cf568896be10000000a11405a/content.htm) setup.
 
@@ -92,8 +92,7 @@ Configuring the Quickstart for your environment
 To configure the quick start for your environment: 
 
 1. Deploy the JCo3 library jar and native library (for your platform) and IDoc3 library jar to the `lib` folder of the project.
-2. Edit the project's Spring file (`src/main/resources/META-INF/spring/camel-context.xml`) and modify the `quickstartDestinationData` bean to match the connection configuration for your SAP instance. 
-3. Edit the project's IDoc files (`src/data/idoc?.xml`) and enter the SID of your SAP in the location indicated.
+2. Ensure that the **SAP Instance Configuration Configuration Parameters** in the parent pom.xml file (`../../.pom.xml`) of quick starts project has been set to match the connection configuration for your SAP instance.  
 
 Build and Run the Quickstart
 ----------------------------

@@ -4,15 +4,23 @@
 	xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
        http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
 
+  <!-- Here is an example route which builds a request to the GetList method of the FlightCustomer BAPI 
+  	   to retrieve the list of Flight Customers within an SAP System. The request is sent to SAP via a 
+  	   synchronous RFC endpoint to the BAPI method which also receives back a response containing 
+  	   the list of Flight Customers. -->
 	<camelContext trace="false" id="sap-srfc-destination-fuse-context" xmlns="http://camel.apache.org/schema/blueprint">
-    <route id="sap-srfc-destination-fuse-route">
-        <from uri="file:work/sap-srfc-destination-fuse/input"/>
-        <convertBodyTo type="java.lang.String"/>
-        <log message="${body}" loggingLevel="INFO"/>
-        <to uri="sap-srfc-destination:quickstartDest:BAPI_FLCUST_GETLIST"/>
-        <log message="${body}" loggingLevel="INFO"/>
-    </route>
-</camelContext>
+	    <route id="sap-srfc-destination-fuse-route">
+	        <from uri="timer://init?repeatCount=1"/>
+		    <to uri="bean:request"/>
+	        <log message="${body}" loggingLevel="INFO"/>
+	        <to uri="sap-srfc-destination:quickstartDest:BAPI_FLCUST_GETLIST"/>
+	        <log message="${body}" loggingLevel="INFO"/>
+	    </route>
+	</camelContext>
+
+	<!-- Instantiates a processor bean which builds a request to the GetList method of the FlightCustomer BAPI
+	 	 and sets that request in the body of the exchange's message. -->
+	<bean id="request" class="org.jboss.quickstarts.fuse.sap_srfc_destination_fuse.CreateRequest"/>
 
 	<!-- Configures the Inbound and Outbound SAP Connections -->
 	<bean id="sap-configuration"
@@ -27,14 +35,14 @@
 	<!-- Configures an Outbound SAP Connection -->
 	<!-- *** Please enter the connection property values for your environment 
 		*** -->
-	<bean id="quickstartDestinationData"
-		class="org.fusesource.camel.component.sap.model.rfc.impl.DestinationDataImpl">
-		<property name="ashost" value="example.com" />
-		<property name="sysnr" value="00" />
-		<property name="client" value="000" />
-		<property name="user" value="username" />
-		<property name="passwd" value="password" />
-		<property name="lang" value="en" />
-	</bean>
+    <bean id="quickstartDestinationData"
+        class="org.fusesource.camel.component.sap.model.rfc.impl.DestinationDataImpl">
+        <property name="ashost" value="${jco.client.ashost}" />
+        <property name="sysnr" value="${jco.client.sysnr}" />
+        <property name="client" value="${jco.client.client}" />
+        <property name="user" value="${jco.client.user}" />
+        <property name="passwd" value="${jco.client.passwd}" />
+        <property name="lang" value="${jco.client.lang}" />
+    </bean>
 
 </blueprint>

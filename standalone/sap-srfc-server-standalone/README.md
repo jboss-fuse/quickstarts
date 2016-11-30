@@ -18,7 +18,7 @@ What is it?
 
 This quick start shows how to integrate Apache Camel with SAP using the JBoss Fuse SAP Synchronous Remote Function Call Server Camel component. This component and its endpoints should be used in cases where a Camel route is required to synchronously handle requests from and responses to an SAP system.  
 
-This quick start handles requests from SAP for the `BAPI_FLCUST_GETLIST` BAPI method to query for Customer records in the Flight Data Application. The route of this quick start simply mocks the behavior of this method by returning a fixed response of Customer records. The `sap-srfc-server` endpoint at the beginning of the route consumes requests from SAP and their contents are then converted to string message bodies and logged to the console. The message body of the exchange's message is then replaced with the contents of an XML file that contains a serialized SAP response for the BAPI method. This new message body content is then converted to a string, logged to the console and then sent back by the endpoint to SAP as the response to the call.
+This quick start handles requests from SAP for the `GetList` method of the `FlightCustomer` BAPI to query for Customer records in the Flight Data Application. The route of this quick start simply mocks the behavior of this method by returning a fixed response of Customer records. The `sap-srfc-server` endpoint at the beginning of the route consumes a request from SAP and its contents is placed into the message body of the exchange's message. The request is then logged to the console. A processor bean then builds a response message for the BAPI method which contains a fixed set of customer records. It then replaces the message body of the exchange's message with this response. The response is then logged to the console. The `sap-srfc-server`  endpoint then sends the response message back to the caller in SAP.  
 
 **NOTE** The sRFC protocol used by this component delivers requests and responses from and to an SAP system **BEST-EFFORT**. When an SAP system experiences a communication error when sending a request to or receiving a response from this component, it will be *in doubt* whether the processing of a remote function call in Camel was successful. For the guaranteed delivery and processing of requests in Camel please see the JBoss Fuse SAP Transactional Remote Function Call Server Camel component.     
 
@@ -31,8 +31,8 @@ In studying this quick start you will learn:
 
 For more information see:
 
-* <https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Fuse/6.2/html/Apache_Camel_Component_Reference/SAP.html> for more information about the JBoss Fuse SAP Camel components 
-* <https://access.redhat.com/site/documentation/JBoss_Fuse/> for more information about using JBoss Fuse
+* <https://access.redhat.com/documentation/en/red-hat-jboss-fuse/6.3/paged/apache-camel-component-reference/chapter-138-sap-component> for more information about the JBoss Fuse SAP Camel components 
+* <https://access.redhat.com/documentation/en/red-hat-jboss-fuse/> for more information about using JBoss Fuse
 
 System requirements
 -------------------
@@ -41,7 +41,7 @@ Before building and running this quick start you will need:
 
 * Maven 3.0.4 or higher
 * JDK 1.7 or 1.8
-* JBoss Fuse 6.2.1
+* JBoss Fuse 6.3.0
 * SAP JCo3 and IDoc3 libraries (sapjco3.jar, sapidoc3.jar and JCo native library for your OS platform)
 * SAP instance with [Flight Data Application](http://help.sap.com/saphelp_erp60_sp/helpdata/en/db/7c623cf568896be10000000a11405a/content.htm) setup.
 
@@ -51,7 +51,7 @@ Configuring the Quickstart for your environment
 To configure the quick start for your environment: 
 
 1. Deploy the JCo3 library jar and native library (for your platform) and IDoc3 library jar to the `lib` folder of the project.
-2. Edit the project's Spring file (`src/main/resources/META-INF/spring/camel-context.xml`) and modify the `quickstartDestinationData` bean and the `quickstartServerData` bean to match the connection configuration for your SAP instance.  
+2. Ensure that the **SAP Instance Configuration Configuration Parameters** in the parent pom.xml file (`../../.pom.xml`) of quick starts project has been set to match the connection configuration for your SAP instance.  
 3. Ensure the destination `QUICKSTART` has been defined in your SAP instance:   
 	a. Using the SAP GUI, run transaction `SM59` (RFC Destinations).    
     b. Create a new destination (Edit > Create):  

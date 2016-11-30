@@ -4,12 +4,15 @@
 	xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
        http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
 
-	<camelContext trace="false" id="sap-idoclist-server-fabric-context" xmlns="http://camel.apache.org/schema/blueprint">
-	    <route id="sap-idoclist-server-fabric-route">
-	        <from uri="sap-idoclist-server:quickstartServer:FLCUSTOMER_CREATEFROMDATA01"/>
-	        <convertBodyTo type="java.lang.String"/>
-	        <log message="${body}" loggingLevel="INFO"/>
-	    </route>
+	<!-- Here is an example route which handles lists of `FLCUSTOMER_CREATEFROMDATA01` 
+		type IDoc documents from SAP. The route simply mocks the processing of these 
+		documents by logging the documents it receives. -->
+	<camelContext trace="false" id="sap-idoclist-server-fabric-context"
+		xmlns="http://camel.apache.org/schema/blueprint">
+		<route id="sap-idoclist-server-fabric-route">
+			<from uri="sap-idoclist-server:quickstartServer:FLCUSTOMER_CREATEFROMDATA01" />
+			<log message="${body}" loggingLevel="INFO" />
+		</route>
 	</camelContext>
 
 	<!-- Configures the Inbound and Outbound SAP Connections -->
@@ -28,23 +31,25 @@
 	</bean>
 
 	<!-- Configures an Outbound SAP Connection -->
-	<!-- *** Please enter the connection property values for your environment *** -->
+	<!-- *** Please enter the connection property values for your environment 
+		*** -->
 	<bean id="quickstartDestinationData"
 		class="org.fusesource.camel.component.sap.model.rfc.impl.DestinationDataImpl">
-		<property name="ashost" value="example.com" />
-		<property name="sysnr" value="00" />
-		<property name="client" value="000" />
-		<property name="user" value="username" />
-		<property name="passwd" value="password" />
-		<property name="lang" value="en" />
+		<property name="ashost" value="${jco.client.ashost}" />
+		<property name="sysnr" value="${jco.client.sysnr}" />
+		<property name="client" value="${jco.client.client}" />
+		<property name="user" value="${jco.client.user}" />
+		<property name="passwd" value="${jco.client.passwd}" />
+		<property name="lang" value="${jco.client.lang}" />
 	</bean>
 
 	<!-- Configures an Inbound SAP Connection -->
-	<!-- *** Please enter the connection property values for your environment ** -->
+	<!-- *** Please enter the connection property values for your environment 
+		*** -->
 	<bean id="quickstartServerData"
 		class="org.fusesource.camel.component.sap.model.rfc.impl.ServerDataImpl">
-		<property name="gwhost" value="example.com" />
-		<property name="gwserv" value="3300" />
+		<property name="gwhost" value="${jco.client.gwhost}" />
+		<property name="gwserv" value="${jco.client.gwserv}" />
 		<!-- The following property values should not be changed -->
 		<property name="progid" value="QUICKSTART" />
 		<property name="repositoryDestination" value="quickstartDest" />

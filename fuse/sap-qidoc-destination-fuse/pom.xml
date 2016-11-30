@@ -9,7 +9,7 @@
 
   <parent>
   	<groupId>org.jboss.quickstarts.fuse</groupId>
-  	<version>6.2.1.redhat-084</version>
+  	<version>6.3.0.redhat-187</version>
   	<relativePath>../..</relativePath>
   	<artifactId>sap-quickstarts-parent</artifactId>
   </parent>
@@ -17,6 +17,29 @@
   <name>Fuse Queued IDoc Destination Example</name>
   <description>This Quick Start demonstrates how to use the JBoss Fuse SAP Queued IDoc Destination endpoint in a JBoss Fuse environment.</description>
   <url>http://www.jboss.org/products/fuse/overview/</url>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>org.fusesource</groupId>
+			<artifactId>camel-sap</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-core</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+		</dependency>
+
+	</dependencies>
 
   <build>
     <defaultGoal>install</defaultGoal>

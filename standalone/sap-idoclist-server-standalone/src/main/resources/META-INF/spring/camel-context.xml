@@ -8,6 +8,8 @@
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
+<!-- Here is an example route which handles lists of `FLCUSTOMER_CREATEFROMDATA01` type IDoc documents from SAP.
+	 The route simply mocks the processing of these documents by logging the documents it receives. -->
 <camelContext xmlns="http://camel.apache.org/schema/spring">
     <route>
         <from uri="sap-idoclist-server:quickstartServer:FLCUSTOMER_CREATEFROMDATA01"/>
@@ -35,20 +37,20 @@
     <!-- *** Please enter the connection property values for your environment *** -->
     <bean id="quickstartDestinationData"
         class="org.fusesource.camel.component.sap.model.rfc.impl.DestinationDataImpl">
-        <property name="ashost" value="example.com" />
-        <property name="sysnr" value="00" />
-        <property name="client" value="000" />
-        <property name="user" value="username" />
-        <property name="passwd" value="password" />
-        <property name="lang" value="en" />
+        <property name="ashost" value="${jco.client.ashost}" />
+        <property name="sysnr" value="${jco.client.sysnr}" />
+        <property name="client" value="${jco.client.client}" />
+        <property name="user" value="${jco.client.user}" />
+        <property name="passwd" value="${jco.client.passwd}" />
+        <property name="lang" value="${jco.client.lang}" />
     </bean>
 
     <!-- Configures an Inbound SAP Connection -->
     <!-- *** Please enter the connection property values for your environment *** -->
     <bean id="quickstartServerData"
         class="org.fusesource.camel.component.sap.model.rfc.impl.ServerDataImpl">
-        <property name="gwhost" value="example.com" />
-        <property name="gwserv" value="3300" />
+        <property name="gwhost" value="${jco.client.gwhost}" />
+        <property name="gwserv" value="${jco.client.gwserv}" />
         <!-- The following property values should not be changed -->
         <property name="progid" value="QUICKSTART" />
         <property name="repositoryDestination" value="quickstartDest" />

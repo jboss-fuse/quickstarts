@@ -15,7 +15,7 @@
 
 	<groupId>org.jboss.quickstarts.fuse</groupId>
 	<artifactId>sap-quickstarts-parent</artifactId>
-	<version>6.2.1.redhat-084</version>
+	<version>6.3.0.redhat-187</version>
 	<packaging>pom</packaging>
 
 	<name>SAP Quickstarts Parent</name>
@@ -36,9 +36,9 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<!-- dependency versions -->
-		<camel-sap-version>6.2.1.redhat-084</camel-sap-version>
-		<camel-version>2.15.1.redhat-621084</camel-version>
-		<fabric.version>1.2.0.redhat-621084</fabric.version>
+		<camel-sap-version>6.3.0.redhat-187</camel-sap-version>
+		<camel-version>2.17.0.redhat-630187</camel-version>
+		<fabric.version>1.2.0.redhat-630187</fabric.version>
 		<slf4j-api-version>1.7.7</slf4j-api-version>
 		<slf4j-version>1.7.7</slf4j-version>
 		<log4j-version>1.2.17</log4j-version>
@@ -47,11 +47,64 @@
 		<!-- plugin versions -->
 		<maven-compiler-plugin-version>2.5.1</maven-compiler-plugin-version>
 		<maven-resources-plugin-version>2.6</maven-resources-plugin-version>
-		<camel-maven-plugin-version>2.12.0.redhat-610379</camel-maven-plugin-version>
+		<camel-maven-plugin-version>2.17.0.redhat-630187</camel-maven-plugin-version>
 		<maven-bundle-plugin-version>2.3.7</maven-bundle-plugin-version>
 		<build-helper-maven-plugin-version>1.8</build-helper-maven-plugin-version>
-		<fabric8-maven-plugin-version>1.2.0.redhat-621084</fabric8-maven-plugin-version>
+		<fabric8-maven-plugin-version>1.2.0.redhat-630187</fabric8-maven-plugin-version>
+
+		<!-- SAP Instance Configuration Configuration Parameters -->
+		<!-- *** Please enter the connection property values for your SAP Instance *** -->
+		<jco.client.ashost>example.com</jco.client.ashost>
+		<jco.client.sysnr>00</jco.client.sysnr>
+		<jco.client.client>000</jco.client.client>
+		<jco.client.gwhost>example.com</jco.client.gwhost>
+		<jco.client.gwserv>3300</jco.client.gwserv>
+		<jco.client.user>username</jco.client.user>
+		<jco.client.passwd>password</jco.client.passwd>
+		<jco.client.lang>en</jco.client.lang>
+		
+		<!-- The Network Locations of the SAP libraries -->
+		<!-- *** Please enter the network locations for your environment *** -->
+		<lib.sapjco3.jar>http://host/path/to/library/sapjco3.jar</lib.sapjco3.jar>
+		<lib.sapidoc3.jar>http://host/path/to/library/sapidoc3.jar</lib.sapidoc3.jar>
+		<lib.sapjco3.nativelib>http://host/path/to/library/<native-lib></lib.sapjco3.nativelib>
+		
 	</properties>
+
+	<modules>
+		<module>standalone/sap-idoc-destination-standalone</module>
+		<module>standalone/sap-idoclist-destination-standalone</module>
+		<module>standalone/sap-qidoc-destination-standalone</module>
+		<module>standalone/sap-qidoclist-destination-standalone</module>
+		<module>standalone/sap-idoclist-server-standalone</module>
+		<module>standalone/sap-qrfc-destination-standalone</module>
+		<module>standalone/sap-srfc-destination-standalone</module>
+		<module>standalone/sap-trfc-destination-standalone</module>
+		<module>standalone/sap-srfc-server-standalone</module>
+		<module>standalone/sap-trfc-server-standalone</module>
+
+		<module>fuse/sap-idoc-destination-fuse</module>
+		<module>fuse/sap-idoclist-destination-fuse</module>
+		<module>fuse/sap-qidoc-destination-fuse</module>
+		<module>fuse/sap-qidoclist-destination-fuse</module>
+		<module>fuse/sap-idoclist-server-fuse</module>
+		<module>fuse/sap-qrfc-destination-fuse</module>
+		<module>fuse/sap-srfc-destination-fuse</module>
+		<module>fuse/sap-trfc-destination-fuse</module>
+		<module>fuse/sap-srfc-server-fuse</module>
+		<module>fuse/sap-trfc-server-fuse</module>
+
+		<module>fabric/sap-idoc-destination-fabric</module>
+		<module>fabric/sap-idoclist-destination-fabric</module>
+		<module>fabric/sap-qidoc-destination-fabric</module>
+		<module>fabric/sap-qidoclist-destination-fabric</module>
+		<module>fabric/sap-idoclist-server-fabric</module>
+		<module>fabric/sap-qrfc-destination-fabric</module>
+		<module>fabric/sap-srfc-destination-fabric</module>
+		<module>fabric/sap-trfc-destination-fabric</module>
+		<module>fabric/sap-srfc-server-fabric</module>
+		<module>fabric/sap-trfc-server-fabric</module>
+	</modules>
 
 	<dependencyManagement>
 		<dependencies>
@@ -119,6 +172,16 @@
 
 	<build>
 		<defaultGoal>install</defaultGoal>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+			<resource>
+				<directory>src/main/fabric8</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
 		<pluginManagement>
 			<plugins>
 
@@ -198,9 +261,9 @@
 			</releases>
 		</repository>
 		<repository>
-			<id>jboss-fuse-ea</id>
-			<name>JBoss Fuse Community Early Access Release Repository</name>
-			<url>https://repository.jboss.org/nexus/content/groups/ea/</url>
+			<id>jboss-fuse-ga</id>
+			<name>JBoss Fuse Community GA Release Repository</name>
+			<url>https://maven.repository.redhat.com/ga/</url>
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
@@ -234,9 +297,9 @@
 			</releases>
 		</pluginRepository>
 		<pluginRepository>
-			<id>jboss-fuse-ea</id>
-			<name>JBoss Fuse Community Early Access Release Repository</name>
-			<url>https://repository.jboss.org/nexus/content/groups/ea/</url>
+			<id>jboss-fuse-ga</id>
+			<name>JBoss Fuse Community GA Release Repository</name>
+			<url>https://maven.repository.redhat.com/ga/</url>
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
@@ -261,7 +324,7 @@
 		<profile>
 			<id>snapshots</id>
 			<properties>
-				<snapshop-build>redhat-6.2.0.redhat-SNAPSHOT</snapshop-build>
+				<snapshop-build>redhat-6.3.0.redhat-SNAPSHOT</snapshop-build>
 			</properties>
 		</profile>
 	</profiles>
