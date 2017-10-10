@@ -188,8 +188,8 @@ To build and run the quick start:
 1. Change your working directory to the `sap-idoclist-server-fuse` directory.
 2. Run `mvn clean install` to build the quick start.
 3. In your JBoss Fuse installation directory run, `./bin/fuse` to start the JBoss Fuse runtime.
-4. In the JBoss Fuse console, run `osgi:install -s mvn:org.fusesource/camel-sap` to install the JBoss Fuse SAP Synchronous Remote Function Call Server Camel component. Note the bundle number for the component bundle returned by this command.  
-5. In the JBoss Fuse console, run `osgi:install -s mvn:org.jboss.quickstarts.fuse/sap-idoclist-server-fuse` to install the quick start. Note the bundle number for the quick start returned by this command.  
+4. In the JBoss Fuse console, run `install -s mvn:org.fusesource/camel-sap` to install the JBoss Fuse SAP Synchronous Remote Function Call Server Camel component. Note the bundle number for the component bundle returned by this command.  
+5. In the JBoss Fuse console, run `install -s mvn:org.jboss.quickstarts.fuse/sap-idoclist-server-fuse` to install the quick start. Note the bundle number for the quick start returned by this command.  
 6. In the JBoss Fuse console, run `log:tail` to monitor the JBoss Fuse log.
 7. Invoke the camel route from SAP:  
   a.Run the `ZFLCUSTOMER_CREATEFROMDATA01` program.  
@@ -205,7 +205,7 @@ Stopping and Uninstalling the Quickstart
 To uninstall the quick start and stop the JBoss Fuse run-time perform the following in the JBoss Fuse console:
 
 1. Enter Ctrl-c to stop monitoring the JBoss Fuse log.
-2. Run `osgi:uninstall <quickstart-bundle-number>` providing the bundle number for the quick start bundle. 
-3. Run `osgi:uninstall <camel-sap-bundle-number>` providing the bundle number for the component bundle. 
-4. Run `osgi:shutdown -f` to shutdown the JBoss Fuse runtime.
+2. Run `uninstall <quickstart-bundle-number>` providing the bundle number for the quick start bundle. 
+3. Run `uninstall <camel-sap-bundle-number>` providing the bundle number for the component bundle. 
+4. Run `shutdown -f` to shutdown the JBoss Fuse runtime.
 

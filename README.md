@@ -16,7 +16,7 @@ Source: <http://github.com/punkhorn/sap-quickstarts/>
 Overview  
 --------  
 
-The JBoss Fuse SAP quick starts are divided into three categories which demonstrate how to configure, deploy and run the JBoss Fuse SAP Camel components in different runtime environments.   
+The JBoss Fuse SAP quick starts are divided into two categories which demonstrate how to configure, deploy and run the JBoss Fuse SAP Camel components in different runtime environments.   
 
 ###[Standalone](standalone/README.md)  
 
@@ -26,12 +26,6 @@ The quick starts in this directory demonstrates how to configure, deploy and run
 ###[Fuse](fuse/README.md)  
 
 The quick starts in this directory demonstrates how to configure, deploy and run the JBoss Fuse SAP Camel components in a JBoss Fuse OSGi container runtime.
-
-
-###[Fabric](fabric/README.md)  
-
-The quick starts in this directory demonstrates how to configure, deploy and run the JBoss Fuse SAP Camel components in a JBoss Fuse Fabric container runtime.
-
 
 -----
 For more information see:
@@ -44,9 +38,9 @@ System requirements
 
 To run these quick starts you will need:
 
-* Maven 3.0.4 or higher
-* JDK 1.7 or 1.8
-* JBoss Fuse 6.3.0
+* Maven 3.1.1 or higher
+* JDK 1.8
+* JBoss Fuse 7.0.0
 * SAP JCo3 and IDoc3 libraries (sapjco3.jar, sapidoc3.jar and JCo native library for your OS platform)
 * SAP instance with [Flight Data Application](http://help.sap.com/saphelp_erp60_sp/helpdata/en/db/7c623cf568896be10000000a11405a/content.htm) setup.
 
