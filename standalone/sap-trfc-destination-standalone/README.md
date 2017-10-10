@@ -41,9 +41,9 @@ System requirements
 
 Before building and running this quick start you will need:
 
-* Maven 3.0.4 or higher
-* JDK 1.7 or 1.8
-* JBoss Fuse 6.3.0
+* Maven 3.1.1 or higher
+* JDK 1.8
+* JBoss Fuse 7.0.0
 * SAP JCo3 and IDoc3 libraries (sapjco3.jar, sapidoc3.jar and JCo native library for your OS platform)
 * SAP instance with [Flight Data Application](http://help.sap.com/saphelp_erp60_sp/helpdata/en/db/7c623cf568896be10000000a11405a/content.htm) setup.
 
@@ -63,7 +63,7 @@ To build and run the quick start:
 1. Change your working directory to the `sap-trfc-destination-standalone` directory.
 * Run `mvn clean install` to build the quick start.
 * Run `mvn camel:run` to start the Camel runtime.
-* In the console observe the contents of the IDoc processed by the route.
+* In the console observe the contents of the requests processed by the route.
 * Using the SAP GUI, run transaction `SE16`, Data Browser, and display the contents of the table `SCUSTOM`.
 * Search the table (Edit > Find..) for the newly created Customer records: `Fred Flintstone`, `Wilma Flintstone`, `Barney Rubble`, and `Betty Rubble`. 
 

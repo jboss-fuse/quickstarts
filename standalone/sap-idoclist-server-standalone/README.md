@@ -39,9 +39,9 @@ System requirements
 
 Before building and running this quick start you will need:
 
-* Maven 3.0.4 or higher
-* JDK 1.7 or 1.8
-* JBoss Fuse 6.3.0
+* Maven 3.1.1 or higher
+* JDK 1.8
+* JBoss Fuse 7.0.0
 * SAP JCo3 and IDoc3 libraries (sapjco3.jar, sapidoc3.jar and JCo native library for your OS platform)
 * SAP instance with [Flight Data Application](http://help.sap.com/saphelp_erp60_sp/helpdata/en/db/7c623cf568896be10000000a11405a/content.htm) setup.
 
@@ -180,7 +180,7 @@ To build and run the quick start:
     i. 		Display the outstanding transactions (Program > Execute).  
     ii.		Select the transaction destined for the `QUICKSTART`.  
     iii.	Execute the transaction to send the requests (Edit > Execute LUW).  
-* In the console observe the requests received by the endpoint.  
+* In the console observe the IDoc received by the endpoint.  
 
 Stopping the Quickstart
 -----------------------

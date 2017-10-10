@@ -15,7 +15,7 @@
 
 	<groupId>org.jboss.quickstarts.fuse</groupId>
 	<artifactId>sap-quickstarts-parent</artifactId>
-	<version>6.3.0.redhat-187</version>
+	<version>7.0.0.redhat-000082</version>
 	<packaging>pom</packaging>
 
 	<name>SAP Quickstarts Parent</name>
@@ -36,21 +36,21 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<!-- dependency versions -->
-		<camel-sap-version>6.3.0.redhat-187</camel-sap-version>
-		<camel-version>2.17.0.redhat-630187</camel-version>
-		<fabric.version>1.2.0.redhat-630187</fabric.version>
-		<slf4j-api-version>1.7.7</slf4j-api-version>
-		<slf4j-version>1.7.7</slf4j-version>
+		<camel-sap-version>7.0.0.fuse-000082</camel-sap-version>
+		<camel-version>2.20.0.fuse-000102</camel-version>
+		<!-- fabric.version>1.2.0.redhat-630187</fabric.version -->
+		<slf4j-api-version>1.7.22</slf4j-api-version>
+		<slf4j-version>1.7.22</slf4j-version>
 		<log4j-version>1.2.17</log4j-version>
 		<sapjco3-version>3.0.11</sapjco3-version>
 		<sapidoc3-version>3.0.10</sapidoc3-version>
 		<!-- plugin versions -->
-		<maven-compiler-plugin-version>2.5.1</maven-compiler-plugin-version>
-		<maven-resources-plugin-version>2.6</maven-resources-plugin-version>
-		<camel-maven-plugin-version>2.17.0.redhat-630187</camel-maven-plugin-version>
-		<maven-bundle-plugin-version>2.3.7</maven-bundle-plugin-version>
-		<build-helper-maven-plugin-version>1.8</build-helper-maven-plugin-version>
-		<fabric8-maven-plugin-version>1.2.0.redhat-630187</fabric8-maven-plugin-version>
+		<maven-compiler-plugin-version>3.6.1</maven-compiler-plugin-version>
+		<maven-resources-plugin-version>3.0.2</maven-resources-plugin-version>
+		<camel-maven-plugin-version>2.20.0.fuse-000102</camel-maven-plugin-version>
+		<maven-bundle-plugin-version>3.3.0</maven-bundle-plugin-version>
+		<build-helper-maven-plugin-version>3.0.0</build-helper-maven-plugin-version>
+		<fabric8-maven-plugin-version>3.5.26</fabric8-maven-plugin-version>
 
 		<!-- SAP Instance Configuration Configuration Parameters -->
 		<!-- *** Please enter the connection property values for your SAP Instance *** -->
@@ -93,17 +93,6 @@
 		<module>fuse/sap-trfc-destination-fuse</module>
 		<module>fuse/sap-srfc-server-fuse</module>
 		<module>fuse/sap-trfc-server-fuse</module>
-
-		<module>fabric/sap-idoc-destination-fabric</module>
-		<module>fabric/sap-idoclist-destination-fabric</module>
-		<module>fabric/sap-qidoc-destination-fabric</module>
-		<module>fabric/sap-qidoclist-destination-fabric</module>
-		<module>fabric/sap-idoclist-server-fabric</module>
-		<module>fabric/sap-qrfc-destination-fabric</module>
-		<module>fabric/sap-srfc-destination-fabric</module>
-		<module>fabric/sap-trfc-destination-fabric</module>
-		<module>fabric/sap-srfc-server-fabric</module>
-		<module>fabric/sap-trfc-server-fabric</module>
 	</modules>
 
 	<dependencyManagement>
@@ -250,6 +239,17 @@
 
 	<repositories>
 		<repository>
+			<id>jboss-fuse-ea</id>
+			<name>JBoss Fuse Early Access Repository</name>
+			<url>https://repository.jboss.org/nexus/content/groups/ea/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+		</repository>
+		<repository>
 			<id>jboss-fuse-public</id>
 			<name>JBoss Fuse Public Repository</name>
 			<url>https://repository.jboss.org/nexus/content/groups/fs-public/</url>
@@ -285,6 +285,17 @@
 	</repositories>
 
 	<pluginRepositories>
+		<pluginRepository>
+			<id>jboss-fuse-ea</id>
+			<name>JBoss Fuse Early Access Repository</name>
+			<url>https://repository.jboss.org/nexus/content/groups/ea/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+		</pluginRepository>
 		<pluginRepository>
 			<id>jboss-fuse-public</id>
 			<name>JBoss Fuse Public Repository</name>
@@ -324,7 +335,7 @@
 		<profile>
 			<id>snapshots</id>
 			<properties>
-				<snapshop-build>redhat-6.3.0.redhat-SNAPSHOT</snapshop-build>
+				<snapshop-build>redhat-7.0.0.redhat-SNAPSHOT</snapshop-build>
 			</properties>
 		</profile>
 	</profiles>

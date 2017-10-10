@@ -46,9 +46,9 @@ System requirements
 
 Before building and running this quick start you will need:
 
-* Maven 3.0.4 or higher
-* JDK 1.7 or 1.8
-* A JBoss Fuse 6.3.0 container not running with a Fabric
+* Maven 3.1.1 or higher
+* JDK 1.8
+* A JBoss Fuse 7.0.0 container
 * SAP JCo3 and IDoc3 libraries (sapjco3.jar, sapidoc3.jar and JCo native library for your OS platform)
 * SAP instance with [Flight Data Application](http://help.sap.com/saphelp_erp60_sp/helpdata/en/db/7c623cf568896be10000000a11405a/content.htm) setup.
 
@@ -157,8 +157,8 @@ To build and run the quick start:
 1. Change your working directory to the `sap-trfc-server-fuse` directory.
 * Run `mvn clean install` to build the quick start.
 * In your JBoss Fuse installation directory run, `./bin/fuse` to start the JBoss Fuse runtime.
-* In the JBoss Fuse console, run `osgi:install -s mvn:org.fusesource/camel-sap` to install the JBoss Fuse SAP Synchronous Remote Function Call Server Camel component. Note the bundle number for the component bundle returned by this command.  
-* In the JBoss Fuse console, run `osgi:install -s mvn:org.jboss.quickstarts.fuse/sap-trfc-server-fuse` to install the quick start. Note the bundle number for the quick start returned by this command.  
+* In the JBoss Fuse console, run `install -s mvn:org.fusesource/camel-sap` to install the JBoss Fuse SAP Synchronous Remote Function Call Server Camel component. Note the bundle number for the component bundle returned by this command.  
+* In the JBoss Fuse console, run `install -s mvn:org.jboss.quickstarts.fuse/sap-trfc-server-fuse` to install the quick start. Note the bundle number for the quick start returned by this command.  
 * In the JBoss Fuse console, run `log:tail` to monitor the JBoss Fuse log.
 * Invoke the camel route from SAP by running the `ZBAPI_FLCUST_CREATEFROMDATA` program.
 * In the console observe the request received by the endpoint.  
@@ -169,7 +169,7 @@ Stopping and Uninstalling the Quickstart
 To uninstall the quick start and stop the JBoss Fuse run-time perform the following in the JBoss Fuse console:
 
 1. Enter Ctrl-c to stop monitoring the JBoss Fuse log.
-* Run `osgi:uninstall <quickstart-bundle-number>` providing the bundle number for the quick start bundle. 
-* Run `osgi:uninstall <camel-sap-bundle-number>` providing the bundle number for the component bundle. 
-* Run `osgi:shutdown -f` to shutdown the JBoss Fuse runtime.
+* Run `uninstall <quickstart-bundle-number>` providing the bundle number for the quick start bundle. 
+* Run `uninstall <camel-sap-bundle-number>` providing the bundle number for the component bundle. 
+* Run `shutdown -f` to shutdown the JBoss Fuse runtime.
 
