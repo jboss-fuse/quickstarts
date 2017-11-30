@@ -143,6 +143,7 @@ To build and run the quick start:
 1. Change your working directory to the `quickstarts/camel/camel-sap` directory.
 * Run `mvn clean install` to build the quick start.
 * In your JBoss Fuse installation directory run, `./bin/fuse` to start the JBoss Fuse runtime.
+* In the JBoss Fuse console, run `features:install camel-sap` to install the camel-sap feature. By default, this feature is uninstalled.
 * In the JBoss Fuse console, run `osgi:install -s mvn:org.fusesource/camel-sap` to install the JBoss Fuse SAP Camel components. Note the bundle number for the component bundle returned by this command.  
 * In the JBoss Fuse console, run `osgi:install -s mvn:org.jboss.quickstarts.fuse/camel-sap` to install the quick start. Note the bundle number for the quick start returned by this command.  
 * In the JBoss Fuse console, run `log:tail` to monitor the JBoss Fuse log.
