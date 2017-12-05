@@ -15,14 +15,14 @@
 
 	<groupId>org.jboss.quickstarts.fuse</groupId>
 	<artifactId>sap-quickstarts-parent</artifactId>
-	<version>7.0.0.redhat-000082</version>
+	<version>7.0.0.fuse-000116</version>
 	<packaging>pom</packaging>
 
 	<name>SAP Quickstarts Parent</name>
 	<description>Parent for SAP Quickstarts</description>
 	<url>http://www.jboss.org/products/fuse</url>
 
-	<licenses>
+ 	<licenses>
 		<license>
 			<name>Apache License, Version 2.0</name>
 			<distribution>repo</distribution>
@@ -36,7 +36,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<!-- dependency versions -->
-		<camel-sap-version>7.0.0.fuse-000082</camel-sap-version>
+		<camel-sap-version>7.0.0.fuse-000116</camel-sap-version>
 		<camel-version>2.20.0.fuse-000102</camel-version>
 		<!-- fabric.version>1.2.0.redhat-630187</fabric.version -->
 		<slf4j-api-version>1.7.22</slf4j-api-version>
@@ -63,12 +63,6 @@
 		<jco.client.passwd>password</jco.client.passwd>
 		<jco.client.lang>en</jco.client.lang>
 		
-		<!-- The Network Locations of the SAP libraries -->
-		<!-- *** Please enter the network locations for your environment *** -->
-		<lib.sapjco3.jar>http://host/path/to/library/sapjco3.jar</lib.sapjco3.jar>
-		<lib.sapidoc3.jar>http://host/path/to/library/sapidoc3.jar</lib.sapidoc3.jar>
-		<lib.sapjco3.nativelib>http://host/path/to/library/<native-lib></lib.sapjco3.nativelib>
-		
 	</properties>
 
 	<modules>
@@ -93,6 +87,9 @@
 		<module>fuse/sap-trfc-destination-fuse</module>
 		<module>fuse/sap-srfc-server-fuse</module>
 		<module>fuse/sap-trfc-server-fuse</module>
+		
+		<module>spring-boot/sap-srfc-destination-spring-boot</module>
+		
 	</modules>
 
 	<dependencyManagement>
