@@ -89,6 +89,7 @@
 		<module>fuse/sap-trfc-server-fuse</module>
 		
 		<module>spring-boot/sap-srfc-destination-spring-boot</module>
+		<module>spring-boot/sap-srfc-server-spring-boot</module>
 		
 	</modules>
 
