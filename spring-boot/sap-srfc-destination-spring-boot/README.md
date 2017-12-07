@@ -60,7 +60,7 @@ To build and run the quick start:
 
 1. Change your working directory to the `sap-srfc-destination-spring-boot` directory.
 * Run `mvn clean install` to build the quick start.
-* Run `mvn camel:run` to start the Camel runtime.
+* Run `mvn spring-boot:run` to start the Camel runtime.
 * In the console observe the response returned by the endpoint.
 
 Stopping the Quickstart
