@@ -14,7 +14,6 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>org.punkhorn</groupId>
 	<artifactId>sap-srfc-server-spring-boot</artifactId>
 
 	<name>Spring Boot Synchronous RFC Server Example</name>

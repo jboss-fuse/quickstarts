@@ -14,7 +14,7 @@
  * permissions and limitations under the License.
  *
  */
-package org.jboss.quickstarts.fuse.sap_srfc_destination_spring_boot;
+package org.jboss.quickstarts.fuse.sap_trfc_destination_spring_boot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -14,7 +14,6 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>org.punkhorn</groupId>
 	<artifactId>sap-srfc-destination-spring-boot</artifactId>
 
 	<name>Spring Boot Synchronous RFC Destination Example</name>
