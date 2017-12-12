@@ -88,9 +88,10 @@
 		<module>fuse/sap-srfc-server-fuse</module>
 		<module>fuse/sap-trfc-server-fuse</module>
 		
+		<module>spring-boot/sap-idoc-destination-spring-boot</module>
+		<module>spring-boot/sap-qrfc-destination-spring-boot</module>
 		<module>spring-boot/sap-srfc-destination-spring-boot</module>
 		<module>spring-boot/sap-trfc-destination-spring-boot</module>
-		<module>spring-boot/sap-qrfc-destination-spring-boot</module>
 		<module>spring-boot/sap-srfc-server-spring-boot</module>
 		<module>spring-boot/sap-trfc-server-spring-boot</module>
 		
