@@ -1,0 +1,1 @@
+Place your copies of the IDoc and JCo libraries in this directory.
