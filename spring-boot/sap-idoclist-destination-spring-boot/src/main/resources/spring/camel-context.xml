@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:camel="http://camel.apache.org/schema/spring"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+  <!-- Here is an example route which builds and sends a list of FLCUSTOMER_CREATEFROMDATA01 IDocs 
+  	   to add Flight Customers records within an SAP System. The list of IDocs are sent to the ALE 
+  	   subsytem in SAP via a transactional IDoc List endpoints. -->
+<camelContext xmlns="http://camel.apache.org/schema/spring">
+    <route>
+        <from uri="timer://init?repeatCount=1"/>
+	    <to uri="bean:flintstoneIDocList"/>
+        <log message="${body}" loggingLevel="INFO"/>
+        <to uri="sap-idoclist-destination:quickstartDest:FLCUSTOMER_CREATEFROMDATA01"/>
+	    <to uri="bean:rubbleIDocList"/>
+        <log message="${body}" loggingLevel="INFO"/>
+        <to uri="sap-idoclist-destination:quickstartDest:FLCUSTOMER_CREATEFROMDATA01"/>
+    </route>
+</camelContext>
+
+	<!-- Create interceptor to support tRFC processing -->
+	<bean id="currentProcessorDefinitionInterceptor"
+		class="org.fusesource.camel.component.sap.CurrentProcessorDefinitionInterceptStrategy" />
+
+	<!-- Instantiates processor beans which build lists of FLCUSTOMER_CREATEFROMDATA01 IDocs 
+	 	 and sets those lists in the body of the exchange's message. -->
+	<bean id="flintstoneIDocList" class="org.jboss.quickstarts.fuse.sap_idoclist_destination_spring_boot.CreateFlintstoneIDocList"/>
+	<bean id="rubbleIDocList" class="org.jboss.quickstarts.fuse.sap_idoclist_destination_spring_boot.CreateRubbleIDocList"/>
+
+</beans>
