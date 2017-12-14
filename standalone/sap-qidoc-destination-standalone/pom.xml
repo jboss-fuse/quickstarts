@@ -7,7 +7,7 @@
 	<artifactId>sap-qidoc-destination-standalone</artifactId>
 	<packaging>jar</packaging>
 
-	<name>Standalone IDoc Server Example</name>
+	<name>Standalone Queued IDoc Destination Example</name>
 	<description>This Quick Start demonstrates how to use the JBoss Fuse SAP Queued IDoc Destination endpoint.</description>
 	<url>http://http://www.jboss.org/products/fuse/overview/</url>
 
