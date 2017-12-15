@@ -92,6 +92,7 @@
 		<module>spring-boot/sap-idoclist-destination-spring-boot</module>
 		<module>spring-boot/sap-qidoc-destination-spring-boot</module>
 		<module>spring-boot/sap-qidoclist-destination-spring-boot</module>
+		<module>spring-boot/sap-idoclist-server-spring-boot</module>
 		<module>spring-boot/sap-qrfc-destination-spring-boot</module>
 		<module>spring-boot/sap-srfc-destination-spring-boot</module>
 		<module>spring-boot/sap-trfc-destination-spring-boot</module>
