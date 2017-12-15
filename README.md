@@ -9,14 +9,14 @@ Level: Beginner to Advanced
 Technologies: SAP, Camel, JBoss Fuse   
 Summary: These quick starts demonstrates how to configure and use the suite of JBoss Fuse SAP Camel components to integrate Apache Camel with SAP.       
 Target Product: Fuse  
-Source: <http://github.com/punkhorn/sap-quickstarts/>  
+Source: <http://github.com/fusesource/sap-quickstarts/>  
 
 ***  
 
 Overview  
 --------  
 
-The JBoss Fuse SAP quick starts are divided into two categories which demonstrate how to configure, deploy and run the JBoss Fuse SAP Camel components in different runtime environments.   
+The JBoss Fuse SAP quick starts are divided into three categories which demonstrate how to configure, deploy and run the JBoss Fuse SAP Camel components in different runtime environments.   
 
 ###[Standalone](standalone/README.md)  
 
@@ -26,6 +26,10 @@ The quick starts in this directory demonstrates how to configure, deploy and run
 ###[Fuse](fuse/README.md)  
 
 The quick starts in this directory demonstrates how to configure, deploy and run the JBoss Fuse SAP Camel components in a JBoss Fuse OSGi container runtime.
+
+###[Spring Boot](spring-boot/README.md)  
+
+The quick starts in this directory demonstrates how to configure, deploy and run the JBoss Fuse SAP Camel components in a Spring Boot Camel container runtime.
 
 -----
 For more information see:
