@@ -86,6 +86,7 @@
 		<module>fuse/sap-trfc-destination-fuse</module>
 		<module>fuse/sap-srfc-server-fuse</module>
 		<module>fuse/sap-trfc-server-fuse</module>
+		<module>fuse/sap-trfc-server-failover-loadbalancer-fuse</module>
 		
 		<module>spring-boot/sap-idoc-destination-spring-boot</module>
 		<module>spring-boot/sap-idoclist-destination-spring-boot</module>

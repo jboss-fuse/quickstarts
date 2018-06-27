@@ -58,6 +58,10 @@ Demonstrates how to send a list of Intermediate Documents (IDoc) using the qRFC 
 
 Demonstrates how to handle a list of Intermediate Documents (IDoc) from SAP within Apache Camel in JBoss Fuse.   
   
+###[sap-trfc-server-failover-loadbalancer-fuse](sap-trfc-server-failover-loadbalancer-fuse/README.md)  
+
+Demonstrates how to handle *Transactional Remote Function Calls* (tRFC) from SAP within Apache Camel in JBoss Fuse with failover and loadbalancing.   
+  
 -----
 For more information see:
 
