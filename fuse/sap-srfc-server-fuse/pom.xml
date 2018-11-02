@@ -14,7 +14,7 @@
 	<parent>
 		<groupId>org.jboss.quickstarts.fuse</groupId>
 		<artifactId>sap-quickstarts-parent</artifactId>
-		<version>7.0.0.fuse-000191-redhat-1</version>
+		<version>7.1.0.fuse-710023-redhat-00001</version>
 		<relativePath>../..</relativePath>
 	</parent>
 
