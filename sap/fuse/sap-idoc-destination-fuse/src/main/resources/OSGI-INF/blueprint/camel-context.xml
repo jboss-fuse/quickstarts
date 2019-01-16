@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+	xmlns:camel="http://camel.apache.org/schema/blueprint" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+       http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+
+  <!-- Here is an example route which builds and sends FLCUSTOMER_CREATEFROMDATA01 IDocs 
+  	   to add Flight Customers records within an SAP System. The IDocs are sent to the ALE 
+  	   subsytem in SAP via a transactional IDoc endpoints. -->
+	<camelContext trace="false" id="sap-idoc-destination-fuse-context" xmlns="http://camel.apache.org/schema/blueprint">
+    <route id="sap-idoc-destination-fuse-route">
+        <from uri="timer://init?repeatCount=1"/>
+	    <to uri="bean:fredIDoc"/>
+        <log message="${body}" loggingLevel="INFO"/>
+        <to uri="sap-idoc-destination:quickstartDest:FLCUSTOMER_CREATEFROMDATA01"/>
+	    <to uri="bean:barneyIDoc"/>
+        <log message="${body}" loggingLevel="INFO"/>
+        <to uri="sap-idoc-destination:quickstartDest:FLCUSTOMER_CREATEFROMDATA01"/>
+	    <to uri="bean:wilmaIDoc"/>
+        <log message="${body}" loggingLevel="INFO"/>
+        <to uri="sap-idoc-destination:quickstartDest:FLCUSTOMER_CREATEFROMDATA01"/>
+	    <to uri="bean:bettyIDoc"/>
+        <log message="${body}" loggingLevel="INFO"/>
+        <to uri="sap-idoc-destination:quickstartDest:FLCUSTOMER_CREATEFROMDATA01"/>
+    </route>
+</camelContext>
+
+	<!-- Create interceptor to support tRFC processing -->
+	<bean id="currentProcessorDefinitionInterceptor"
+		class="org.fusesource.camel.component.sap.CurrentProcessorDefinitionInterceptStrategy" />
+
+	<!-- Instantiates processor beans which build a FLCUSTOMER_CREATEFROMDATA01 IDoc 
+	 	 and sets that IDoc in the body of the exchange's message. -->
+	<bean id="fredIDoc" class="org.jboss.quickstarts.fuse.sap_idoc_destination_fuse.CreateFredIDoc"/>
+	<bean id="barneyIDoc" class="org.jboss.quickstarts.fuse.sap_idoc_destination_fuse.CreateBarneyIDoc"/>
+	<bean id="wilmaIDoc" class="org.jboss.quickstarts.fuse.sap_idoc_destination_fuse.CreateWilmaIDoc"/>
+	<bean id="bettyIDoc" class="org.jboss.quickstarts.fuse.sap_idoc_destination_fuse.CreateBettyIDoc"/>
+
+	<!-- Configures the Inbound and Outbound SAP Connections -->
+	<bean id="sap-configuration"
+		class="org.fusesource.camel.component.sap.SapConnectionConfiguration">
+		<property name="destinationDataStore">
+			<map>
+				<entry key="quickstartDest" value-ref="quickstartDestinationData" />
+			</map>
+		</property>
+	</bean>
+
+	<!-- Configures an Outbound SAP Connection -->
+	<!-- *** Please enter the connection property values for your environment 
+		*** -->
+    <bean id="quickstartDestinationData"
+        class="org.fusesource.camel.component.sap.model.rfc.impl.DestinationDataImpl">
+        <property name="ashost" value="${jco.client.ashost}" />
+        <property name="sysnr" value="${jco.client.sysnr}" />
+        <property name="client" value="${jco.client.client}" />
+        <property name="user" value="${jco.client.user}" />
+        <property name="passwd" value="${jco.client.passwd}" />
+        <property name="lang" value="${jco.client.lang}" />
+    </bean>
+
+</blueprint>

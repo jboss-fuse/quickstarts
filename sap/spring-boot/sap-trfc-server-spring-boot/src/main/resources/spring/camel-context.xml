@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:camel="http://camel.apache.org/schema/spring"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+  	<!-- Here is an example route which handles a request to the GetList method of the FlightCustomer BAPI 
+  	   	 to retrieve the list of Flight Customers within an SAP System. The request is handled from SAP via a 
+  	     transactional RFC endpoint for the BAPI method. This route simply logs the request. -->
+	<camelContext xmlns="http://camel.apache.org/schema/spring">
+	    <route>
+	        <from uri="sap-trfc-server:quickstartServer:BAPI_FLCUST_CREATEFROMDATA"/>
+	        <log message="${body}" loggingLevel="INFO"/>
+	    </route>
+	</camelContext>
+
+</beans>

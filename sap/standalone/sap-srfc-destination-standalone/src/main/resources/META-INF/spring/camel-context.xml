@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Configures the Camel Context-->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:camel="http://camel.apache.org/schema/spring"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+  <!-- Here is an example route which builds a request to the GetList method of the FlightCustomer BAPI 
+  	   to retrieve the list of Flight Customers within an SAP System. The request is sent to SAP via a 
+  	   synchronous RFC endpoint to the BAPI method which also receives back a response containing 
+  	   the list of Flight Customers. -->
+<camelContext xmlns="http://camel.apache.org/schema/spring">
+    <route>
+        <from uri="timer://init?repeatCount=1"/>
+	    <to uri="bean:request"/>
+        <log message="${body}" loggingLevel="INFO"/>
+        <to uri="sap-srfc-destination:quickstartDest:BAPI_FLCUST_GETLIST"/>
+        <log message="${body}" loggingLevel="INFO"/>
+    </route>
+</camelContext>
+
+	<!-- Instantiates a processor bean which builds a request to the GetList method of the FlightCustomer BAPI
+	 	 and sets that request in the body of the exchange's message. -->
+	<bean id="request" class="org.jboss.quickstarts.fuse.sap_srfc_destination_standalone.CreateRequest"/>
+
+	<!-- Configures the Inbound and Outbound SAP Connections -->
+	<bean id="sap-configuration"
+		class="org.fusesource.camel.component.sap.SapConnectionConfiguration">
+		<property name="destinationDataStore">
+			<map>
+				<entry key="quickstartDest" value-ref="quickstartDestinationData" />
+			</map>
+		</property>
+	</bean>
+
+    <!-- Configures an Outbound SAP Connection -->
+    <!-- *** Please enter the connection property values for your environment *** -->
+    <bean id="quickstartDestinationData"
+        class="org.fusesource.camel.component.sap.model.rfc.impl.DestinationDataImpl">
+        <property name="ashost" value="${jco.client.ashost}" />
+        <property name="sysnr" value="${jco.client.sysnr}" />
+        <property name="client" value="${jco.client.client}" />
+        <property name="user" value="${jco.client.user}" />
+        <property name="passwd" value="${jco.client.passwd}" />
+        <property name="lang" value="${jco.client.lang}" />
+    </bean>
+</beans>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+	xmlns:camel="http://camel.apache.org/schema/blueprint" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+       http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+
+  <!-- Here is an example route which builds and sends a list of FLCUSTOMER_CREATEFROMDATA01 IDocs 
+  	   to add Flight Customers records within an SAP System. The list of IDocs are sent to the inbound 
+  	   queue `QUICKSTARTQUEUE` in SAP via a queued IDoc List endpoints. When this queue is triggered, 
+  	   the document lists are delivered in order to the ALE subsystem.
+  	   -->
+	<camelContext trace="false" id="sap-qidoclist-destination-fuse-context" xmlns="http://camel.apache.org/schema/blueprint">
+    <route id="sap-qidoclist-destination-fuse-route">
+        <from uri="timer://init?repeatCount=1"/>
+	    <to uri="bean:flintstoneIDocList"/>
+        <log message="${body}" loggingLevel="INFO"/>
+        <to uri="sap-qidoclist-destination:quickstartDest:QUICKSTARTQUEUE:FLCUSTOMER_CREATEFROMDATA01"/>
+	    <to uri="bean:rubbleIDocList"/>
+        <log message="${body}" loggingLevel="INFO"/>
+        <to uri="sap-qidoclist-destination:quickstartDest:QUICKSTARTQUEUE:FLCUSTOMER_CREATEFROMDATA01"/>
+    </route>
+</camelContext>
+
+	<!-- Create interceptor to support tRFC processing -->
+	<bean id="currentProcessorDefinitionInterceptor"
+		class="org.fusesource.camel.component.sap.CurrentProcessorDefinitionInterceptStrategy" />
+
+	<!-- Instantiates processor beans which build lists of FLCUSTOMER_CREATEFROMDATA01 IDocs 
+	 	 and sets those lists in the body of the exchange's message. -->
+	<bean id="flintstoneIDocList" class="org.jboss.quickstarts.fuse.sap_qidoclist_destination_fuse.CreateFlintstoneIDocList"/>
+	<bean id="rubbleIDocList" class="org.jboss.quickstarts.fuse.sap_qidoclist_destination_fuse.CreateRubbleIDocList"/>
+
+	<!-- Configures the Inbound and Outbound SAP Connections -->
+	<bean id="sap-configuration"
+		class="org.fusesource.camel.component.sap.SapConnectionConfiguration">
+		<property name="destinationDataStore">
+			<map>
+				<entry key="quickstartDest" value-ref="quickstartDestinationData" />
+			</map>
+		</property>
+	</bean>
+
+	<!-- Configures an Outbound SAP Connection -->
+	<!-- *** Please enter the connection property values for your environment 
+		*** -->
+    <bean id="quickstartDestinationData"
+        class="org.fusesource.camel.component.sap.model.rfc.impl.DestinationDataImpl">
+        <property name="ashost" value="${jco.client.ashost}" />
+        <property name="sysnr" value="${jco.client.sysnr}" />
+        <property name="client" value="${jco.client.client}" />
+        <property name="user" value="${jco.client.user}" />
+        <property name="passwd" value="${jco.client.passwd}" />
+        <property name="lang" value="${jco.client.lang}" />
+    </bean>
+
+</blueprint>
