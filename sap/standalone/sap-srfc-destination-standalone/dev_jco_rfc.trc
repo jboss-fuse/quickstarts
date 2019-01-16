@@ -1,0 +1,10 @@
+
+**** Error file opened at 20190108 142323 Eastern Standard Time Rel 3.0.11 (2014-04-15) [720.612]
+Error:  >Tue Jan 08 14:23:23,720<    >RfcGetException rc (7) message: Password logon no longer possible - too many failed attempts
+<RfcGetException
+
+Info:  >Tue Jan 08 14:23:23,744<    [JCoAPI] Unexpected java.lang.InterruptedException occurred in JCoTimeoutChecker background thread while being in wait() java.lang.InterruptedException
+	at java.lang.Object.wait(Native Method)
+	at com.sap.conn.jco.rt.AutoJobRunner.run(AutoJobRunner.java:124)
+	at java.lang.Thread.run(Thread.java:748)
+

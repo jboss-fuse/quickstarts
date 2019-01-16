@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:camel="http://camel.apache.org/schema/spring"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+	<!-- Here is an example route which handles lists of `FLCUSTOMER_CREATEFROMDATA01` type IDoc documents from SAP.
+	 	 The route simply mocks the processing of these documents by logging the documents it receives. -->
+	<camelContext xmlns="http://camel.apache.org/schema/spring">
+	    <route>
+	        <from uri="sap-idoclist-server:quickstartServer:FLCUSTOMER_CREATEFROMDATA01"/>
+	        <convertBodyTo type="java.lang.String"/>
+	        <log message="${body}" loggingLevel="INFO"/>
+	    </route>
+	</camelContext>
+
+</beans>

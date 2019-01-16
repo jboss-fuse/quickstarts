@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- JBoss, Home of Professional Open Source Copyright 2013, Red Hat, Inc. 
+	and/or its affiliates, and individual contributors by the @authors tag. See 
+	the copyright.txt in the distribution for a full listing of individual contributors. 
+	Licensed under the Apache License, Version 2.0 (the "License"); you may not 
+	use this file except in compliance with the License. You may obtain a copy 
+	of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required 
+	by applicable law or agreed to in writing, software distributed under the 
+	License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS 
+	OF ANY KIND, either express or implied. See the License for the specific 
+	language governing permissions and limitations under the License. -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.jboss.quickstarts.fuse</groupId>
+	<artifactId>sap-quickstarts-parent</artifactId>
+	<version>7.1.0.fuse-710023-redhat-00001</version>
+	<packaging>pom</packaging>
+
+	<name>SAP Quickstarts Parent</name>
+	<description>Parent for SAP Quickstarts</description>
+	<url>http://www.jboss.org/products/fuse</url>
+
+ 	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<distribution>repo</distribution>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+		</license>
+	</licenses>
+
+	<properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<!-- dependency versions -->
+		<!-- 
+		<camel-sap-version>7.0.0.fuse-000211-redhat-1</camel-sap-version>
+		 -->
+		<camel-sap-version>7.1.0-SNAPSHOT</camel-sap-version>
+		<camel-version>2.21.0.fuse-710018-redhat-00001</camel-version>
+		<slf4j-api-version>1.7.22</slf4j-api-version>
+		<slf4j-version>1.7.22</slf4j-version>
+		<log4j-version>1.2.17</log4j-version>
+		<sapjco3-version>3.0.11</sapjco3-version>
+		<sapidoc3-version>3.0.10</sapidoc3-version>
+		<!-- plugin versions -->
+		<maven-compiler-plugin-version>3.7.0</maven-compiler-plugin-version>
+		<maven-resources-plugin-version>3.0.2</maven-resources-plugin-version>
+		<camel-maven-plugin-version>2.21.0.fuse-710018-redhat-00001</camel-maven-plugin-version>
+		<maven-bundle-plugin-version>3.3.0</maven-bundle-plugin-version>
+		<build-helper-maven-plugin-version>3.0.0</build-helper-maven-plugin-version>
+		<fabric8-maven-plugin-version>3.5.26</fabric8-maven-plugin-version>
+
+		<!-- SAP Instance Configuration Configuration Parameters -->
+		<!-- *** Please enter the connection property values for your SAP Instance *** -->
+		<jco.client.ashost>example.com</jco.client.ashost>
+		<jco.client.sysnr>00</jco.client.sysnr>
+		<jco.client.client>000</jco.client.client>
+		<jco.client.gwhost>example.com</jco.client.gwhost>
+		<jco.client.gwserv>3300</jco.client.gwserv>
+		<jco.client.user>username</jco.client.user>
+		<jco.client.passwd>password</jco.client.passwd>
+		<jco.client.lang>en</jco.client.lang>
+		
+	</properties>
+
+	<modules>
+		<module>standalone/sap-idoc-destination-standalone</module>
+		<module>standalone/sap-idoclist-destination-standalone</module>
+		<module>standalone/sap-qidoc-destination-standalone</module>
+		<module>standalone/sap-qidoclist-destination-standalone</module>
+		<module>standalone/sap-idoclist-server-standalone</module>
+		<module>standalone/sap-qrfc-destination-standalone</module>
+		<module>standalone/sap-srfc-destination-standalone</module>
+		<module>standalone/sap-trfc-destination-standalone</module>
+		<module>standalone/sap-srfc-server-standalone</module>
+		<module>standalone/sap-trfc-server-standalone</module>
+
+		<module>fuse/sap-idoc-destination-fuse</module>
+		<module>fuse/sap-idoclist-destination-fuse</module>
+		<module>fuse/sap-qidoc-destination-fuse</module>
+		<module>fuse/sap-qidoclist-destination-fuse</module>
+		<module>fuse/sap-idoclist-server-fuse</module>
+		<module>fuse/sap-qrfc-destination-fuse</module>
+		<module>fuse/sap-srfc-destination-fuse</module>
+		<module>fuse/sap-trfc-destination-fuse</module>
+		<module>fuse/sap-srfc-server-fuse</module>
+		<module>fuse/sap-trfc-server-fuse</module>
+		<module>fuse/sap-trfc-server-failover-loadbalancer-fuse</module>
+		
+		<module>spring-boot/sap-idoc-destination-spring-boot</module>
+		<module>spring-boot/sap-idoclist-destination-spring-boot</module>
+		<module>spring-boot/sap-qidoc-destination-spring-boot</module>
+		<module>spring-boot/sap-qidoclist-destination-spring-boot</module>
+		<module>spring-boot/sap-idoclist-server-spring-boot</module>
+		<module>spring-boot/sap-qrfc-destination-spring-boot</module>
+		<module>spring-boot/sap-srfc-destination-spring-boot</module>
+		<module>spring-boot/sap-trfc-destination-spring-boot</module>
+		<module>spring-boot/sap-srfc-server-spring-boot</module>
+		<module>spring-boot/sap-trfc-server-spring-boot</module>
+		
+	</modules>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- SAP component dependency for compiling processor beans -->
+			<dependency>
+				<groupId>org.fusesource</groupId>
+				<artifactId>camel-sap</artifactId>
+				<version>${camel-sap-version}</version>
+			</dependency>
+
+			<!-- Camel dependencies -->
+			<dependency>
+				<groupId>org.apache.camel</groupId>
+				<artifactId>camel-core</artifactId>
+				<version>${camel-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.camel</groupId>
+				<artifactId>camel-spring</artifactId>
+				<version>${camel-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.camel</groupId>
+				<artifactId>camel-blueprint</artifactId>
+				<version>${camel-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.camel</groupId>
+				<artifactId>camel-jaxb</artifactId>
+				<version>${camel-version}</version>
+			</dependency>
+
+			<!-- logging -->
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${slf4j-api-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-log4j12</artifactId>
+				<version>${slf4j-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
+				<version>${log4j-version}</version>
+			</dependency>
+
+			<!-- testing -->
+			<dependency>
+				<groupId>org.apache.camel</groupId>
+				<artifactId>camel-test-spring</artifactId>
+				<scope>test</scope>
+				<version>${camel-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.camel</groupId>
+				<artifactId>camel-test-blueprint</artifactId>
+				<scope>test</scope>
+				<version>${camel-version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<defaultGoal>install</defaultGoal>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+			<resource>
+				<directory>src/main/fabric8</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+		<pluginManagement>
+			<plugins>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${maven-compiler-plugin-version}</version>
+					<configuration>
+						<source>${maven.compiler.source}</source>
+						<target>${maven.compiler.target}</target>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>${maven-resources-plugin-version}</version>
+					<configuration>
+						<encoding>${project.build.sourceEncoding}</encoding>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.felix</groupId>
+					<artifactId>maven-bundle-plugin</artifactId>
+					<version>${maven-bundle-plugin-version}</version>
+					<extensions>true</extensions>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.camel</groupId>
+					<artifactId>camel-maven-plugin</artifactId>
+					<version>${camel-maven-plugin-version}</version>
+				</plugin>
+	            <plugin>
+	                <groupId>org.codehaus.mojo</groupId>
+	                <artifactId>build-helper-maven-plugin</artifactId>
+	                <version>${build-helper-maven-plugin-version}</version>
+	                <executions>
+	                    <execution>
+	                        <id>attach-artifacts</id>
+	                        <phase>package</phase>
+	                        <goals>
+	                            <goal>attach-artifact</goal>
+	                        </goals>
+	                        <configuration>
+	                            <artifacts>
+	                                <artifact>
+	                                    <file>target/classes/features.xml</file>
+	                                    <type>xml</type>
+	                                    <classifier>features</classifier>
+	                                </artifact>
+	                            </artifacts>
+	                        </configuration>
+	                    </execution>
+	                </executions>
+	            </plugin>
+	            <plugin>
+	                <groupId>io.fabric8</groupId>
+	                <artifactId>fabric8-maven-plugin</artifactId>
+	                <version>${fabric8-maven-plugin-version}</version>
+	            </plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<repositories>
+		<repository>
+			<id>jboss-fuse-ea</id>
+			<name>JBoss Fuse Early Access Repository</name>
+			<url>https://repository.jboss.org/nexus/content/groups/ea/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+		</repository>
+		<repository>
+			<id>jboss-fuse-public</id>
+			<name>JBoss Fuse Public Repository</name>
+			<url>https://repository.jboss.org/nexus/content/groups/fs-public/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+		</repository>
+		<repository>
+			<id>jboss-fuse-ga</id>
+			<name>JBoss Fuse Community GA Release Repository</name>
+			<url>https://maven.repository.redhat.com/ga/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+		</repository>
+		<repository>
+			<id>jboss-fuse-snapshot</id>
+			<name>JBoss Fuse Snapshot Repository</name>
+			<url>https://repository.jboss.org/nexus/content/groups/fs-public-snapshots/</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>jboss-fuse-ea</id>
+			<name>JBoss Fuse Early Access Repository</name>
+			<url>https://repository.jboss.org/nexus/content/groups/ea/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+		</pluginRepository>
+		<pluginRepository>
+			<id>jboss-fuse-public</id>
+			<name>JBoss Fuse Public Repository</name>
+			<url>https://repository.jboss.org/nexus/content/groups/fs-public/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+		</pluginRepository>
+		<pluginRepository>
+			<id>jboss-fuse-ga</id>
+			<name>JBoss Fuse Community GA Release Repository</name>
+			<url>https://maven.repository.redhat.com/ga/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+		</pluginRepository>
+		<pluginRepository>
+			<id>jboss-fuse-snapshot</id>
+			<name>JBoss Fuse Snapshot Repository</name>
+			<url>https://repository.jboss.org/nexus/content/groups/fs-public-snapshots/</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+		</pluginRepository>
+	</pluginRepositories>
+	
+	<profiles>
+		<profile>
+			<id>snapshots</id>
+			<properties>
+				<snapshop-build>redhat-7.0.0.redhat-SNAPSHOT</snapshop-build>
+			</properties>
+		</profile>
+	</profiles>
+</project>
