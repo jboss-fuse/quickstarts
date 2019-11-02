@@ -40,7 +40,7 @@
 		<camel-sap-version>7.0.0.fuse-000211-redhat-1</camel-sap-version>
 		 -->
 		<camel-sap-version>7.1.0-SNAPSHOT</camel-sap-version>
-		<camel-version>2.21.0.fuse-710018-redhat-00001</camel-version>
+		<camel-version>3.0.0.fuse-800001</camel-version>
 		<slf4j-api-version>1.7.22</slf4j-api-version>
 		<slf4j-version>1.7.22</slf4j-version>
 		<log4j-version>1.2.17</log4j-version>
