@@ -81,7 +81,7 @@ To send IDocs from your SAP system to the quick start's route, you must first co
    b. Ensure a `QUICKSTART` model view has been created with the technical name `QUICKSTART` (Edit > Model view > Create).   
    c. Ensure the `QUICKSTART` model view has a BAPI call configured (Edit > Add BAPI):   
       1. **Sender/client** : `QUICKCLNT`.  
-      2. **Reciever/server** : `QUICKSTART`.  
+      2. **Receiver/server** : `QUICKSTART`.  
       3. **Obj.name/interface** : `FlightCustomer`.  
       4. **Method** : `CreateFromData`.   
    d. Ensure `Partner Profiles` have been generated for the quick start and your SAP client (Environment > Generate Partner Profiles).   
